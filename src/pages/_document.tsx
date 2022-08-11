@@ -9,20 +9,16 @@ import { useState } from "react";
 
 class MyDocument extends Document {
   render() {
-  
     return (
       <Html>
-        <Head>
-  
-         
-        </Head>
+        <Head></Head>
 
-            <body className="">
-            {/* <body> */}
-              <Main />
-              <NextScript />
-            </body>
-    
+        <body className="">
+          <div className="container">
+            <Main />
+            <NextScript />
+          </div>
+        </body>
       </Html>
     );
   }

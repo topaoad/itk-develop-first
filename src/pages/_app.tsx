@@ -1,5 +1,6 @@
 import "../styles/globals.css";
-import "../styles/test.scss";
+import "../styles/index.scss";
+import "../styles/header.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import {
