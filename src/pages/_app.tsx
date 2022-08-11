@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/index.scss";
 import "../styles/header.scss";
+import "../styles/mainview.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import {

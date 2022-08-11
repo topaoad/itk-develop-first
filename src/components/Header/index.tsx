@@ -6,6 +6,7 @@ import { DarkButton } from "src/components/Darkbutton";
 import { Box , Burger } from "@mantine/core";
 import { DrawerMenu} from "../DrawerMenu";
 
+
 export function Header() {
   return (
     <header className="py-5 text-lg leading-6 font-bold">
@@ -28,6 +29,10 @@ export function Header() {
           </Link>
         </div>
         <DarkButton />
+
+   
+
+       
 
       </div>
     </header>
