@@ -13,7 +13,7 @@ export function PortFolio() {
           <Card shadow="sm" p="lg"  withBorder>
             <Card.Section>
               <Image
-                src="src/assets/img/Thumbnail.jpg"
+                src="/assets/img/Thumbnail.jpg"
                 // height={184}
                 alt="sin国王"
               />
