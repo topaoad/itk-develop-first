@@ -2,3 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+// @media (min-width: 768px){
+// }
+// @media (max-width: 767px){
+// }
+
+// フォントサービスに登録しないと反映しない
+// https://fontplus.jp/usage/services/apply
+.font-headertitle {
+  font-family: "Avenir Next";
+}
+
+@media (min-width: 768px) {
+  .mantine-UnstyledButton-root.mantine-Burger-root.mantine-1ghpv5f {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .pc-menu {
+    display: none;
+  }
+  .sm-position{
+    justify-content: space-between;
+  }
+}
