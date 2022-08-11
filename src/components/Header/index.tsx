@@ -12,15 +12,15 @@ export function Header() {
 
       {/* スマホ時はハンバーガーに */}
       <Link href="/">
-        <a href="/" className="rrrr">
+        <a className="rrrr">
           Index
         </a>
       </Link>
-      <Link href="/about">
-        <a href="/">About page</a>
+      <Link href="/contact">
+        <a>About page</a>
       </Link>
       <Link href="/contact">
-        <a href="/">お問い合わせ</a>
+        <a >お問い合わせ</a>
       </Link>
 
       <DarkButton />
