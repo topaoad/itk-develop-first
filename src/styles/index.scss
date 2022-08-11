@@ -1,9 +1,29 @@
 // 何度も呼び出しされては困るので、適用はここだけとする。
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// 以下、共通コンポーネント
+html,
+body.body {
+  font-family: "YuGothic", Proxima Nova, system-ui, sans-serif;
+  color: #25262b;
+}
 
-  html,body.body {
-    font-family: "YuGothic",Proxima Nova, system-ui, sans-serif;
-  }
+.sub-title {
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
+}
+
+.button-style {
+  background-color: #25262b;
+  color: white;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 22px;
+  margin: auto;
+}
