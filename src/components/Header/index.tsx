@@ -11,7 +11,7 @@ export function Header() {
     <header className="py-5 text-lg leading-6 font-bold">
       <div className="flex items-center sm-position">
         <DrawerMenu/>
-        <div className="font-headertitle font-semibold">Shimabu IT University</div>
+        <div className="font-avenirtitle font-semibold">Shimabu IT University</div>
         {/* スマホ時はハンバーガーに */}
         <div  className="flex ml-auto pc-menu">
           <Link href="/">

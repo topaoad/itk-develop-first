@@ -13,7 +13,7 @@ class MyDocument extends Document {
       <Html>
         <Head></Head>
 
-        <body className="">
+        <body className="body">
           <div className="container ">
             <Main />
             <NextScript />

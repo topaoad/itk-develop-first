@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
+
+  html,body.body {
     font-family: "YuGothic",Proxima Nova, system-ui, sans-serif;
   }
-}

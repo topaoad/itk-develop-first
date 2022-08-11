@@ -20,18 +20,18 @@ export const DrawerMenu = () => {
         position="top"
         size="full"
       >
-        <div className="flex ml-auto">
+        <div className="flex flex-col font-avenirtitle">
           <Link href="/">
-            <a className=" mr-4">About</a>
+            <a className=" leading-10 text-3xl mt-4 font-bold">About</a>
           </Link>
           <Link href="/contact">
-            <a className=" mr-4">Blog</a>
+            <a className=" leading-10 text-3xl mt-4 font-bold">Blog</a>
           </Link>
           <Link href="/contact">
-            <a className=" mr-4">Portfolio</a>
+            <a className="leading-10  text-3xl mt-4 font-bold">Portfolio</a>
           </Link>
           <Link href="/contact">
-            <a className=" mr-4">Contact</a>
+            <a className=" leading-10 text-3xl mt-4 font-bold">Contact</a>
           </Link>
         </div>
       </Drawer>
