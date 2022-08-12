@@ -7,7 +7,7 @@ import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 export function PortFolio() {
   return (
     <div className="mmd:mt-10 mt-20">
-      <h2 className="sub-title">Blog</h2>
+      <h2 className="sub-title">PortFolio</h2>
       <div className="mt-5 blog-box">
         <div className="mt-6 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-6">
           
