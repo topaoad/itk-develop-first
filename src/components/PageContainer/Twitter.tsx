@@ -2,55 +2,91 @@ import styles from "../../styles/Home.module.css";
 // import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Button } from "@mantine/core";
+import { Button, Image, Avatar } from "@mantine/core";
 
 export function Twitter() {
   return (
     <div className="mmd:mt-10 mt-20">
-      <h2 className="sub-title">Blog</h2>
+      <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
         <div className="mt-6 ">
-          <h3 className="text-2xl font-bold">This is a header</h3>
-          <p className="text-base mt-2">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.{" "}
-          </p>
-          <time className="text-xs mt-2">2022.07.11</time>
+          <div className="flex mt-2">
+            <Avatar className="mr-4  " src="assets/img/shimaboo.jpg" alt="しまぶー画像" />
+            <div className="  ">
+              <div>
+                <div className="mr-4 mt-2 flex items-center">
+                  <div className="mr-2">しまぶーのIT大学</div>
+                  <div className="  font-bold  text-xs font-color-dark2">
+                    @shimabu_it・5月25日
+                  </div>
+                </div>
+                <p className="">
+                  📣 新サービス「Noway Form」をリリースしました！ <br /> <br />
+                  Noway
+                  Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle
+                  FormsでやっていたことがNotionだけで完結します✌✨
+                  <br /> <br />
+                  試しに使っていただけると幸いです😊
+                  <br /> <br />
+                  https://www.noway-form.com/ja
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="mt-6 ">
-          <h3 className="text-2xl font-bold">This is a header</h3>
-          <p className="text-base mt-2">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.{" "}
-          </p>
-          <time className="text-xs mt-2">2022.07.11</time>
+          <div className="flex mt-2">
+            <Avatar className="mr-4  " src="assets/img/shimaboo.jpg" alt="しまぶー画像" />
+            <div className="  ">
+              <div>
+                <div className="mr-4 mt-2 flex items-center">
+                  <div className="mr-2">しまぶーのIT大学</div>
+                  <div className="  font-bold  text-xs font-color-dark2">
+                    @shimabu_it・5月25日
+                  </div>
+                </div>
+                <p className="">
+                  📣 新サービス「Noway Form」をリリースしました！ <br /> <br />
+                  Noway
+                  Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle
+                  FormsでやっていたことがNotionだけで完結します✌✨
+                  <br /> <br />
+                  試しに使っていただけると幸いです😊
+                  <br /> <br />
+                  https://www.noway-form.com/ja
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="mt-6 ">
-          <h3 className="text-2xl font-bold">This is a header</h3>
-          <p className="text-base mt-2">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.{" "}
-          </p>
-          <time className="text-xs mt-2">2022.07.11</time>
+          <div className="flex mt-2">
+            <Avatar className="mr-4  " src="assets/img/shimaboo.jpg" alt="しまぶー画像" />
+            <div className="  ">
+              <div>
+                <div className="mr-4 mt-2 flex items-center">
+                  <div className="mr-2">しまぶーのIT大学</div>
+                  <div className="  font-bold  text-xs font-color-dark2">
+                    @shimabu_it・5月25日
+                  </div>
+                </div>
+                <p className="">
+                  📣 新サービス「Noway Form」をリリースしました！ <br /> <br />
+                  Noway
+                  Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle
+                  FormsでやっていたことがNotionだけで完結します✌✨
+                  <br /> <br />
+                  試しに使っていただけると幸いです😊
+                  <br /> <br />
+                  https://www.noway-form.com/ja
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="mt-6 ">
-          <h3 className="text-2xl font-bold">This is a header</h3>
-          <p className="text-base mt-2">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.{" "}
-          </p>
-          <time className="text-xs mt-2">2022.07.11</time>
-        </div>
-        <div className="mt-6 ">
-          <h3 className="text-2xl font-bold">This is a header</h3>
-          <p className="text-base mt-2">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit.{" "}
-          </p>
-          <time className="text-xs mt-2">2022.07.11</time>
-        </div>
-        <div className="mt-6 ">
-          <Button className="font-semibold button-style">View All</Button>
+          <Button className="font-semibold button-style">View on Twitter</Button>
         </div>
       </div>
     </div>
