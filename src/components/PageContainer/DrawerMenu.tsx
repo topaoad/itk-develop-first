@@ -21,13 +21,13 @@ export const DrawerMenu = () => {
         size="full"
       >
         <div className="flex flex-col font-avenirtitle">
-          <Link href="/">
+          <Link href="/about">
             <a className=" leading-10 text-3xl mt-4 font-bold">About</a>
           </Link>
-          <Link href="/contact">
+          <Link href="/blog">
             <a className=" leading-10 text-3xl mt-4 font-bold">Blog</a>
           </Link>
-          <Link href="/contact">
+          <Link href="/portfolio">
             <a className="leading-10  text-3xl mt-4 font-bold">Portfolio</a>
           </Link>
           <Link href="/contact">

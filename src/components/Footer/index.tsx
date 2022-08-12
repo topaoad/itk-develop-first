@@ -7,5 +7,5 @@ import { Box, Burger } from "@mantine/core";
 import { DrawerMenu } from "../PageContainer/DrawerMenu";
 
 export function Footer() {
-  return <footer className="mt-10 tw-text-center">© ️2022 Shimabu IT University</footer>;
+  return <footer className="mt-10 tw-text-center footer-text">© ️2022 Shimabu IT University</footer>;
 }
