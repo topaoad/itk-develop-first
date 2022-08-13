@@ -21,7 +21,7 @@ export const FormList = () => {
   const registerUser = async (event:any) => {
     // event.preventDefault();これがあるとフォームのリセットがされない
 
-    const res = await fetch("", {
+    const res = await fetch("/api/send", {
       body: JSON.stringify({
         name: event.target.name.value,
         email: event.target.email.value,
@@ -35,12 +35,15 @@ export const FormList = () => {
 
     const result = await res.json();
   };
+  const test=()=>{
+
+  }
 
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">Contact</h2>
       <div className="mt-5 blog-box height-70vh">
-        <form onSubmit={registerUser}>
+        <form onSubmit={test}>
         <TextInput
             mt="sm"
             name="email"
