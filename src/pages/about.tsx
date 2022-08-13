@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { MainView } from "../components/PageContainer/MainView";
+import { About } from "../components/PageContainer/About";
 import { BlogArchive } from "../components/PageContainer/BlogArchive";
 import { PortFolio } from "../components/PageContainer/PortFolio";
 import { GitHub } from "../components/PageContainer/GitHub";
@@ -19,14 +19,8 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Header />
-        <MainView />
-        <BlogArchive />
-        <PortFolio />
-
-        <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
-          <GitHub />
-          <Twitter />
-        </div>
+        <About />
+ 
       </main>
       <Footer />
     </div>
