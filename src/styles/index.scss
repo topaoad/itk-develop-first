@@ -36,14 +36,19 @@ body.body {
   text-align: center;
 }
 
-.footer-text{
- 
+.footer-text {
   font-size: 10px;
   line-height: 15px;
   padding: 25px 0;
 }
 
-
-.height-vh{
+.height-vh {
   height: 50vh;
+}
+.height-70vh {
+  height: 70vh;
+}
+
+.mantine-Input-input {
+  margin-top: 6px;
 }

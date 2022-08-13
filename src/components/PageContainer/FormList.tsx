@@ -1,6 +1,6 @@
 import React from "react";
 import CustomNextPage from "next";
-import { useForm } from '@mantine/form';
+import { useForm } from "@mantine/form";
 import { NumberInput, TextInput, Button, Textarea } from "@mantine/core";
 
 export const FormList = () => {
@@ -18,57 +18,68 @@ export const FormList = () => {
     },
   });
 
-  // const registerUser = async (event) => {
-  //   // event.preventDefault();これがあるとフォームのリセットがされない
+  const registerUser = async (event) => {
+    // event.preventDefault();これがあるとフォームのリセットがされない
 
-  //   const res = await fetch("/api/send", {
-  //     body: JSON.stringify({
-  //       name: event.target.name.value,
-  //       email: event.target.email.value,
-  //       message: event.target.message.value,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "POST",
-  //   });
+    const res = await fetch("/api/send", {
+      body: JSON.stringify({
+        name: event.target.name.value,
+        email: event.target.email.value,
+        message: event.target.message.value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
 
-  //   const result = await res.json();
-  // };
+    const result = await res.json();
+  };
 
   return (
-    //mantineバージョン※onsubmitだけ変更
-    <form onSubmit={console.log("成功")}>
-      <TextInput
-        name="name"
-        label="お名前"
-        placeholder="山田　太郎"
-        {...form.getInputProps("name")}
-        required
-      />
-      <TextInput
-        mt="sm"
-        name="email"
-        type="email"
-        label="メールアドレス"
-        placeholder="xyz@gmail.com"
-        {...form.getInputProps("email")}
-        required
-      />
-      <Textarea
-        id="message"
-        placeholder="今日はありがとうございました"
-        label="コメントを入力してください"
-        name="message"
-        required
-        {...form.getInputProps("message")}
-      />
-      <Button type="submit" mt="sm">
-        送信
-      </Button>
-      <Button variant="outline" onClick={() => form.reset()}>
-        リセット
-      </Button>
-    </form>
+    <div className="mmd:mt-10 mt-20">
+      <h2 className="sub-title">Contact</h2>
+      <div className="mt-5 blog-box height-70vh">
+        <form onSubmit={registerUser}>
+        <TextInput
+            mt="sm"
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="your@email.com"
+            className="mt-6 "
+            {...form.getInputProps("email")}
+            // required
+          />
+          <TextInput
+            name="name"
+            label="Name"
+            placeholder="Taro Yamada"
+            className="mt-6 "
+            {...form.getInputProps("name")}
+            // required
+          />
+    
+          <Textarea
+            id="message"
+            placeholder="I want to order your goods"
+            label="Your Message"
+            name="message"
+            className="mt-6 "
+            // required
+            {...form.getInputProps("message")}
+          />
+          {/* <Button type="submit" mt="sm">
+            送信
+          </Button>
+          <Button variant="outline" onClick={() => form.reset()}>
+            リセット
+          </Button> */}
+           <div className="mt-6 ">
+          <Button className="font-semibold button-style">Send message</Button>
+        </div>
+        </form>
+      </div>
+    </div>
   );
 };
