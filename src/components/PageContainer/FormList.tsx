@@ -18,10 +18,10 @@ export const FormList = () => {
     },
   });
 
-  const registerUser = async (event) => {
+  const registerUser = async (event:any) => {
     // event.preventDefault();これがあるとフォームのリセットがされない
 
-    const res = await fetch("/api/send", {
+    const res = await fetch("", {
       body: JSON.stringify({
         name: event.target.name.value,
         email: event.target.email.value,
