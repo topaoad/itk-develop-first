@@ -28,10 +28,20 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <Component {...pageProps} />
-      </MantineProvider>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
+             >
+              
+        <MantineProvider
+          theme={{ colorScheme }}
+          withGlobalStyles
+          withNormalizeCSS
+        >
+
+          <Component {...pageProps} />
+
+        </MantineProvider>
       </ColorSchemeProvider>
     </>
   );
