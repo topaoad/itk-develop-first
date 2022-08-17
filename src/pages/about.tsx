@@ -1,10 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { About } from "../components/PageContainer/About";
+
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { About as AboutComponent } from "../components/PageContainer/About";
+import { BlogArchive } from "../components/PageContainer/BlogArchive";
+import { PortFolio } from "../components/PageContainer/PortFolio";
+import { GitHub } from "../components/PageContainer/GitHub";
+import { Twitter } from "../components/PageContainer/Twitter";
+
 import { Layout } from "src/components/Layout";
 
-const Home: NextPage = () => {
+const About: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,10 +21,10 @@ const Home: NextPage = () => {
       </Head>
 
       <Layout>
-        <About />
+        <AboutComponent />
       </Layout>
     </div>
   );
 };
 
-export default Home;
+export default About;

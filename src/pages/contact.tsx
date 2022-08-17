@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import { FormList } from "../components/PageContainer/FormList";
 import { Layout } from "src/components/Layout";
 
-const Home: NextPage = () => {
+const Contact: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,4 +18,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Contact;
