@@ -1,7 +1,6 @@
 import React from "react";
-import CustomNextPage from "next";
 import { useForm } from "@mantine/form";
-import { NumberInput, TextInput, Button, Textarea } from "@mantine/core";
+import {TextInput, Button, Textarea } from "@mantine/core";
 
 export const FormList = () => {
   //mantineバージョン
@@ -62,7 +61,7 @@ export const FormList = () => {
             {...form.getInputProps("name")}
             // required
           />
-    
+
           <Textarea
             id="message"
             placeholder="I want to order your goods"
