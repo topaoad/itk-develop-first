@@ -1,9 +1,6 @@
-import styles from "../../styles/Home.module.css";
-// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { DarkButton } from "src/components/PageContainer/Darkbutton";
-import { Drawer, Button, Group, Box, Burger } from "@mantine/core";
+import { Drawer, Burger } from "@mantine/core";
 import { useState } from "react";
 
 export const DrawerMenu = () => {

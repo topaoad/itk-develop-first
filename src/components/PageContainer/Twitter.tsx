@@ -1,8 +1,5 @@
-import styles from "../../styles/Home.module.css";
-// import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { Button, Image, Avatar } from "@mantine/core";
+import { Button, Avatar } from "@mantine/core";
 
 export function Twitter() {
   return (
