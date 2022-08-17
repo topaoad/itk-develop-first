@@ -5,6 +5,7 @@ import React from "react";
 import { DarkButton } from "src/components/PageContainer/Darkbutton";
 import { Box, Burger } from "@mantine/core";
 import { DrawerMenu } from "../PageContainer/DrawerMenu";
+import { NAV_LINKS } from "./headerLinks";
 
 export function Header() {
   return (
@@ -18,18 +19,12 @@ export function Header() {
         </div>
         {/* スマホ時はハンバーガーに */}
         <div className="flex ml-auto pc-menu">
-          <Link href="/about">
-            <a className=" mr-4">About</a>
-          </Link>
-          <Link href="/blog">
-            <a className=" mr-4">Blog</a>
-          </Link>
-          <Link href="/portfolio">
-            <a className=" mr-4">Portfolio</a>
-          </Link>
-          <Link href="/contact">
-            <a className=" mr-4">Contact</a>
-          </Link>
+          {/* navigationをmapで表示 */}
+          {NAV_LINKS.map((link) => (
+            <Link key={link.label} href={`${link.href}`}>
+              <a className="mr-4">{link.label}</a>
+            </Link>
+          ))}
         </div>
         <DarkButton />
       </div>
