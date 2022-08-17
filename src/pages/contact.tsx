@@ -12,7 +12,7 @@ import { GitHub } from "../components/PageContainer/GitHub";
 import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 
-const Home: NextPage = () => {
+const Contact: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -26,4 +26,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Contact;
