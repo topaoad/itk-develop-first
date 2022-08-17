@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { BlogArchive } from "../components/PageContainer/BlogArchive";
 import { Layout } from "src/components/Layout";
-const Blog: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,4 +17,4 @@ const Blog: NextPage = () => {
   );
 };
 
-export default Blog;
+export default Home;

@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import { PortFolio } from "../components/PageContainer/PortFolio";
 import { Layout } from "src/components/Layout";
 
-const Portfolio: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,4 +18,4 @@ const Portfolio: NextPage = () => {
   );
 };
 
-export default Portfolio;
+export default Home;

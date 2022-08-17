@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { About as AboutComponent } from "../components/PageContainer/About";
+import { About } from "../components/PageContainer/About";
 import { Layout } from "src/components/Layout";
 
-const About: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,10 +13,10 @@ const About: NextPage = () => {
       </Head>
 
       <Layout>
-        <AboutComponent />
+        <About />
       </Layout>
     </div>
   );
 };
 
-export default About;
+export default Home;
