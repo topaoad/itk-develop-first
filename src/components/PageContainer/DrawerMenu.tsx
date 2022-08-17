@@ -5,9 +5,11 @@ import React from "react";
 import { DarkButton } from "src/components/PageContainer/Darkbutton";
 import { Drawer, Button, Group, Box, Burger } from "@mantine/core";
 import { useState } from "react";
+import { NAV_LINKS } from "../Header/headerLinks";
 
 export const DrawerMenu = () => {
   const [opened, setOpened] = useState(false);
+
   const title = opened ? "Close navigation" : "Open navigation";
 
   return (
@@ -21,24 +23,18 @@ export const DrawerMenu = () => {
         size="full"
       >
         <div className="flex flex-col font-avenirtitle">
-          <Link href="/about">
-            <a className=" leading-10 text-3xl mt-4 font-bold">About</a>
+          {/* navigationをmapで表示 */}
+          {NAV_LINKS.map((link) => (
+          <Link key={link.label} href={`${link.href}`}>
+            <a onClick={(() => setOpened(false))} className="leading-10 text-3xl mt-4 font-bold">{link.label}</a>
           </Link>
-          <Link href="/blog">
-            <a className=" leading-10 text-3xl mt-4 font-bold">Blog</a>
-          </Link>
-          <Link href="/portfolio">
-            <a className="leading-10  text-3xl mt-4 font-bold">Portfolio</a>
-          </Link>
-          <Link href="/contact">
-            <a className=" leading-10 text-3xl mt-4 font-bold">Contact</a>
-          </Link>
+          ))}
         </div>
       </Drawer>
       {/* スマホ用ドロワー */}
       <Burger
         opened={opened}
-        onClick={() => setOpened((o) => !o)}
+        onClick={() => setOpened(true)}
         title={title}
       />
       {/* <Group position="center">
