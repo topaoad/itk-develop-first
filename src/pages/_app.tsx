@@ -35,9 +35,16 @@ export default function App(props: AppProps) {
              >
 
         <MantineProvider
-          theme={{ colorScheme }}
+          theme={{ colorScheme,
+            components: {
+           
+            },
+            fontFamily: "Avenir Next",
+          }}
+          
           withGlobalStyles
           withNormalizeCSS
+          
         >
 
           <Component {...pageProps} />

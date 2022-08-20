@@ -4,7 +4,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head></Head>
+        <Head>
+          
+        </Head>
 
         <body className="body">
           <div className="container ">

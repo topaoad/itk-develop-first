@@ -19,7 +19,6 @@ const Home: NextPage = () => {
         <MainView />
         <BlogArchive />
         <PortFolio />
-
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
           <GitHub />
           <Twitter />
