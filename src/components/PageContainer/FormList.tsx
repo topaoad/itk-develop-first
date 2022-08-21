@@ -2,9 +2,15 @@ import React from "react";
 import { useForm } from "@mantine/form";
 import {TextInput, Button, Textarea } from "@mantine/core";
 
+interface FormValues {
+  email: string;
+  name: string;
+  message: string;
+}
+
 export const FormList = () => {
   //mantineバージョン
-  const form = useForm({
+  const form = useForm<FormValues>({
     initialValues: { name: "", email: "", message: "" },
 
     // functions will be used to validate values at corresponding key
@@ -67,6 +73,7 @@ export const FormList = () => {
             placeholder="I want to order your goods"
             label="Your Message"
             name="message"
+            minRows={2}
             className="mt-6 "
             // required
             {...form.getInputProps("message")}
