@@ -7,8 +7,10 @@ import { PortFolio } from "../components/PageContainer/PortFolio";
 import { GitHub } from "../components/PageContainer/GitHub";
 import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
+import { client } from "src/lib/miscrocms/client";
 
-const Home: NextPage = () => {
+
+const Home: NextPage = ({blog}) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,15 +19,27 @@ const Home: NextPage = () => {
 
       <Layout>
         <MainView />
-        <BlogArchive />
+        <BlogArchive blog={blog}/>
         <PortFolio />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
           <GitHub />
           <Twitter />
         </div>
+        <div>
+    </div>
       </Layout>
     </div>
   );
 };
 
 export default Home;
+
+export const getStaticProps = async () => {
+  const data = await client.get({ endpoint: "mainblog" });
+
+  return {
+    props: {
+      blog: data.contents,
+    },
+  };
+};

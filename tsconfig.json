@@ -16,6 +16,6 @@
     "incremental": true,
     "baseUrl": "./",  
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/PageContainer/PortFolio.tsx", "src/components/PageContainer/FormList.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/PageContainer/PortFolio.tsx", "src/components/PageContainer/FormList.tsx", "src/lib/miscrocms/client.tsx"],
   "exclude": ["node_modules"]
 }
