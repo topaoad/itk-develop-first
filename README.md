@@ -1,33 +1,22 @@
-# 事前準備
+# 使用技術
 
-pnpmとVOLTAをインストールしてください。
+Next.js　
+React　
+TypeScript　
+ESLint　
+prettier　
+Mantine
+Tailwind.css
+yarn
 
 # フロントエンド
 
-/frontend配下になります。
+/itk-teamfirst直下になります。
 
 ## コマンド
-
-### pnpm dev
-
-開発用サーバーを立ち上げます。
-
-### pnpm lint
-
-LINTをかけ、直せる部分は自動で直します。
-prettierとESLintを使っています。
-
-### pnpm test
-
-ユニットテストを走らせます。
-vitestを使っています。
-
-### pnpm build / pnpm start
-
-プロダクション用資材のビルド、その資材でのプロダクション向けサーバー立ち上げを行います。
-SSG等は開発用サーバーと動きが違うため、そのあたりの動作確認で使う場合もあります。
+yarnを使っています
+### yarn dev
 
 ### その他
 
-* :ci
-    * CI上で動かすことを想定しているコマンドです。
+Next.js及びTypeScriptのいずれもやりながら身に着けている最中です。　
