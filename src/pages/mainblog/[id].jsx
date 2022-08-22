@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "src/styles/Home.module.css";
+
 import {
   ActionIcon,
   AppShell,
@@ -10,7 +12,7 @@ import {
 import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
 import { client } from "src/lib/miscrocms/client";
-
+import { Layout } from "src/components/Layout";
 
 export default function BlogId({ blog }) {
   console.log(blog);
@@ -31,16 +33,14 @@ export default function BlogId({ blog }) {
   const [opened, handlers] = useDisclosure(false);
 
   return (
-    <main className="blogpage-wrapper ">
-      <div className="container p-4 ">
-
-
+    <div className={styles.container}>
+      <Layout>
         <h1 className="mb-6 mx-auto">{blog.title}</h1>
         <div className="flex mb-4 mt-4">
           <p className="">公開日:</p>
-          <Date dateString={blog.publishedAt} />
+          <p> {blog.publishedAt} </p>
           <p className="ml-3">更新日:</p>
-          <Date dateString={blog.revisedAt} />
+          <p> {blog.revisedAt}</p>
         </div>
         <EyeCatch />
 
@@ -49,8 +49,8 @@ export default function BlogId({ blog }) {
             __html: `${blog.body}`,
           }}
         />
-      </div>
-    </main>
+      </Layout>
+    </div>
   );
 }
 
