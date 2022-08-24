@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import type { Article } from 'src/components/types/article';
+import { Props } from "src/pages";
 
 
-
-export const BlogArchive= ({ blog})=> {
+export const BlogArchive=  ({ blog }: Props) => {
   return (
     <div className="md:mt-10 mt-20">
       <h2 className="sub-title">Blog</h2>

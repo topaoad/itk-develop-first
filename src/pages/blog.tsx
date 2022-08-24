@@ -1,11 +1,15 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { BlogArchive } from "../components/PageContainer/BlogArchive";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
+import type { Article } from 'src/components/types/article';
+import { Props } from ".";
 
-const Blog: NextPage = ({blog}) => {
+
+
+const Blog: NextPage<Props> = ({ blog }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +24,7 @@ const Blog: NextPage = ({blog}) => {
 };
 
 export default Blog;
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: "mainblog" });
 
   return {

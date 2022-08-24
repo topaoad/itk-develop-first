@@ -11,7 +11,7 @@ import { client } from "src/lib/miscrocms/client";
 import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
 import type { Article } from 'src/components/types/article';
 
-type Props = {
+export type Props = {
   blog: Array<Article>;
 };
 
