@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type {InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { MainView } from "../components/PageContainer/MainView";
@@ -9,7 +9,7 @@ import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 
-const Home: NextPage = ({ blog }) => {
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
   return (
     <div className={styles.container}>
       <Head>

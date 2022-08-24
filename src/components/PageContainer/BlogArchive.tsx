@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { client } from "src/lib/miscrocms/client";
 
-export function BlogArchive({ blog }) {
+
+
+export const BlogArchive= ({ blog})=> {
   return (
     <div className="md:mt-10 mt-20">
       <h2 className="sub-title">Blog</h2>
@@ -18,7 +19,7 @@ export function BlogArchive({ blog }) {
 
         <div>
           <ul>
-            {blog.map((blog) => (
+            {blog.map((blog,index)=> (
               <li key={blog.id} className="mt-6 ">
                 <Link href={`/mainblog/${blog.id}`}>
                   <a>
