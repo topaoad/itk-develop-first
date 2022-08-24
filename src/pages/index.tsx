@@ -1,4 +1,4 @@
-import type {InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { MainView } from "../components/PageContainer/MainView";
@@ -8,8 +8,16 @@ import { GitHub } from "../components/PageContainer/GitHub";
 import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
+import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
+import type { Article } from 'src/components/types/article';
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
+type Props = {
+  blog: Array<Article>;
+};
+
+
+// const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
+const Home: NextPage<Props> = ({ blog }: Props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,7 +32,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }
           <GitHub />
           <Twitter />
         </div>
-        
       </Layout>
     </div>
   );
@@ -32,7 +39,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: "mainblog" });
 
   return {
