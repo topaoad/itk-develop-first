@@ -1,33 +1,34 @@
 import React from "react";
 import styles from "src/styles/Home.module.css";
-
-import {
-  ActionIcon,
-  AppShell,
-  Box,
-  CloseButton,
-  Drawer,
-  MediaQuery,
-} from "@mantine/core";
+import { GetServerSideProps ,GetStaticProps,GetStaticPaths} from 'next';
 import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
 import { client } from "src/lib/miscrocms/client";
 import { Layout } from "src/components/Layout";
+import type { Article } from 'src/components/types/article';
+import Image from 'next/image'
+import { Props } from "src/pages";
 
-export default function BlogId({ blog }) {
+export type PropsDetail = {
+  blog: Article;
+};
+
+
+export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
-  const EyeCatch = () => {
-    if (blog.eyecatch) {
+
+  const EyeCatch = ()=> {
+    if (blog.eye_catch) {
       return (
         <div className="mb-5">
-          <img
+          <Image
             className="aspect-auto"
-            src={blog.eyecatch.url}
+            src={blog.eye_catch.url}
             alt="Picture of the author"
           />
         </div>
       );
-    } else return;
+    } 
   };
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
@@ -42,7 +43,7 @@ export default function BlogId({ blog }) {
           <p className="ml-3">更新日:</p>
           <p> {blog.revisedAt}</p>
         </div>
-        <EyeCatch />
+        {/* <EyeCatch /> */}
 
         <div
           dangerouslySetInnerHTML={{
@@ -55,17 +56,17 @@ export default function BlogId({ blog }) {
 }
 
 // 静的生成のためのパスを指定します
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const data = await client.get({ endpoint: "mainblog" });
-  console.log("data");
-  const paths = data.contents.map((content) => `/mainblog/${content.id}`);
+  console.log(data.contents);
+  const paths = data.contents.map((content: { id: string; } ) => `/mainblog/${content.id }`);
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async (context) => {
-  const id = context.params.id;
-  const data = await client.get({ endpoint: "mainblog", contentId: id });
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id;
+  const data = await client.get({ endpoint: "mainblog", contentId : id as string});
 
   return {
     props: {
