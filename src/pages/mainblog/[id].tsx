@@ -17,8 +17,8 @@ export type PropsDetail = {
 export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
 
-  const EyeCatch = (): JSX.Element |null=> {
-    if (!(blog.eye_catch === null)) {
+  const EyeCatch = (): JSX.Element | null => {
+    if (!(blog.eye_catch === null && blog.eye_catch === undefined)) {
       return (
         <div className="mb-5">
           <Image
@@ -30,7 +30,8 @@ export default function BlogId({ blog }: PropsDetail) {
           />
         </div>
       );
-    } else return null;
+    }
+    return null;
   };
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
@@ -45,7 +46,7 @@ export default function BlogId({ blog }: PropsDetail) {
           <p className="ml-3">更新日:</p>
           <p> {blog.revisedAt}</p>
         </div>
-        {/* <EyeCatch /> */}
+        <EyeCatch />
 
         <div
           dangerouslySetInnerHTML={{
