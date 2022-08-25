@@ -16,9 +16,9 @@ export type PropsDetail = {
 
 export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
-  const becu:string = blog.eye_catch.url?blog.eye_catch.url:"";
+  const becu:string|undefined = blog.eye_catch.url?blog.eye_catch.url:"";
   const EyeCatch = (): JSX.Element | null => {
-    if (!(becu === null && becu === undefined)) {
+    if (becu) {
       return (
         <div className="mb-5">
           <Image
