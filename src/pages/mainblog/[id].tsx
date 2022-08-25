@@ -16,14 +16,13 @@ export type PropsDetail = {
 
 export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
-  const becu:string|undefined = blog.eye_catch.url?blog.eye_catch.url:"";
   const EyeCatch = (): JSX.Element | null => {
-    if (becu) {
+    if (blog.eye_catch) {
       return (
         <div className="mb-5">
           <Image
             className="aspect-auto"
-            src={becu}
+            src={blog.eye_catch.url}
             alt="Picture of the author"
             width={500}
             height={500}
