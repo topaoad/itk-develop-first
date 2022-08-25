@@ -45,7 +45,7 @@ export default function BlogId({ blog }: PropsDetail) {
           <p className="ml-3">更新日:</p>
           <p> {blog.revisedAt}</p>
         </div>
-        <EyeCatch />
+        {/* <EyeCatch /> */}
 
         <div
           dangerouslySetInnerHTML={{
