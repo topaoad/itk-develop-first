@@ -1,34 +1,36 @@
 import React from "react";
 import styles from "src/styles/Home.module.css";
-import { GetServerSideProps ,GetStaticProps,GetStaticPaths} from 'next';
+import { GetServerSideProps, GetStaticProps, GetStaticPaths } from "next";
 import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
 import { client } from "src/lib/miscrocms/client";
 import { Layout } from "src/components/Layout";
-import type { Article } from 'src/components/types/article';
-import Image from 'next/image'
+import type { Article } from "src/components/types/article";
+import Image from "next/image";
 import { Props } from "src/pages";
 
+// 単数のブログデータを引っ張ってくる
 export type PropsDetail = {
   blog: Article;
 };
 
-
 export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
 
-  const EyeCatch = ()=> {
-    if (blog.eye_catch) {
+  const EyeCatch = (): JSX.Element |null=> {
+    if (!(blog.eye_catch === null)) {
       return (
         <div className="mb-5">
           <Image
             className="aspect-auto"
             src={blog.eye_catch.url}
             alt="Picture of the author"
+            width={500}
+            height={500}
           />
         </div>
       );
-    } 
+    } else return null;
   };
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
@@ -43,7 +45,7 @@ export default function BlogId({ blog }: PropsDetail) {
           <p className="ml-3">更新日:</p>
           <p> {blog.revisedAt}</p>
         </div>
-        {/* <EyeCatch /> */}
+        <EyeCatch />
 
         <div
           dangerouslySetInnerHTML={{
@@ -59,14 +61,19 @@ export default function BlogId({ blog }: PropsDetail) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await client.get({ endpoint: "mainblog" });
   console.log(data.contents);
-  const paths = data.contents.map((content: { id: string; } ) => `/mainblog/${content.id }`);
+  const paths = data.contents.map(
+    (content: { id: string }) => `/mainblog/${content.id}`
+  );
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id;
-  const data = await client.get({ endpoint: "mainblog", contentId : id as string});
+  const data = await client.get({
+    endpoint: "mainblog",
+    contentId: id as string,
+  });
 
   return {
     props: {

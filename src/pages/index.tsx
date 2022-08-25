@@ -11,6 +11,8 @@ import { client } from "src/lib/miscrocms/client";
 import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
 import type { Article } from 'src/components/types/article';
 
+
+// 複数のブログデータを配列型で引っ張ってくる
 export type Props = {
   blog: Array<Article>;
 };

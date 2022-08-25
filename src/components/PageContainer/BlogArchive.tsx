@@ -4,6 +4,7 @@ import type { Article } from 'src/components/types/article';
 import { Props } from "src/pages";
 
 
+
 export const BlogArchive=  ({ blog }: Props) => {
   return (
     <div className="md:mt-10 mt-20">
