@@ -42,8 +42,11 @@ const Home: NextPage<Props> = ({ blog }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({ endpoint: "mainblog" });
+  // const data = await client.get({ endpoint: "mainblog" });
+  const data = await client.get({ endpoint: "mainblog", queries: { limit: 20 } });
 
+
+  
   return {
     props: {
       blog: data.contents,
