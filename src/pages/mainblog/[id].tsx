@@ -67,7 +67,10 @@ export default function BlogId({ blog }: PropsDetail) {
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await client.get({ endpoint: "mainblog" });
+  const data = await client.get({
+    endpoint: "mainblog",
+    queries: { limit: 20, offset: 0 },
+  });
   console.log(data.contents);
   const paths = data.contents.map(
     (content: { id: string }) => `/mainblog/${content.id}`
