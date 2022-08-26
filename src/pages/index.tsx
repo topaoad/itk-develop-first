@@ -9,14 +9,12 @@ import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
-import type { Article } from 'src/components/types/article';
-
+import type { Article } from "src/components/types/article";
 
 // 複数のブログデータを配列型で引っ張ってくる
 export type Props = {
   blog: Array<Article>;
 };
-
 
 // const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
 const Home: NextPage<Props> = ({ blog }: Props) => {
@@ -43,10 +41,11 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   // const data = await client.get({ endpoint: "mainblog" });
-  const data = await client.get({ endpoint: "mainblog", queries: { limit: 20 } });
+  const data = await client.get({
+    endpoint: "mainblog",
+    queries: { limit: 20, offset: 0 },
+  });
 
-
-  
   return {
     props: {
       blog: data.contents,
