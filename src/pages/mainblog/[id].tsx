@@ -71,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     endpoint: "mainblog",
     queries: { limit: 20, offset: 0 },
   });
-  console.log(data.contents);
+
   const paths = data.contents.map(
     (content: { id: string }) => `/mainblog/${content.id}`
   );
