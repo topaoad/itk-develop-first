@@ -54,10 +54,3 @@ export default function App(props: AppProps) {
     </>
   );
 }
-
-// デフォルト
-// function MyApp({ Component, pageProps }: AppProps) {
-//   return <Component {...pageProps} />
-// }
-
-// export default MyApp
