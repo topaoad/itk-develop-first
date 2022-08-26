@@ -8,6 +8,12 @@ import { Layout } from "src/components/Layout";
 import type { Article } from "src/components/types/article";
 import Image from "next/image";
 import { Props } from "src/pages";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 // 単数のブログデータを引っ張ってくる
 export type PropsDetail = {
@@ -34,6 +40,8 @@ export default function BlogId({ blog }: PropsDetail) {
   };
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
+  const formatPublishedAt = dayjs.utc(blog.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
+  const formatRevisedAt = dayjs.utc(blog.revisedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
 
   return (
     <div className={styles.container}>
@@ -41,9 +49,9 @@ export default function BlogId({ blog }: PropsDetail) {
         <h1 className="mb-6 mx-auto">{blog.title}</h1>
         <div className="flex mb-4 mt-4">
           <p className="">公開日:</p>
-          <p> {blog.publishedAt} </p>
+          <p> {formatPublishedAt} </p>
           <p className="ml-3">更新日:</p>
-          <p> {blog.revisedAt}</p>
+          <p> {formatRevisedAt}</p>
         </div>
         <EyeCatch />
 
