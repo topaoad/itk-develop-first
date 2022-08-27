@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback }  from "react";
 import styles from "src/styles/Home.module.css";
 import { GetServerSideProps, GetStaticProps, GetStaticPaths } from "next";
 import dynamic from "next/dynamic";
@@ -22,7 +22,7 @@ export type PropsDetail = {
 
 export default function BlogId({ blog }: PropsDetail) {
   console.log(blog);
-  const EyeCatch = (): JSX.Element | null => {
+  const EyeCatch = useCallback((): JSX.Element | null => {
     if (blog.eye_catch) {
       return (
         <div className="mb-5">
@@ -37,7 +37,7 @@ export default function BlogId({ blog }: PropsDetail) {
       );
     }
     return null;
-  };
+  }, []);
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
   const formatPublishedAt = dayjs.utc(blog.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
