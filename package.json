@@ -20,6 +20,7 @@
     "@mantine/next": "^5.1.1",
     "@sendgrid/mail": "^7.7.0",
     "@tabler/icons": "^1.80.0",
+    "axios": "^0.27.2",
     "dayjs": "^1.11.5",
     "microcms-js-sdk": "^2.2.1",
     "next": "12.2.4",
