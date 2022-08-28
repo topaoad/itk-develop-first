@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import type { Article } from "src/components/types/article";
+import type { Article } from "src/types/article";
 import { Props } from "src/pages";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";

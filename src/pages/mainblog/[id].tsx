@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
 import { client } from "src/lib/miscrocms/client";
 import { Layout } from "src/components/Layout";
-import type { Article } from "src/components/types/article";
+import type { Article } from "src/types/article";
 import Image from "next/image";
 import { Props } from "src/pages";
 import dayjs from 'dayjs';

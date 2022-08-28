@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import { BlogArchive } from "../components/PageContainer/BlogArchive";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
-import type { Article } from 'src/components/types/article';
+import type { Article } from 'src/types/article';
 import { Props } from ".";
 
 
