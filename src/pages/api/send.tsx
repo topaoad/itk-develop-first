@@ -26,8 +26,9 @@ export default function handler(req: NextApiRequest,
     (async () => {
       try {
         await sgMail.send(msg);
-      } catch (error) {
+      } catch (error:any|unknown) {
         console.error(error);
+
         if (error.response) {
           console.error(error.response.body);
         }
