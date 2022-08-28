@@ -1,12 +1,13 @@
 import React from "react";
 import { useForm } from "@mantine/form";
-import {TextInput, Button, Textarea } from "@mantine/core";
+import { TextInput, Button, Textarea } from "@mantine/core";
 
 interface FormValues {
   email: string;
   name: string;
   message: string;
 }
+
 
 export const FormList = () => {
   //mantineバージョン
@@ -23,7 +24,8 @@ export const FormList = () => {
     },
   });
 
-  const registerUser = async (event:any) => {
+ 
+  const registerUser = async (event: any) => {
     // event.preventDefault();これがあるとフォームのリセットがされない
 
     const res = await fetch("/api/send", {
@@ -33,6 +35,8 @@ export const FormList = () => {
         message: event.target.message.value,
       }),
       headers: {
+        // "Content-Type": "application/json",
+        Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
       method: "POST",
@@ -40,16 +44,49 @@ export const FormList = () => {
 
     const result = await res.json();
   };
-  const test=()=>{
 
-  }
+  const test = () => {};
+
+// valuesで一括取得して、form.values型をつけてある
+  const doubleSubmit = async (values: typeof form.values) => {
+    try {
+      // microCMSへのフェッチ
+      await fetch("https://top-blog.microcms.io/api/v1/contact", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY,
+        } as HeadersInit | undefined,
+        body: JSON.stringify(values),
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Fetch error: ", error);
+      alert(JSON.stringify(error));
+    }
+
+    // sendgridへのフェッチ用
+    const res = await fetch("/api/send", {
+      body: JSON.stringify(values),
+      headers: {
+        // "Content-Type": "application/json",
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+  };
 
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">Contact</h2>
       <div className="mt-5 blog-box height-70vh">
-        <form onSubmit={test}>
-        <TextInput
+        {/* // 引数の渡し方 */}
+        <form onSubmit={form.onSubmit((values) => doubleSubmit(values))}>
+          {/* <form onSubmit={registerUser}> */}
+          <TextInput
             mt="sm"
             name="email"
             type="email"
@@ -57,7 +94,7 @@ export const FormList = () => {
             placeholder="your@email.com"
             className="mt-6 "
             {...form.getInputProps("email")}
-            // required
+            required
           />
           <TextInput
             name="name"
@@ -65,7 +102,7 @@ export const FormList = () => {
             placeholder="Taro Yamada"
             className="mt-6 "
             {...form.getInputProps("name")}
-            // required
+            required
           />
 
           <Textarea
@@ -84,9 +121,11 @@ export const FormList = () => {
           <Button variant="outline" onClick={() => form.reset()}>
             リセット
           </Button> */}
-           <div className="mt-6 ">
-          <Button className="font-semibold button-style">Send message</Button>
-        </div>
+          <div className="mt-6 ">
+            <Button type="submit" className="font-semibold button-style">
+              Send message
+            </Button>
+          </div>
         </form>
       </div>
     </div>
