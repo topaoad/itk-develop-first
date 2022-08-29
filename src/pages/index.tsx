@@ -8,7 +8,6 @@ import { GitHub } from "../components/PageContainer/GitHub";
 import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
-import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
 import type { Article, PortfolioArticle } from "src/types/article";
 import { BlogPortfolioProps } from "src/types/microCmsData";
 
@@ -20,8 +19,9 @@ export type SubProps = {
 };
 
 // const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
-const Home: NextPage<BlogPortfolioProps> = (props) => {
- console.log(props.portfolio);
+const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
+  //引数をpropsで受け取った場合は、下記分散代入をかませる。
+  // const { blog, portfolio } = props;
 
   return (
     <div className={styles.container}>
@@ -31,9 +31,9 @@ const Home: NextPage<BlogPortfolioProps> = (props) => {
 
       <Layout>
         <MainView />
-        <BlogArchive blog={props.blog} />
-       
-        <PortFolio portfolio={props.portfolio} />
+        <BlogArchive blog={blog} />
+
+        <PortFolio portfolio={portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
           <GitHub />
           <Twitter />
