@@ -9,15 +9,20 @@ import { Twitter } from "../components/PageContainer/Twitter";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import { MicroCMSListResponse } from "microcms-js-sdk/dist/cjs/types";
-import type { Article } from "src/components/types/article";
+import type { Article, PortfolioArticle } from "src/types/article";
+import { BlogPortfolioProps } from "src/types/microCmsData";
 
-// 複数のブログデータを配列型で引っ張ってくる
 export type Props = {
   blog: Array<Article>;
 };
+export type SubProps = {
+  portfolio: Array<PortfolioArticle>;
+};
 
 // const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
-const Home: NextPage<Props> = ({ blog }: Props) => {
+const Home: NextPage<BlogPortfolioProps> = (props) => {
+ console.log(props.portfolio);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,8 +31,9 @@ const Home: NextPage<Props> = ({ blog }: Props) => {
 
       <Layout>
         <MainView />
-        <BlogArchive blog={blog} />
-        <PortFolio />
+        <BlogArchive blog={props.blog} />
+       
+        <PortFolio portfolio={props.portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
           <GitHub />
           <Twitter />
@@ -45,10 +51,15 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: "mainblog",
     queries: { limit: 5, offset: 0 },
   });
+  const portfolioData = await client.get({
+    endpoint: "portfolio",
+    queries: { limit: 20, offset: 0 },
+  });
 
   return {
     props: {
       blog: data.contents,
+      portfolio: portfolioData.contents,
     },
   };
 };
