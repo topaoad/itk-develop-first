@@ -7,6 +7,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import { Button } from "@mantine/core";
 
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -40,11 +41,8 @@ export const BlogArchive = ({ blog }: Props) => {
             ))}
           </ul>
         </div>
-        <div className="mt-6 ">
-          <Link href="/blog" passHref>
-            <Button className="font-semibold button-style">View All</Button>
-          </Link>
-        </div>
+      
+   
       </div>
     </div>
   );

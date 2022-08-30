@@ -6,7 +6,7 @@ import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import type { Article } from 'src/types/article';
 import { Props } from ".";
-
+import { Loader } from '@mantine/core';
 
 
 const Blog: NextPage<Props> = ({ blog }: Props) => {
@@ -18,6 +18,7 @@ const Blog: NextPage<Props> = ({ blog }: Props) => {
       </Head>
       <Layout>
       <BlogArchive blog={blog}/>
+      <Loader className="m-auto"/>;
       </Layout>
     </div>
   );

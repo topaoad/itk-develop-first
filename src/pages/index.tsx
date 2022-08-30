@@ -10,6 +10,8 @@ import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import type { Article, PortfolioArticle } from "src/types/article";
 import { BlogPortfolioProps } from "src/types/microCmsData";
+import Link from "next/link";
+import { Button } from "@mantine/core";
 
 export type Props = {
   blog: Array<Article>;
@@ -32,6 +34,11 @@ const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
       <Layout>
         <MainView />
         <BlogArchive blog={blog} />
+        <div className="mt-6 ">
+          <Link href="/blog" passHref>
+            <Button className="font-semibold button-style">View All</Button>
+          </Link>
+        </div>
 
         <PortFolio portfolio={portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
