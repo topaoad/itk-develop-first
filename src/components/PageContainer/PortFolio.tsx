@@ -39,15 +39,19 @@ export function PortFolio({ portfolio }: SubProps) {
                       </Text>
                     </Group>
 
-                    <div
+                    {/* <div
                       className="text-base mt-2"
                       dangerouslySetInnerHTML={{
                         __html: `${portfolio.contents}`,
                       }}
-                    />
+                    /> */}
+
+                    <Text weight={400} className="   " lineClamp={3} size={18}>
+                      {portfolio.contents}
+                    </Text>
 
                     <div className="  mt-2 text-xs font-bold">
-                    {formatPublishedAt(portfolio.publishedAt)}
+                      {formatPublishedAt(portfolio.publishedAt)}
                     </div>
                   </Card>
                 </Link>
