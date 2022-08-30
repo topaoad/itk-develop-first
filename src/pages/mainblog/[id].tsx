@@ -1,6 +1,5 @@
-import React, {useCallback }  from "react";
+import React, { useCallback } from "react";
 import styles from "src/styles/Home.module.css";
-import { GetServerSideProps, GetStaticProps, GetStaticPaths } from "next";
 import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
 import { client } from "src/lib/miscrocms/client";
@@ -8,10 +7,10 @@ import { Layout } from "src/components/Layout";
 import type { Article } from "src/types/article";
 import Image from "next/image";
 import { Props } from "src/pages";
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage,GetStaticPaths  } from "next";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -20,7 +19,8 @@ export type PropsDetail = {
   blog: Article;
 };
 
-export default function BlogId({ blog }: PropsDetail) {
+// export default function BlogId({ blog }: PropsDetail) {
+ const BlogId:NextPage<PropsDetail> = ( {blog}:PropsDetail) => {
   console.log(blog);
   const EyeCatch = useCallback((): JSX.Element | null => {
     if (blog.eye_catch) {
@@ -40,8 +40,14 @@ export default function BlogId({ blog }: PropsDetail) {
   }, []);
   console.log(blog.publishedAt);
   const [opened, handlers] = useDisclosure(false);
-  const formatPublishedAt = dayjs.utc(blog.publishedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
-  const formatRevisedAt = dayjs.utc(blog.revisedAt).tz('Asia/Tokyo').format('YYYY.MM.DD')
+  const formatPublishedAt = dayjs
+    .utc(blog.publishedAt)
+    .tz("Asia/Tokyo")
+    .format("YYYY.MM.DD");
+  const formatRevisedAt = dayjs
+    .utc(blog.revisedAt)
+    .tz("Asia/Tokyo")
+    .format("YYYY.MM.DD");
 
   return (
     <div className={styles.container}>
@@ -63,7 +69,7 @@ export default function BlogId({ blog }: PropsDetail) {
       </Layout>
     </div>
   );
-}
+};
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -92,3 +98,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
+
+export default BlogId;
