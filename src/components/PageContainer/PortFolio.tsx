@@ -61,7 +61,9 @@ export function PortFolio({ portfolio }: SubProps) {
         </div>
 
         <div className="mt-6 ">
-          <Button className="font-semibold button-style">View All</Button>
+          <Link href="/portfolio" passHref>
+            <Button className="font-semibold button-style">View All</Button>
+          </Link>
         </div>
       </div>
     </div>
