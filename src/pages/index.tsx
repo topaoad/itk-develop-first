@@ -12,6 +12,7 @@ import type { Article, PortfolioArticle } from "src/types/article";
 import { BlogPortfolioProps } from "src/types/microCmsData";
 import Link from "next/link";
 import { Button } from "@mantine/core";
+import { useGetPosts } from "src/hooks/useRequest";
 
 export type Props = {
   blog: Array<Article>;
@@ -24,6 +25,8 @@ export type SubProps = {
 const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
   //引数をpropsで受け取った場合は、下記分散代入をかませる。
   // const { blog, portfolio } = props;
+  const { data, error } = useGetPosts();
+  const aaa: [] = data;
 
   return (
     <div className={styles.container}>
@@ -39,6 +42,10 @@ const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
             <Button className="font-semibold button-style">View All</Button>
           </Link>
         </div>
+
+        {aaa.map((ddd) => (
+          <div key={ddd}>(`a\\${ddd}`);</div>
+        ))}
 
         <PortFolio portfolio={portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
