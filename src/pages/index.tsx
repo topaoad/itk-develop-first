@@ -45,24 +45,24 @@ const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
           </Link>
         </div>
 
+        {/* テストで挿入中 */}
         <ul>
-            {user.map((blog, index) => (
-              <li key={blog.id} className="mt-6 ">
-                <Link href={`/mainblog/${blog.id}`}>
-                  <a>
-                    <h3 className="text-2xl font-bold">{blog.title}</h3>
-                    <div
-                      className="text-base mt-2"
-                      dangerouslySetInnerHTML={{
-                        __html: `${blog.body}`,
-                      }}
-                    />
-               
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {user.map((blog, index) => (
+            <li key={blog.id} className="mt-6 ">
+              <Link href={`/mainblog/${blog.id}`}>
+                <a>
+                  <h3 className="text-2xl font-bold">{blog.title}</h3>
+                  <div
+                    className="text-base mt-2"
+                    dangerouslySetInnerHTML={{
+                      __html: `${blog.body}`,
+                    }}
+                  />
+                </a>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <PortFolio portfolio={portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
