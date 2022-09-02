@@ -12,7 +12,6 @@ import type { Article, PortfolioArticle } from "src/types/article";
 import { BlogPortfolioProps } from "src/types/microCmsData";
 import Link from "next/link";
 import { Button } from "@mantine/core";
-import { Pagination } from "src/components/Pagenation";
 
 export type Props = {
   blog: Array<Article>;

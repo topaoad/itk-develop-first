@@ -6,7 +6,7 @@ export type Numbers = {
   totalCount: number;
 };
 
-export const Pagination = ({ totalCount }: Numbers): ReactJSXElement => {
+export const Pagination = ( {totalCount}: Numbers): ReactJSXElement => {
   const PER_PAGE = 5;
 
   const range = (start: number, end: number) =>
