@@ -12,6 +12,7 @@ import type { Article, PortfolioArticle } from "src/types/article";
 import { BlogPortfolioProps } from "src/types/microCmsData";
 import Link from "next/link";
 import { Button } from "@mantine/core";
+import { Pagination } from "src/components/Pagenation";
 
 export type Props = {
   blog: Array<Article>;
@@ -21,10 +22,13 @@ export type SubProps = {
 };
 
 // const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
-const Home: NextPage<BlogPortfolioProps> = ({ blog, portfolio }) => {
+const Home: NextPage<BlogPortfolioProps> = ({
+  blog,
+  portfolio,
+  totalCount,
+}) => {
   //引数をpropsで受け取った場合は、下記分散代入をかませる。
   // const { blog, portfolio } = props;
-
   return (
     <div className={styles.container}>
       <Head>
@@ -67,6 +71,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       blog: data.contents,
       portfolio: portfolioData.contents,
+      totalCount: data.totalCount,
     },
   };
 };

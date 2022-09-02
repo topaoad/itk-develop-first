@@ -71,4 +71,5 @@ export type PortfolioArticle = {
 export type BlogPortfolioProps = {
   blog: Array<Article>;
   portfolio: Array<PortfolioArticle>;
+  totalCount:number;
 };
