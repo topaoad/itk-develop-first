@@ -14,11 +14,11 @@ export const Pagination = ( {totalCount}: Numbers): ReactJSXElement => {
   console.log(Math.ceil(totalCount / PER_PAGE));
 
   return (
-    <ul>
+    <ul className="flex items-center justify-center -space-x-px my-5 mx-auto pagination-list">
       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-        <li key={index}>
+        <li key={index}  >
           <Link href={`/mainblog/page/${number}`}>
-            <a>{number}</a>
+            <a className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-md border border-gray-400 hover:bg-gray-900 hover:text-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{number}</a>
           </Link>
         </li>
       ))}

@@ -3,6 +3,7 @@ import "../styles/index.scss";
 import "../styles/header.scss";
 import "../styles/mainview.scss";
 import "../styles/github.scss";
+import "../styles/pagination.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import {
@@ -32,23 +33,13 @@ export default function App(props: AppProps) {
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
-             >
-
+      >
         <MantineProvider
-          theme={{ colorScheme,
-            components: {
-           
-            },
-            fontFamily: "Avenir Next",
-          }}
-          
+          theme={{ colorScheme, components: {}, fontFamily: "Avenir Next" }}
           withGlobalStyles
           withNormalizeCSS
-          
         >
-
           <Component {...pageProps} />
-
         </MantineProvider>
       </ColorSchemeProvider>
     </>
