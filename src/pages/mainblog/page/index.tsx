@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { BlogArchive } from "../components/PageContainer/BlogArchive";
+import styles from "src/styles/Home.module.css";
+import { BlogArchive } from "src/components/PageContainer/BlogArchive";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import type { Article } from "src/types/article";
@@ -36,7 +36,7 @@ export default Blog;
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({
     endpoint: "mainblog",
-    queries: { limit: 20, offset: 0 },
+    queries: { limit: 5, offset: 0 },
   });
 
   return {

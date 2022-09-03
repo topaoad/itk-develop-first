@@ -5,7 +5,7 @@ export const NAV_LINKS = [
     label: "About",
   },
   {
-    href: "/blog",
+    href: "/mainblog/page",
     label: "Blog",
   },
   {
