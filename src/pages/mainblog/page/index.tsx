@@ -7,6 +7,9 @@ import { client } from "src/lib/miscrocms/client";
 import type { Article } from "src/types/article";
 import { Loader } from "@mantine/core";
 import { Pagination } from "src/components/Pagenation";
+import { SWRConfiguration }  from 'swr'
+import useSWRInfinite from 'swr/infinite'
+
 
  export type BlogPaginationProps = {
   blog: Array<Article>;
@@ -38,6 +41,8 @@ export const getStaticProps: GetStaticProps = async () => {
     endpoint: "mainblog",
     queries: { limit: 5, offset: 0 },
   });
+
+  
 
   return {
     props: {
