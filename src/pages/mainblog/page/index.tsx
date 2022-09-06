@@ -13,7 +13,7 @@ import { useRequestBlog } from "src/lib/swr/useRequestBlog";
 import InfiniteScroll from "react-infinite-scroller";
 
 export type BlogPaginationProps = {
-  blog: Array<Article>;
+  blog: Article[];
   totalCount: number;
 };
 

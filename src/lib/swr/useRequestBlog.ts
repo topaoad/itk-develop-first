@@ -1,6 +1,7 @@
 import { client } from "src/lib/miscrocms/client";
 import useSWRInfinite from "swr/infinite";
 import { BlogArchive } from "src/components/PageContainer/BlogArchive";
+import type { Article } from "src/types/article";
 
 const fetcher = async (key: string) => {
   const [endpoint, pageStr] = key.split("/");
@@ -13,7 +14,7 @@ const fetcher = async (key: string) => {
   return data.contents;
 };
 
-export const useRequestBlog = (initialData:any) => {
+export const useRequestBlog = (initialData:Article[]) => {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     (index) => `mainblog/${index + 1}`,
     fetcher,
