@@ -13,7 +13,7 @@ const fetcher = async (key: string) => {
   return data.contents;
 };
 
-export const useRequestBlog = (initialData) => {
+export const useRequestBlog = (initialData:any) => {
   const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
     (index) => `mainblog/${index + 1}`,
     fetcher,
