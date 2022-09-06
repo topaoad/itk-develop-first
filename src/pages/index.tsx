@@ -38,7 +38,7 @@ const Home: NextPage<BlogPortfolioProps> = ({
         <MainView />
         <BlogArchive blog={blog} />
         <div className="mt-6 ">
-          <Link href="/blog" passHref>
+          <Link href="/mainblog/page" passHref>
             <Button className="font-semibold button-style">View All</Button>
           </Link>
         </div>
