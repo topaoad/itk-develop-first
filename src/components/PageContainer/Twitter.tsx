@@ -1,11 +1,16 @@
 import React from "react";
 import { Button, Avatar } from "@mantine/core";
 
-export function Twitter() {
+export type twitterProps = {
+  item: [];
+};
+
+export function Twitter({item}:twitterProps) {
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
+        
         <div className="mt-6 ">
           <div className="flex mt-2">
             <Avatar className="mr-4  " src="assets/img/shimaboo.jpg" alt="しまぶー画像" />
@@ -31,6 +36,7 @@ export function Twitter() {
             </div>
           </div>
         </div>
+
         <div className="mt-6 ">
           <div className="flex mt-2">
             <Avatar className="mr-4  " src="assets/img/shimaboo.jpg" alt="しまぶー画像" />
