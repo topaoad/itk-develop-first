@@ -11,13 +11,17 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTwitterUser } from "src/hooks/useTwitterUser";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+
+  const  twitterProps  = useTwitterUser();
+  console.log(twitterProps);
 
   return (
     <>
@@ -39,7 +43,7 @@ export default function App(props: AppProps) {
           withGlobalStyles
           withNormalizeCSS
         >
-          <Component {...pageProps} />
+          <Component {...pageProps}  />
         </MantineProvider>
       </ColorSchemeProvider>
     </>

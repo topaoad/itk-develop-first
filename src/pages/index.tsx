@@ -21,13 +21,12 @@ export type SubProps = {
 };
 
 // const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }) => {
-const Home: NextPage<BlogPortfolioProps> = ({
-  blog,
-  portfolio,
-  totalCount,
-}) => {
+const Home: NextPage<BlogPortfolioProps> = (
+  { blog, portfolio, totalCount }
+) => {
   //引数をpropsで受け取った場合は、下記分散代入をかませる。
-  // const { blog, portfolio } = props;
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -46,7 +45,7 @@ const Home: NextPage<BlogPortfolioProps> = ({
         <PortFolio portfolio={portfolio} />
         <div className="grid grid-cols-1  md:grid-cols-2  md:gap-x-20 ">
           <GitHub />
-          <Twitter />
+          <Twitter  />
         </div>
       </Layout>
     </div>
