@@ -1,11 +1,21 @@
 import React from "react";
 import { Button, Avatar } from "@mantine/core";
-
-
-
-
+import useSWR from "swr";
+import { useTwitterUser,useTwitterData } from "src/hooks/useTwitterUser";
 
 export function Twitter() {
+
+  const  { users, tweets } = useTwitterUser();
+  // これはOK
+  console.log( users);
+  console.log( tweets[0]);
+  
+  const  {data,error,isLoading } = useTwitterData();
+// これはOK
+  console.log( data);
+// これはNG
+// console.log(data.user);
+// console.log( data.tweets[0]);
 
   return (
     <div className="mmd:mt-10 mt-20">

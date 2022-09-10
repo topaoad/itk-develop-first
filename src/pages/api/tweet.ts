@@ -21,15 +21,17 @@ const handler = async (
   if (!user) {
     return;
   }
+  
   const { data: tweets } = await client.tweets.usersIdTweets(user.id, {
-    "tweet.fields": ["author_id", "created_at"],
+    "tweet.fields": ["author_id", "created_at","attachments"],
+    max_results: 30,
   });
   if (!tweets) {
     return;
   }
   res.status(200).json({ user, tweets });
-  console.log(user);
-  console.log(tweets);
+  // console.log(user);
+  // console.log(tweets);
 };
 
 export default handler;
