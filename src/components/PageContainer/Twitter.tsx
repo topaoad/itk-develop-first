@@ -62,7 +62,7 @@ export function Twitter() {
       <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
         <ul>
-          {tweetsArray?.map((twitterData: any, index: number) => (
+          {tweetsArray?.slice(0,5).map((twitterData: any, index: number) => (
             <li key={index} className="mt-6 ">
               <div className="flex mt-2">
                 <Avatar
