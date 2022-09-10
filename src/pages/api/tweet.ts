@@ -12,12 +12,7 @@ import NextCors from "nextjs-cors";
 //   req: NextApiRequest,
 //   res: NextApiResponse
 // ) {
-//   try {
-//     await NextCors(req, res, {   // これを追加
-//       methods: ['GET'],
-//       origin: '*',
-//       optionSuccessStatus: 200,
-//     });
+
 
 // const handler = async (
 //   _req: NextApiRequest,
@@ -50,7 +45,7 @@ async function handler(req: NextApiRequest,res: NextApiResponse) {
     // Options
     methods: ["GET"],
     origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   });
 
   const client = new Client(process.env.BEARER_TOKEN);
