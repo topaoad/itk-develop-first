@@ -9,10 +9,7 @@ import { Client } from "twitter-api-sdk";
 
 const handler = async (
   _req: NextApiRequest,
-  res: NextApiResponse<{
-    user: TwitterResponse<findUserByUsername>["data"];
-    tweets: TwitterResponse<usersIdTweets>["data"];
-  }>
+  res: NextApiResponse
 ) => {
   const client = new Client(process.env.BEARER_TOKEN);
   const { data: user } = await client.users.findUserByUsername("tktoproad", {
@@ -21,7 +18,7 @@ const handler = async (
   if (!user) {
     return;
   }
-  
+
   const { data: tweets } = await client.tweets.usersIdTweets(user.id, {
     "tweet.fields": ["author_id", "created_at","attachments"],
     max_results: 30,
@@ -30,8 +27,8 @@ const handler = async (
     return;
   }
   res.status(200).json({ user, tweets });
-  // console.log(user);
-  // console.log(tweets);
+  console.log(user);
+  console.log(tweets);
 };
 
 export default handler;

@@ -16,15 +16,15 @@ export const useTwitterUser = () => {
     fetchUsers();
   }, []);
 
-  console.log(`userの表示は${users}`);
-  console.log(`tweetsの表示は${tweets}`);
+  console.log(`${users}`);
+  console.log({tweets});
   return { users, tweets };
 };
 
 
 // こちらはuseSWRバージョン
 export const useTwitterData = () => {
-  
+
   const fetcher = async (url:string) => {
     const res = await fetch(url);
     const swrData = await res.json();
