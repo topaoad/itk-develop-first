@@ -2,6 +2,12 @@ import React from "react";
 import { Button, Avatar } from "@mantine/core";
 import useSWR from "swr";
 import { useTwitterUser, useTwitterData } from "src/hooks/useTwitterUser";
+import type {
+  TwitterResponse,
+  usersIdTweets,
+  findUserByUsername,
+} from "twitter-api-sdk/dist/types";
+import { TweetSearchAllV2Paginator } from "twitter-api-v2";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url);
@@ -10,7 +16,10 @@ const fetcher = async (url: string) => {
 };
 
 export function Twitter() {
-  const { data } = useSWR(`/api/tweet`, fetcher);
+  const { data, error } = useSWR<{
+    user: TwitterResponse<findUserByUsername>["data"];
+    tweets: TwitterResponse<usersIdTweets>["data"];
+  }>(`/api/tweet`, fetcher);
 
   // const  { users, tweets } = useTwitterUser();
   // // これはOK
@@ -19,24 +28,46 @@ export function Twitter() {
 
   // const { data, error, isLoading } = useTwitterData();
   // これはOK
-  console.log(data);
-  const { user, tweets } = data;
-  // これはNG
-  // console.log(data.user);
-  // console.log( data.tweets[0]);
- 
+  // if (data && data.user) {
+  //   console.log(data.user);
+  //   const userObject: {} = data.user;
+  // }
 
+  // let tweetsArray=[];
+  // if (data && data.tweets) {
+  //   console.log(data.tweets);
+  //   tweetsArray = data.tweets;
+  // }
+  const usersObject = data?.user;
+  const tweetsArray = data?.tweets;
+  // if (data && data.tweets) {
+    console.log(usersObject);
+  //  const tweetsArray:Object[] = data.tweets;
+  // }
+  console.log(data);
+
+  // if (data) {
+  //   const userObject: {} = data.user;
+  //   const userArray: [] = data.tweets;
+  // }
+
+  // これはNG
+  // console.log(userObject);
+  // console.log(userArray);
+  // // console.log( data.tweets[0]);
+  // const my_profile_image_url: string|undefined = usersObject?.profile_image_url;
+  
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
         <ul>
-          {tweets?.map((twitterData: any, index: number) => (
+          {tweetsArray?.map((twitterData: any, index: number) => (
             <li key={index} className="mt-6 ">
               <div className="flex mt-2">
                 <Avatar
                   className="mr-4  "
-                  src="assets/img/shimaboo.jpg"
+                  src={usersObject?.profile_image_url}
                   alt="しまぶー画像"
                 />
                 <div className="  ">
@@ -48,17 +79,7 @@ export function Twitter() {
                         {twitterData.author_id}
                       </div>
                     </div>
-                    <p className="">
-                      📣 新サービス「Noway Form」をリリースしました！ <br />{" "}
-                      <br />
-                      Noway
-                      Formは、Notionのデータベースをもとにフォームを作成できるサービスです。これまでGoogle
-                      FormsでやっていたことがNotionだけで完結します✌✨
-                      <br /> <br />
-                      試しに使っていただけると幸いです😊
-                      <br /> <br />
-                      https://www.noway-form.com/ja
-                    </p>
+                    <p className="">{twitterData.text}</p>
                   </div>
                 </div>
               </div>
