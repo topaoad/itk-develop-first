@@ -9,4 +9,12 @@ export type twitterTweets = {
   author_id: string;
   text: string;
   id: string;
+  entities: twitterURL;
+};
+
+type twitterURL = {
+  urls: twitterEntities;
+};
+type twitterEntities = {
+  expanded_url: string;
 };

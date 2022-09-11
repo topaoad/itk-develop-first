@@ -23,6 +23,8 @@ export function Twitter() {
               <li key={index} className="mt-6 ">
                 <Link
                   href={`https://twitter.com/${usersObject.username}/status/${twitterData.id}`}
+                  // エンティティを使ったリンクを実装したいが、エラー中
+                  // href={twitterData.entities.urls.expanded_url}
                 >
                   <div className="flex mt-2">
                     <Avatar
