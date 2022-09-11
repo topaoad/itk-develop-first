@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Avatar } from "@mantine/core";
 import { useTwitterData } from "src/hooks/useTwitterUser";
 import { twitterUser, twitterTweets } from "src/types/twitter";
+import { formatPublishedAt } from "./PortFolio";
 import Link from "next/link";
 
 export function Twitter() {
@@ -20,18 +21,21 @@ export function Twitter() {
             ?.slice(0, 5)
             .map((twitterData: twitterTweets, index: number) => (
               <li key={index} className="mt-6 ">
-                <Link href={`https://twitter.com/${usersObject.username}/status/${twitterData.id}`}>
+                <Link
+                  href={`https://twitter.com/${usersObject.username}/status/${twitterData.id}`}
+                >
                   <div className="flex mt-2">
                     <Avatar
                       className="mr-4  "
                       src={usersObject?.profile_image_url}
-                      alt="しまぶー画像"
+                      alt="とっぷアイコン"
                     />
                     <div>
-                      <div className="mr-4 mt-2 flex items-center">
+                      <div className="mr-4 flex items-center">
                         <div className="mr-2">{usersObject.name}</div>
                         <div className="  font-bold  text-xs font-color-dark2">
-                          {`@${usersObject.username}`}
+                          {`@${usersObject.username}　`}
+                          {formatPublishedAt(twitterData.created_at)}
                         </div>
                       </div>
                       <p className="">{twitterData.text}</p>
@@ -43,9 +47,11 @@ export function Twitter() {
         </ul>
 
         <div className="mt-6 ">
-          <Button className="font-semibold button-style">
-            View on Twitter
-          </Button>
+          <Link href={`https://twitter.com/tktoproad`}>
+            <Button className="font-semibold button-style">
+              View on Twitter
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
