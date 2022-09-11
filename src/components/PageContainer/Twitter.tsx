@@ -1,68 +1,20 @@
 import React from "react";
 import { Button, Avatar } from "@mantine/core";
-import useSWR from "swr";
-import { useTwitterUser, useTwitterData } from "src/hooks/useTwitterUser";
-import type {
-  TwitterResponse,
-  usersIdTweets,
-  findUserByUsername,
-} from "twitter-api-sdk/dist/types";
-import { TweetSearchAllV2Paginator } from "twitter-api-v2";
-
-const fetcher = async (url: string) => {
-  const res = await fetch(url);
-  const swrData = await res.json();
-  return swrData;
-};
+import { useTwitterData } from "src/hooks/useTwitterUser";
 
 export function Twitter() {
-  const { data, error } = useSWR<{
-    user: TwitterResponse<findUserByUsername>["data"];
-    tweets: TwitterResponse<usersIdTweets>["data"];
-  }>(`/api/tweet`, fetcher);
-
-  // const  { users, tweets } = useTwitterUser();
-  // // これはOK
-  // console.log( users);
-  // console.log( tweets[0]);
-
-  // const { data, error, isLoading } = useTwitterData();
-  // これはOK
-  // if (data && data.user) {
-  //   console.log(data.user);
-  //   const userObject: {} = data.user;
-  // }
-
-  // let tweetsArray=[];
-  // if (data && data.tweets) {
-  //   console.log(data.tweets);
-  //   tweetsArray = data.tweets;
-  // }
+  const { data, error, isLoading } = useTwitterData();
   const usersObject = data?.user;
   const tweetsArray = data?.tweets;
-  // if (data && data.tweets) {
-    console.log(usersObject);
-  //  const tweetsArray:Object[] = data.tweets;
-  // }
+  console.log(usersObject);
   console.log(data);
 
-  // if (data) {
-  //   const userObject: {} = data.user;
-  //   const userArray: [] = data.tweets;
-  // }
-
-  // これはNG
-  // console.log(userObject);
-  // console.log(userArray);
-  // // console.log( data.tweets[0]);
-  // const my_profile_image_url: string|undefined = usersObject?.profile_image_url;
-  
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
         <ul>
-          {tweetsArray?.slice(0,5).map((twitterData: any, index: number) => (
+          {tweetsArray?.slice(0, 5).map((twitterData: any, index: number) => (
             <li key={index} className="mt-6 ">
               <div className="flex mt-2">
                 <Avatar
