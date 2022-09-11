@@ -8,4 +8,5 @@ export type twitterTweets = {
   created_at: string;
   author_id: string;
   text: string;
+  id: string;
 };
