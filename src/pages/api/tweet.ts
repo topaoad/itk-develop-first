@@ -13,7 +13,7 @@ import NextCors from "nextjs-cors";
 //   res: NextApiResponse
 // ) {
 
-
+// こちらはNextCors非対応版
 // const handler = async (
 //   _req: NextApiRequest,
 //   res: NextApiResponse
@@ -38,6 +38,7 @@ import NextCors from "nextjs-cors";
 //   console.log(tweets);
 // };
 
+// こちらはNextCors対応版
 async function handler(req: NextApiRequest,res: NextApiResponse) {
   // Run the cors middleware
   // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors

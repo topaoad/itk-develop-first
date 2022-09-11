@@ -1,11 +1,12 @@
 import React from "react";
 import { Button, Avatar } from "@mantine/core";
 import { useTwitterData } from "src/hooks/useTwitterUser";
+import { twitterUser, twitterTweets } from "src/types/twitter";
 
 export function Twitter() {
   const { data, error, isLoading } = useTwitterData();
-  const usersObject = data?.user;
-  const tweetsArray = data?.tweets;
+  const usersObject: twitterUser = data?.user;
+  const tweetsArray: Array<twitterTweets> = data?.tweets;
   console.log(usersObject);
   console.log(data);
 
@@ -14,29 +15,28 @@ export function Twitter() {
       <h2 className="sub-title">Twitter</h2>
       <div className="mt-5 blog-box">
         <ul>
-          {tweetsArray?.slice(0, 5).map((twitterData: any, index: number) => (
-            <li key={index} className="mt-6 ">
-              <div className="flex mt-2">
-                <Avatar
-                  className="mr-4  "
-                  src={usersObject?.profile_image_url}
-                  alt="しまぶー画像"
-                />
-                <div className="  ">
+          {tweetsArray
+            ?.slice(0, 5)
+            .map((twitterData: twitterTweets, index: number) => (
+              <li key={index} className="mt-6 ">
+                <div className="flex mt-2">
+                  <Avatar
+                    className="mr-4  "
+                    src={usersObject?.profile_image_url}
+                    alt="しまぶー画像"
+                  />
                   <div>
                     <div className="mr-4 mt-2 flex items-center">
-                      <div className="mr-2">しまぶーのIT大学</div>
+                      <div className="mr-2">{usersObject.name}</div>
                       <div className="  font-bold  text-xs font-color-dark2">
-                        @shimabu_it・5月25日
-                        {twitterData.author_id}
+                        {`@${usersObject.username}`}
                       </div>
                     </div>
                     <p className="">{twitterData.text}</p>
                   </div>
                 </div>
-              </div>
-            </li>
-          ))}
+              </li>
+            ))}
         </ul>
 
         <div className="mt-6 ">
