@@ -23,6 +23,7 @@ export function Twitter() {
               <li key={index} className="mt-6 ">
                 <Link
                   href={`https://twitter.com/${usersObject.username}/status/${twitterData.id}`}
+                  passHref
                   // エンティティを使ったリンクを実装したいが、エラー中
                   // href={twitterData.entities.urls.expanded_url}
                 >
@@ -40,10 +41,7 @@ export function Twitter() {
                           {formatPublishedAt(twitterData.created_at)}
                         </div>
                       </div>
-                      <p className="">
-                        {twitterData.text}
-                        {/* {twitterData.entities.urls.expanded_url} */}
-                      </p>
+                      <p className="">{twitterData.text}</p>
                     </div>
                   </div>
                 </Link>
@@ -52,7 +50,7 @@ export function Twitter() {
         </ul>
 
         <div className="mt-6 ">
-          <Link href={`https://twitter.com/tktoproad`}>
+          <Link href={`https://twitter.com/tktoproad`} passHref>
             <Button className="font-semibold button-style">
               View on Twitter
             </Button>
