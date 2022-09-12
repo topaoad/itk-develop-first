@@ -58,7 +58,7 @@ async function handler(req: NextApiRequest,res: NextApiResponse) {
   }
 
   const { data: tweets } = await client.tweets.usersIdTweets(user.id, {
-    "tweet.fields": ["author_id", "created_at", "attachments"],
+    "tweet.fields": ["author_id", "created_at", "attachments","entities"],
     max_results: 30,
   });
   if (!tweets) {

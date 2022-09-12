@@ -10,7 +10,7 @@ export function Twitter() {
   const usersObject: twitterUser = data?.user;
   const tweetsArray: Array<twitterTweets> = data?.tweets;
   console.log(usersObject);
-  console.log(data);
+  console.log(tweetsArray);
 
   return (
     <div className="mmd:mt-10 mt-20">
@@ -30,17 +30,20 @@ export function Twitter() {
                     <Avatar
                       className="mr-4  "
                       src={usersObject?.profile_image_url}
-                      alt="とっぷアイコン"
+                      alt="とっぷのアイコン"
                     />
                     <div>
                       <div className="mr-4 flex items-center">
                         <div className="mr-2">{usersObject.name}</div>
                         <div className="  font-bold  text-xs font-color-dark2">
-                          {`@${usersObject.username}　`}
+                          {`@${usersObject.username}　 `}
                           {formatPublishedAt(twitterData.created_at)}
                         </div>
                       </div>
-                      <p className="">{twitterData.text}</p>
+                      <p className="">
+                        {twitterData.text}
+                        {/* {twitterData.entities.urls.expanded_url} */}
+                      </p>
                     </div>
                   </div>
                 </Link>

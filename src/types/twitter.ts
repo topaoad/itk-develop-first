@@ -9,12 +9,15 @@ export type twitterTweets = {
   author_id: string;
   text: string;
   id: string;
-  entities: twitterURL;
+  entities: any;
 };
 
+// エンティティプロパティは非対応
 type twitterURL = {
-  urls: twitterEntities;
+  urls:twitterEntities[];
 };
+
 type twitterEntities = {
   expanded_url: string;
+  url: string;
 };
