@@ -50,7 +50,7 @@ export function Twitter() {
         </ul>
 
         <div className="mt-6 ">
-          <Link href={`https://twitter.com/tktoproad`} passHref>
+          <Link href={`https://twitter.com/${usersObject?.username}`} passHref>
             <Button className="font-semibold button-style">
               View on Twitter
             </Button>
