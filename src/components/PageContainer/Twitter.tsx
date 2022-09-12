@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Avatar, Loader } from "@mantine/core";
+import { Button, Avatar, Loader, Center } from "@mantine/core";
 import { useTwitterData } from "src/hooks/useTwitterUser";
 import { twitterUser, twitterTweets } from "src/types/twitter";
 import { formatPublishedAt } from "./PortFolio";
@@ -13,7 +13,13 @@ export function Twitter() {
   console.log(tweetsArray);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="mmd:mt-80 mt-100" style={{ height: 200 }}>
+        <Center>
+          <Loader />;
+        </Center>
+      </div>
+    );
   }
 
   if (error) {
