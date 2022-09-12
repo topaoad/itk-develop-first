@@ -16,7 +16,7 @@ export function Twitter() {
     return (
       <div className="mmd:mt-80 mt-100" style={{ height: 200 }}>
         <Center>
-          <Loader />;
+          <Loader />
         </Center>
       </div>
     );
