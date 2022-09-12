@@ -14,8 +14,8 @@ export function Twitter() {
 
   if (isLoading) {
     return (
-      <div className="mmd:mt-80 mt-100" style={{ height: 200 }}>
-        <Center>
+      <div className="mmd:mt-20 mt-30" >
+        <Center style={{ height: 200 }}>
           <Loader />
         </Center>
       </div>
