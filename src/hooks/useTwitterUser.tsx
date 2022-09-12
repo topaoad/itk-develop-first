@@ -37,6 +37,6 @@ export const useTwitterData = () => {
   return {
     data,
     error,
-    isLoading: !data && error,
+    isLoading: !data && !error,
   };
 };

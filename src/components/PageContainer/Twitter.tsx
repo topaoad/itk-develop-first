@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Avatar } from "@mantine/core";
+import { Button, Avatar, Loader } from "@mantine/core";
 import { useTwitterData } from "src/hooks/useTwitterUser";
 import { twitterUser, twitterTweets } from "src/types/twitter";
 import { formatPublishedAt } from "./PortFolio";
@@ -11,6 +11,14 @@ export function Twitter() {
   const tweetsArray: Array<twitterTweets> = data?.tweets;
   console.log(usersObject);
   console.log(tweetsArray);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>データが正しく取得できていません</div>;
+  }
 
   return (
     <div className="mmd:mt-10 mt-20">
