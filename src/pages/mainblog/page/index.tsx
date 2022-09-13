@@ -49,8 +49,9 @@ const Blog: NextPage<BlogPaginationProps> = ({ blog, totalCount }) => {
           threshold={100}
           loader={
             <Center key={"loading"} mt={24}>
-          <Loader />
-           </Center>}
+              <Loader />
+            </Center>
+          }
         >
           <BlogArchive blog={items} />
         </InfiniteScroll>

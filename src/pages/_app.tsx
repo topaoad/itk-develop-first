@@ -29,7 +29,7 @@ export default function App(props: AppProps) {
     <>
       <SWRConfig
         value={{
-          refreshInterval: 3000,
+          refreshInterval: 100000,
           fetcher:fetcher
         }}
       >
