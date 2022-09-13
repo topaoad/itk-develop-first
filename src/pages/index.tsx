@@ -48,6 +48,7 @@ const Home: NextPage<BlogPortfolioProps> = (
           <Twitter  />
         </div>
       </Layout>
+      はははっはは－ーーー
     </div>
   );
 };
