@@ -18,12 +18,13 @@ export const DrawerMenu = () => {
         padding="xl"
         position="top"
         size="full"
+        className="hello-eff"
       >
         <div className="flex flex-col font-avenirtitle">
           {/* navigationをmapで表示 */}
           {NAV_LINKS.map((link) => (
           <Link key={link.label} href={`${link.href}`}>
-            <a onClick={(() => setOpened(false))} className="leading-10 text-3xl mt-4 font-bold">{link.label}</a>
+            <a onClick={(() => opened?setOpened(false):setOpened(true))} className="leading-10 text-3xl mt-4 font-bold">{link.label}</a>
           </Link>
           ))}
         </div>
@@ -31,8 +32,9 @@ export const DrawerMenu = () => {
       {/* スマホ用ドロワー */}
       <Burger
         opened={opened}
-        onClick={() => setOpened(true)}
+        onClick={() => opened?setOpened(false):setOpened(true)}
         title={title}
+        className="z-500"
       />
       {/* <Group position="center">
         <Button onClick={() => setOpened(true)}>Open Drawer</Button>
