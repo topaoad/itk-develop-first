@@ -19,7 +19,8 @@ export default function App(props: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
-  const fetcher = async (url: string) => {
+  
+    const fetcher = async (url: string) => {
     const res = await fetch(url);
     const swrData = await res.json();
     return swrData;
