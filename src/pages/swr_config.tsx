@@ -62,7 +62,7 @@ export const getServerSideProps = async () => {
     // これだとOK
     "src/api/subtweet";
     // デプロイ後のサイトだとOK
-    "https://itk-develop-first-lkvzvgsjy-topaoad.vercel.app/api/tweet";
+    // "https://itk-develop-first-lkvzvgsjy-topaoad.vercel.app/api/tweet";
   const response = await fetch(API_URL);
   const data = await response.json();
 
