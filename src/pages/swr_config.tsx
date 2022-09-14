@@ -58,7 +58,9 @@ export const getServerSideProps = async () => {
   // const data = await client.get({ endpoint: "mainblog" });
   const API_URL =
     // これはエラー
-    // "/api/subtweet";
+    // "api/subtweet";
+    // これだとOK
+    "src/api/subtweet";
     // デプロイ後のサイトだとOK
     "https://itk-develop-first-lkvzvgsjy-topaoad.vercel.app/api/tweet";
   const response = await fetch(API_URL);
