@@ -13,6 +13,8 @@ import { Pagination } from "src/components/Pagenation";
   totalCount:number;
 };
 
+// このページは現在未使用。
+//　mainblogページ配下にアーカイブページとページネーションページを設けたため
 const Blog: NextPage<BlogPaginationProps> = ({
   blog,
   totalCount,
