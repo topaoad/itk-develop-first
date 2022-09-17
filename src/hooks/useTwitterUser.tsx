@@ -31,12 +31,12 @@ export const useTwitterData = () => {
     return swrData;
   };
 
-  const { data, error } = useSWR("/api/tweet", fetcher);
+  const { data, error } = useSWR("/api/tweet");
 
   console.log(data);
   return {
     data,
     error,
-    isLoading: !data && error,
+    isLoading: !data && !error,
   };
 };

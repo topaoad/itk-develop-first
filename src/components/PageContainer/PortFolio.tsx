@@ -10,11 +10,11 @@ import timezone from "dayjs/plugin/timezone";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+export const formatPublishedAt = (pa: string) => {
+  console.log(pa);
+  return dayjs.utc(pa).tz("Asia/Tokyo").format("YYYY.MM.DD");
+};
 export function PortFolio({ portfolio }: SubProps) {
-  const formatPublishedAt = (pa: string) => {
-    console.log(pa);
-    return dayjs.utc(pa).tz("Asia/Tokyo").format("YYYY.MM.DD");
-  };
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">PortFolio</h2>
