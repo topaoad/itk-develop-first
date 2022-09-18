@@ -21,7 +21,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 import { Pagination } from "src/components/Pagenation";
 import Link from "next/link";
-import { BlogPaginationProps } from "src/pages/blog";
 import { BlogArchive } from "src/components/PageContainer/BlogArchive";
 
 // 単数のブログデータを引っ張ってくる
@@ -29,6 +28,12 @@ type PropsDetail = {
   blog: Article;
   totalCount: number;
 };
+
+export type BlogPaginationProps = {
+  blog: Array<Article>;
+  totalCount:number;
+};
+
 
 const PER_PAGE = 5;
 
