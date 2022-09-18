@@ -17,7 +17,8 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   // console.log(latestCommit);
 
   const repository = await octokit.request("GET /users/topaoad/repos", {
- 
+    sort:"created",
+    per_page:"5"
   });
   if (!repository) {
     return;

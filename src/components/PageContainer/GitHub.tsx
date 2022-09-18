@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Image, Progress } from "@mantine/core";
+import { useGitHub } from "src/hooks/useGitHub";
 
 export function GitHub() {
+  const { data, error, isLoading } = useGitHub();
+  console.log(data);
+
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">GitHub</h2>
