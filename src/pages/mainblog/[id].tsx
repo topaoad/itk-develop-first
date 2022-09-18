@@ -81,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.contents.map(
     (content: { id: string }) => `/mainblog/${content.id}`
   );
-  return { paths, fallback: false };
+  return { paths, fallback:  'blocking' };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
@@ -96,6 +96,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       blog: data,
     },
+   
   };
 };
 
