@@ -18,6 +18,8 @@
     "@mantine/form": "^5.1.4",
     "@mantine/hooks": "^5.1.4",
     "@mantine/next": "^5.1.1",
+    "@octokit/core": "^4.0.5",
+    "@octokit/rest": "^19.0.4",
     "@sendgrid/mail": "^7.7.0",
     "@tabler/icons": "^1.80.0",
     "axios": "^0.27.2",
