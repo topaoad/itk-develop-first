@@ -10,7 +10,7 @@ export const useGitHub = () => {
     return swrData;
   };
 
-  const { data, error } = useSWR("/api/github");
+  const { data, error } = useSWR("/api/github",fetcher);
 
   console.log(data);
   return {
