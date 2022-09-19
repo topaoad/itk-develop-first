@@ -3,7 +3,7 @@ import { Octokit } from "@octokit/rest";
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
+    auth: process.env.GH_TOKEN,
   });
 
   const owner = "topaoad"; // 所有者(ユーザー/組織)
