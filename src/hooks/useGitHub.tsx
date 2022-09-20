@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-// 各コンポーネントにtwitterデータを渡すための処理
+// api/githubからリポジトリを取得するhook
 export const useGitHub = () => {
   const fetcher = async (url: string) => {
     const res = await fetch(url);

@@ -1,3 +1,4 @@
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { Progress } from "@mantine/core";
 import { GitHubLanguagePercentage } from "./GitHubLanguagePercentage";
 import { GitHubProgressBar } from "./GitHubProgressBar";
@@ -8,13 +9,13 @@ type GitHubLanguageProgressProps = {
   gitLanguageArray: object[];
 };
 
-//プログレスバーの実装検討中
+//プログレスバーの実装。mantineをあきらめてtailwindを使用
 export const GitHubProgress = (props: GitHubLanguageProgressProps) => {
   const { gitLanguageArray, gitHubLanguageTotal } = props;
 
   return (
     <ul className="flex w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-      {gitLanguageArray.map((gitLanguage: any, index: number) => (
+      {gitLanguageArray.map((gitLanguage:any, index: number):ReactJSXElement => (
         <GitHubProgressBar
           gitLanguage={gitLanguage[0]}
           gitLanguageCount={gitLanguage[1]}
@@ -25,3 +26,4 @@ export const GitHubProgress = (props: GitHubLanguageProgressProps) => {
     </ul>
   );
 };
+

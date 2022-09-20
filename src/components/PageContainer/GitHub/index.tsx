@@ -9,7 +9,7 @@ import { GitHubRepository } from "src/types/github";
 import { GitColor } from "./GitColor";
 import { GitHubLanguagePercentage } from "./GitHubLanguagePercentage";
 import { GitHubProgress } from "./GitHubProgress";
-
+import Link from "next/link";
 import useSWR from "swr";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
@@ -37,7 +37,10 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
 
   return (
     <>
-      <GitHubProgress gitLanguageArray={gitLanguageArray} gitHubLanguageTotal={gitHubLanguageTotal}/>
+      <GitHubProgress
+        gitLanguageArray={gitLanguageArray}
+        gitHubLanguageTotal={gitHubLanguageTotal}
+      />
       <ul className="  flex flex-wrap">
         {gitLanguageArray.map((gitLanguage: any, index: number) => (
           <li key={index} className="mr-4 mt-2 flex items-center">
@@ -68,46 +71,50 @@ export function GitHub() {
           {gitHubRepositories
             ?.slice(0, 5)
             .map((gitHubRepository: GitHubRepository, index: number) => (
-              <li key={index} className="mt-6 ">
-                <p className="text-2xl font-bold">
-                  {gitHubRepository.description}
-                </p>
-                <p className="text-base mt-2">Next.js starter template.</p>
-                <div className="flex mt-2 items-center">
-                  <Image
-                    src="/assets/img/Star.png"
-                    // height={184}
-                    alt="star"
-                    width="18px"
-                    height="18px"
-                    className="mr-2 "
-                  />
-                  <div className="text-gray-500">
-                    {gitHubRepository.stargazers_count}
-                  </div>
-                  <div className="ml-3 ">
+              <Link key={index} href={gitHubRepository.html_url} passHref>
+                <li key={index} className="mt-6 ">
+                  <p className="text-2xl font-bold">
+                    {gitHubRepository.description}              
+                  </p>
+                  <p className="text-base mt-2">Next.js starter template.</p>
+                  <div className="flex mt-2 items-center">
                     <Image
-                      src="/assets/img/Fork.png"
+                      src="/assets/img/Star.png"
                       // height={184}
-                      alt="fork"
+                      alt="star"
                       width="18px"
                       height="18px"
                       className="mr-2 "
                     />
+                    <div className="text-gray-500">
+                      {gitHubRepository.stargazers_count}
+                    </div>
+                    <div className="ml-3 ">
+                      <Image
+                        src="/assets/img/Fork.png"
+                        // height={184}
+                        alt="fork"
+                        width="18px"
+                        height="18px"
+                        className="mr-2 "
+                      />
+                    </div>
+                    <div className="text-gray-500">
+                      {gitHubRepository.forks_count}
+                    </div>
                   </div>
-                  <div className="text-gray-500">
-                    {gitHubRepository.forks_count}
-                  </div>
-                </div>
-                <GitHubLanguage
-                  gitHubLanguagesUrl={gitHubRepository.languages_url}
-                />
-              </li>
+                  <GitHubLanguage
+                    gitHubLanguagesUrl={gitHubRepository.languages_url}
+                  />
+                </li>
+              </Link>
             ))}
         </ul>
 
         <div className="mt-6 ">
+        <Link href="https://github.com/topaoad/" passHref>
           <Button className="font-semibold button-style">View on GitHub</Button>
+          </Link>
         </div>
       </div>
     </div>
