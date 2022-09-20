@@ -45,3 +45,22 @@
   position: relative;
   background: white;
 }
+
+.github-progresscolor--typescript {
+  background: #3178c6;
+}
+.github-progresscolor--javascript {
+  background: #f1e05a;
+}
+.github-progresscolor--html {
+  background: #c6538c;
+}
+.github-progresscolor--scss {
+  background: #563d7c;
+}
+.github-progresscolor--css {
+  background: #e34c26;
+}
+.github-progresscolor--other {
+  background:  white;
+}

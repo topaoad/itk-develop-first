@@ -4,11 +4,11 @@ import {
   useGitHub,
   useGitLanguage,
   useGitHubLanguageTotal,
-
 } from "src/hooks/useGitHub";
 import { GitHubRepository } from "src/types/github";
 import { GitColor } from "./GitColor";
 import { GitHubLanguagePercentage } from "./GitHubLanguagePercentage";
+import { GitHubProgress } from "./GitHubProgress";
 
 import useSWR from "swr";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
@@ -34,29 +34,19 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
     gitLanguageArray = Object.entries(gitLanguageObjects.data);
   }
   console.log(gitLanguageArray);
-  
 
   return (
     <>
-      <Progress
-        size="md"
-        className=" mt-2"
-        sections={[
-          // ここもオブジェクトの数側で処理
-          { value: 95, color: "#3178C6" },
-          { value: 3, color: "#F1E05A" },
-          { value: 2, color: "#EDEDED" },
-        ]}
-      />
+      <GitHubProgress gitLanguageArray={gitLanguageArray} gitHubLanguageTotal={gitHubLanguageTotal}/>
       <ul className="  flex flex-wrap">
         {gitLanguageArray.map((gitLanguage: any, index: number) => (
           <li key={index} className="mr-4 mt-2 flex items-center">
             <GitColor gitLanguageColor={gitLanguage[0]} />
-            <div className=" mr-2 font-bold">{gitLanguage[0]}</div>        
-              <GitHubLanguagePercentage
-                gitHubLanguageTotal={gitHubLanguageTotal} 
-                gitHubLanguageCount={gitLanguage[1]} 
-              />   
+            <div className=" mr-2 font-bold">{gitLanguage[0]}</div>
+            <GitHubLanguagePercentage
+              gitHubLanguageTotal={gitHubLanguageTotal}
+              gitHubLanguageCount={gitLanguage[1]}
+            />
           </li>
         ))}
       </ul>
