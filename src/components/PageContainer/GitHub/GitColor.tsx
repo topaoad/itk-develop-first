@@ -1,16 +1,17 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import React from "react";
 
-type gitColorProps = {
-  gitLanguageColor: string;
+type gitLanguageProps = {
+  gitLanguage: string;
 };
 
-export const GitColor = (props: gitColorProps): ReactJSXElement => {
-  const gitLanguageColor = props.gitLanguageColor;
+//使用言語名を受け取って色分け用のクラスを振り分ける関数
+export const GitColor = (props: gitLanguageProps): ReactJSXElement => {
+  const gitLanguage = props.gitLanguage;
   let githubColorItem: string = "";
 
   // 言語ごとに戻すクラス名を振り分ける
-  switch (gitLanguageColor) {
+  switch (gitLanguage) {
     case "TypeScript":
       githubColorItem = "github-coloritem--typescript";
       break;

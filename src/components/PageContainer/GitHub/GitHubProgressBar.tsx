@@ -8,8 +8,7 @@ type gitHubProgressBar = {
   key: number;
 };
 
-// export const GitProgressColor = (props: gitProgressColorProps): string => {
-
+// 使用言語名、使用言語数、全ての使用言語総合計、リスト用のキーを受け取って処理を回す関数
 export const GitHubProgressBar = (
   props: gitHubProgressBar
 ): ReactJSXElement => {
@@ -45,7 +44,7 @@ export const GitHubProgressBar = (
   return (
     <li
       key={key}
-      className={`bg-blue-600  ${githubColorItem}`}
+      className={`${githubColorItem}`}
       style={{ width: gitLanguagePercentage+"%" }}
     ></li>
   );

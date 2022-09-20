@@ -17,7 +17,10 @@ type GitHubLanguageProps = {
   gitHubLanguagesUrl: string;
 };
 
-// GitHubコンポーネント内から一つのリポジトリのgitHubLanguagesUrlをもらって実装を行う関数
+export type GitLanguageArray =[string,number]
+
+// GitHub関数内のmap関数から一つずつリポジトリのgitHubLanguagesUrlをもらって実装を行う関数
+// プログレスバー、色、パーセンテージ表示は更にそれぞれの関数に外注
 const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
   const gitHubLanguagesUrl: string = props.gitHubLanguagesUrl;
   // 引き継いだgitHubLanguagesUrlでフェッチして、言語オブジェクトを取得
@@ -28,7 +31,7 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
   console.log(gitHubLanguageTotal);
 
   // URLから取得した言語オブジェクトを配列化する
-  let gitLanguageArray: object[] = [];
+  let gitLanguageArray: Array<GitLanguageArray> = [];
   if (gitLanguageObjects.data) {
     // オブジェクトを配列に格納
     gitLanguageArray = Object.entries(gitLanguageObjects.data);
@@ -44,7 +47,7 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
       <ul className="  flex flex-wrap">
         {gitLanguageArray.map((gitLanguage: any, index: number) => (
           <li key={index} className="mr-4 mt-2 flex items-center">
-            <GitColor gitLanguageColor={gitLanguage[0]} />
+            <GitColor gitLanguage={gitLanguage[0]} />
             <div className=" mr-2 font-bold">{gitLanguage[0]}</div>
             <GitHubLanguagePercentage
               gitHubLanguageTotal={gitHubLanguageTotal}
