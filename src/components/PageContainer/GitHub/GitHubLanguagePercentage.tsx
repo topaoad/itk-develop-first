@@ -11,9 +11,10 @@ export const GitHubLanguagePercentage = (
 ): ReactJSXElement => {
   const { gitHubLanguageTotal, gitHubLanguageCount } = props;
 
-  const gitLanguagePercentage = Math.round(
+  const gitLanguagePercentage = 
     (gitHubLanguageCount / gitHubLanguageTotal) * 100
-  );
+  ;
+  const gitLanguagePercentageRound =gitLanguagePercentage.toFixed(1);
 
-  return <div>{`${gitLanguagePercentage}%`}</div>;
+  return <div>{`${gitLanguagePercentageRound}%`}</div>;
 };
