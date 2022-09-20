@@ -38,3 +38,17 @@ export const useGitLanguage = (gitHubLanguagesUrl: string) => {
     isLoading: !data && !error,
   };
 };
+
+// 全言語の合計数をオブジェクトから取得
+export const useGitHubLanguageTotal = (gitLanguageObjectsData: object) => {
+  let aaa: number[] = [];
+  if (gitLanguageObjectsData) {
+    aaa = Object.values(gitLanguageObjectsData);
+    console.log(Object.values(aaa));
+  }
+  let gitLanguageTotal = aaa.reduce((sum, element) => sum + element, 0);
+  console.log(gitLanguageTotal);
+
+  return gitLanguageTotal;
+};
+
