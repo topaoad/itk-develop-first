@@ -1,4 +1,5 @@
 {
+  "extends": "next/core-web-vitals",
   "parserOptions": {
     "ecmaVersion": 13,
     "sourceType": "module",
@@ -7,16 +8,16 @@
     }
   },
   "rules": {
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "parameter",
-        "format": ["camelCase"],
-        "custom": {
-          "regex": "send|start|find",
-          "match": false
-        }
-      }
-    ]
+    // "@typescript-eslint/naming-convention": [
+    //   "error",
+    //   {
+    //     "selector": "parameter",
+    //     "format": ["camelCase"],
+    //     "custom": {
+    //       "regex": "send|start|find",
+    //       "match": false
+    //     }
+    //   }
+    // ]
   }
 }
