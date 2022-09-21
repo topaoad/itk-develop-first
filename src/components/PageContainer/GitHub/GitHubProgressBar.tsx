@@ -12,9 +12,11 @@ type gitHubProgressBar = {
 export const GitHubProgressBar = (
   props: gitHubProgressBar
 ): ReactJSXElement => {
-  const{gitLanguage,gitHubLanguageTotal, gitLanguageCount,key }={...props}
-  
-  const gitLanguagePercentage:number = Math.round(
+  const { gitLanguage, gitHubLanguageTotal, gitLanguageCount, key } = {
+    ...props,
+  };
+
+  const gitLanguagePercentage: number = Math.round(
     (gitLanguageCount / gitHubLanguageTotal) * 100
   );
 
@@ -45,7 +47,7 @@ export const GitHubProgressBar = (
     <li
       key={key}
       className={`${githubColorItem}`}
-      style={{ width: gitLanguagePercentage+"%" }}
+      style={{ width: gitLanguagePercentage + "%" }}
     ></li>
   );
 };

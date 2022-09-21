@@ -1,13 +1,21 @@
 {
   "extends": "next/core-web-vitals",
   "parserOptions": {
-    "ecmaVersion": 13,
+    "ecmaVersion":"latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
+    "semi": ["error", "always"],
+    "react/prop-types": ["off"],
+    "no-undef": ["warn"],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+    // これをコメントオンにすると
+    // Definition for rule '@typescript-eslint/naming-convention' was not found.
+    //  が表示される
     // "@typescript-eslint/naming-convention": [
     //   "error",
     //   {
@@ -18,6 +26,6 @@
     //       "match": false
     //     }
     //   }
-    // ]
+    // ],
   }
 }
