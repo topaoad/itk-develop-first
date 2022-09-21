@@ -27,6 +27,11 @@ TypeScriptの型定義を格納します。
 - utils
 ページやコンポーネント間で使い回す変数情報などを格納します。
 
+### 命名規則
+@typescript-eslint/naming-conventionで管理。
+ルールについては.eslintrc.json参照
+
+
 ### その他
 ESLint　
 prettier　
