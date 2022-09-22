@@ -46,7 +46,7 @@ export const useGitHubLanguageTotal = (gitLanguageObjectsData: object) => {
     aaa = Object.values(gitLanguageObjectsData);
     console.log(Object.values(aaa));
   }
-  let gitLanguageTotal = aaa.reduce((sum, element) => sum + element, 0);
+  const gitLanguageTotal = aaa.reduce((sum, element) => sum + element, 0);
   console.log(gitLanguageTotal);
 
   return gitLanguageTotal;

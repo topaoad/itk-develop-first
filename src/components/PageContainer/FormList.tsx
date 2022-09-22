@@ -42,10 +42,9 @@ export const FormList = () => {
       method: "POST",
     });
 
-    const result = await res.json();
+  
   };
 
-  const test = () => {};
 
 // valuesで一括取得して、form.values型をつけてある
   const doubleSubmit = async (values: typeof form.values) => {
