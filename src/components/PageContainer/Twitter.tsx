@@ -6,7 +6,6 @@ import { formatPublishedAt } from "./PortFolio";
 import Link from "next/link";
 
 export function Twitter() {
-
   const { data, error, isLoading } = useTwitterData();
   const usersObject: twitterUser = data?.user;
   const tweetsArray: Array<twitterTweets> = data?.tweets;
@@ -15,8 +14,8 @@ export function Twitter() {
 
   if (isLoading) {
     return (
-      <div className="mmd:mt-20 mt-30 m-auto" >
-          <Loader />
+      <div className="mmd:mt-20 mt-30 m-auto">
+        <Loader />
       </div>
     );
   }
@@ -24,7 +23,6 @@ export function Twitter() {
   if (error) {
     return <div>データが正しく取得できていません</div>;
   }
-
 
   return (
     <div className="mmd:mt-10 mt-20">
@@ -54,7 +52,6 @@ export function Twitter() {
                           {`@${usersObject.username}　 `}
                           {formatPublishedAt(twitterData.created_at)}
                         </div>
-
                       </div>
                       <p className="">{twitterData.text}</p>
                     </div>

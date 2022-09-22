@@ -8,7 +8,7 @@ type gitLanguageProps = {
 //使用言語名を受け取って色分け用のクラスを振り分ける関数
 export const GitColor = (props: gitLanguageProps): ReactJSXElement => {
   const gitLanguage = props.gitLanguage;
-  let githubColorItem: string = "";
+  let githubColorItem = "";
 
   // 言語ごとに戻すクラス名を振り分ける
   switch (gitLanguage) {

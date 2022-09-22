@@ -60,9 +60,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     queries: { limit: 20, offset: 0 },
   });
 
-  const pageNumbers = [];
+  
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const range = (start: number, end: number) =>
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     [...Array(end - start + 1)].map((_, i) => start + i);
 
   const paths = range(1, Math.ceil(data.totalCount / PER_PAGE)).map(

@@ -20,7 +20,7 @@ export const GitHubProgressBar = (
     (gitLanguageCount / gitHubLanguageTotal) * 100
   );
 
-  let githubColorItem: string = "";
+  let githubColorItem = "";
   // 言語ごとに戻すクラス名を振り分ける
   switch (gitLanguage) {
     case "TypeScript":
