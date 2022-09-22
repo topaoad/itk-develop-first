@@ -18,21 +18,17 @@
     "no-undef": ["warn"],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    // これをコメントオンにすると
-    // Definition for rule '@typescript-eslint/naming-convention' was not found.
-    //  が表示される
-    // "@typescript-eslint/naming-convention": [
-    //   "error",
-    //   {
-    //     "selector": "parameter",
-    //     "format": ["camelCase"],
-    //     "custom": {
-    //       "regex": "send|start|find",
-    //       "match": false
-    //     }
-    //   }
-    // ],
-    // とりあえず標準のキャメルケースを採用
-    "camelcase": ["error", { "properties": "never" }]
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "parameter",
+        "format": ["camelCase"],
+        "custom": {
+          "regex": "send|start|find",
+          "match": false
+        }
+      }
+    ]
+    // "camelcase": ["error", { "properties": "never" }]
   }
 }
