@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
-
 module.exports = nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+  env: {
+    GH_TOKEN: process.env.NEXT_PUBLIC_GH_TOKEN,
+  },
   images: {
     domains: ["images.microcms-assets.io"],
   },
-  env: {
-    GH_TOKEN:"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"
-  },
+  reactStrictMode: true,
+  swcMinify: true,
 };
