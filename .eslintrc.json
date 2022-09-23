@@ -12,6 +12,7 @@
       "jsx": true
     }
   },
+  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"],
   "rules": {
     "semi": ["error", "always"],
     "react/prop-types": ["off"],
@@ -34,6 +35,21 @@
       //   "selector": "typeAlias",
       //   "format": ["PascalCase"]
       // }
-    ]
+    ],
+    // オブジェクトにのキーによる順序調整。自動設定はsetting.jsonで行う。
+    "sort-keys-custom-order/object-keys": [
+      "error",
+      { "orderedKeys": ["id", "name", "title"] }
+    ],
+    // タイプのキーによる順序調整。自動設定はsetting.jsonで行う。
+    "sort-keys-custom-order/type-keys": [
+      "error",
+      { "orderedKeys": ["id", "name", "title"] }
+    ],
+    // importとexportの序列を自動整形してくれます。
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    // 使用していないimportを削除します。
+    "unused-imports/no-unused-imports": "error"
   }
 }

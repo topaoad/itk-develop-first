@@ -1,5 +1,5 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import React, { JSXElementConstructor } from "react";
+import React from "react";
 
 type gitHubProgressBar = {
   gitHubLanguageTotal: number;
@@ -12,7 +12,7 @@ type gitHubProgressBar = {
 export const GitHubProgressBar = (
   props: gitHubProgressBar
 ): ReactJSXElement => {
-  const { gitLanguage, gitHubLanguageTotal, gitLanguageCount, key } = {
+  const { gitHubLanguageTotal, gitLanguage, gitLanguageCount, key } = {
     ...props,
   };
 

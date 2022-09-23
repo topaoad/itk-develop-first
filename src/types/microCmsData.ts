@@ -1,5 +1,3 @@
-import { MicroCMSListResponse } from "microcms-js-sdk";
-
 // export type Blog = {
 //   title?: string;
 //   lead?: string;
@@ -31,45 +29,42 @@ import { MicroCMSListResponse } from "microcms-js-sdk";
 
 export type Article = {
   id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
   title: string;
-  day: string;
   body: string;
-  sub: string;
+  createdAt: string;
+  day: string;
   eye_catch: {
-    url: string;
     height: number;
+    url: string;
     width: number;
   };
+  publishedAt: string;
+  revisedAt: string;
+  sub: string;
   tag: string;
+  updatedAt: string;
 };
 export type PortfolioArticle = {
   id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
   title: string;
   contents: string;
+  createdAt: string;
   duration: string;
-  programingword: string;
   eyecatch: {
-    url: string;
     height: number;
+    url: string;
     width: number;
   };
+  programingword: string;
+  publishedAt: string;
+  revisedAt: string;
   tag: string;
-  url:string;
-  
+  updatedAt: string;
+  url: string;
 };
-
-
 
 export type BlogPortfolioProps = {
   blog: Array<Article>;
   portfolio: Array<PortfolioArticle>;
-  totalCount:number;
+  totalCount: number;
 };

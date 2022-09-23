@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { Octokit } from "@octokit/core";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const octokit = new Octokit({
@@ -12,8 +12,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const branch = "main"; // ブランチ
 
   const repository = await octokit.request("GET /users/topaoad/repos", {
-    sort: "updated",
     per_page: "5",
+    sort: "updated",
   });
   if (!repository) {
     return;

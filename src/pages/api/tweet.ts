@@ -1,12 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type {
-  TwitterResponse,
-  usersIdTweets,
-  findUserByUsername,
-} from "twitter-api-sdk/dist/types";
-
-import { Client } from "twitter-api-sdk";
 import NextCors from "nextjs-cors";
+import { Client } from "twitter-api-sdk";
 
 // export default async function getTweet(
 //   req: NextApiRequest,
@@ -39,14 +33,14 @@ import NextCors from "nextjs-cors";
 // };
 
 // こちらはNextCors対応版
-async function handler(req: NextApiRequest,res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Run the cors middleware
   // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
   await NextCors(req, res, {
     // Options
     methods: ["GET"],
-    origin: "*",
     optionSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: "*",
   });
 
   const client = new Client(process.env.BEARER_TOKEN);
@@ -58,16 +52,15 @@ async function handler(req: NextApiRequest,res: NextApiResponse) {
   }
 
   const { data: tweets } = await client.tweets.usersIdTweets(user.id, {
-    "tweet.fields": ["author_id", "created_at", "attachments","entities"],
     max_results: 30,
+    "tweet.fields": ["author_id", "created_at", "attachments", "entities"],
   });
   if (!tweets) {
     return;
   }
-  res.status(200).json({ user, tweets });
+  res.status(200).json({ tweets, user });
   console.log(user);
   console.log(tweets);
-
 }
 
 export default handler;

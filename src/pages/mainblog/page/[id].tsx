@@ -1,27 +1,17 @@
-import React, { useCallback } from "react";
-import styles from "src/styles/Home.module.css";
-import Head from "next/head";
-import dynamic from "next/dynamic";
-import { useDisclosure } from "@mantine/hooks";
-import { client } from "src/lib/miscrocms/client";
-import { Layout } from "src/components/Layout";
-import type { Article } from "src/types/article";
-import Image from "next/image";
-import { Props } from "src/pages";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import type {
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-  GetStaticPaths,
-} from "next";
+import utc from "dayjs/plugin/utc";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import React from "react";
+import { Layout } from "src/components/Layout";
+import { client } from "src/lib/miscrocms/client";
+import styles from "src/styles/Home.module.css";
+import type { Article } from "src/types/article";
 dayjs.extend(utc);
 dayjs.extend(timezone);
-import { Pagination } from "src/components/Pagenation";
-import Link from "next/link";
 import { BlogArchive } from "src/components/PageContainer/BlogArchive";
+import { Pagination } from "src/components/Pagenation";
 
 // 単数のブログデータを引っ張ってくる
 type PropsDetail = {
@@ -31,9 +21,8 @@ type PropsDetail = {
 
 export type BlogPaginationProps = {
   blog: Array<Article>;
-  totalCount:number;
+  totalCount: number;
 };
-
 
 const PER_PAGE = 5;
 
@@ -60,8 +49,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     queries: { limit: 20, offset: 0 },
   });
 
-  
-
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const range = (start: number, end: number) =>
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -71,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     (repo) => `/mainblog/page/${repo}`
   );
 
-  return { paths, fallback: false };
+  return { fallback: false, paths };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します

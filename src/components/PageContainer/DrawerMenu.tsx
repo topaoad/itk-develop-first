@@ -1,7 +1,8 @@
+import { Burger, Drawer } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
-import { Drawer, Burger } from "@mantine/core";
 import { useState } from "react";
+
 import { NAV_LINKS } from "../Header/headerLinks";
 
 export const DrawerMenu = () => {
@@ -22,18 +23,19 @@ export const DrawerMenu = () => {
         <div className="flex flex-col font-avenirtitle">
           {/* navigationをmapで表示 */}
           {NAV_LINKS.map((link) => (
-          <Link key={link.label} href={`${link.href}`}>
-            <a onClick={(() => setOpened(false))} className="leading-10 text-3xl mt-4 font-bold">{link.label}</a>
-          </Link>
+            <Link key={link.label} href={`${link.href}`}>
+              <a
+                onClick={() => setOpened(false)}
+                className="leading-10 text-3xl mt-4 font-bold"
+              >
+                {link.label}
+              </a>
+            </Link>
           ))}
         </div>
       </Drawer>
       {/* スマホ用ドロワー */}
-      <Burger
-        opened={opened}
-        onClick={() => setOpened(true)}
-        title={title}
-      />
+      <Burger opened={opened} onClick={() => setOpened(true)} title={title} />
       {/* <Group position="center">
         <Button onClick={() => setOpened(true)}>Open Drawer</Button>
       </Group> */}

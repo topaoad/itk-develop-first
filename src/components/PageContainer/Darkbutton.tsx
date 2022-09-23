@@ -1,5 +1,5 @@
 import { ActionIcon, useMantineColorScheme } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons";
+import { IconMoonStars, IconSun } from "@tabler/icons";
 
 export function DarkButton() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();

@@ -1,20 +1,20 @@
 export type twitterUser = {
-  profile_image_url: string;
   name: string;
+  profile_image_url: string;
   username: string;
 };
 
 export type twitterTweets = {
-  created_at: string;
-  author_id: string;
-  text: string;
   id: string;
+  author_id: string;
+  created_at: string;
   entities: any;
+  text: string;
 };
 
 // エンティティプロパティは非対応
 type twitterURL = {
-  urls:twitterEntities[];
+  urls: twitterEntities[];
 };
 
 type twitterEntities = {

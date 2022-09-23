@@ -1,9 +1,10 @@
-import React from "react";
-import { Button, Avatar, Loader, Center } from "@mantine/core";
-import { useTwitterData } from "src/hooks/useTwitterUser";
-import { twitterUser, twitterTweets } from "src/types/twitter";
-import { formatPublishedAt } from "./PortFolio";
+import { Avatar, Button, Loader } from "@mantine/core";
 import Link from "next/link";
+import React from "react";
+import { useTwitterData } from "src/hooks/useTwitterUser";
+import { twitterTweets, twitterUser } from "src/types/twitter";
+
+import { formatPublishedAt } from "./PortFolio";
 
 export function Twitter() {
   const { data, error, isLoading } = useTwitterData();

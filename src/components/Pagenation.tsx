@@ -1,6 +1,5 @@
-import Router from "next/router";
-import Link from "next/link";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import Link from "next/link";
 
 export type Numbers = {
   totalCount: number;

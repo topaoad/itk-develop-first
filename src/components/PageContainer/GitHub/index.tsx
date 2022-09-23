@@ -1,23 +1,23 @@
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { Button, Image } from "@mantine/core";
+import Link from "next/link";
 import React from "react";
-import { Button, Image, Progress } from "@mantine/core";
 import {
   useGitHub,
-  useGitLanguage,
   useGitHubLanguageTotal,
+  useGitLanguage,
 } from "src/hooks/useGitHub";
 import { GitHubRepository } from "src/types/github";
+
 import { GitColor } from "./GitColor";
 import { GitHubLanguagePercentage } from "./GitHubLanguagePercentage";
 import { GitHubProgress } from "./GitHubProgress";
-import Link from "next/link";
-import useSWR from "swr";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 type GitHubLanguageProps = {
   gitHubLanguagesUrl: string;
 };
 
-export type GitLanguageArray =[string,number]
+export type GitLanguageArray = [string, number];
 
 // GitHub関数内のmap関数から一つずつリポジトリのgitHubLanguagesUrlをもらって実装を行う関数
 // プログレスバー、色、パーセンテージ表示は更にそれぞれの関数に外注
@@ -77,7 +77,7 @@ export function GitHub() {
               <Link key={index} href={gitHubRepository.html_url} passHref>
                 <li key={index} className="mt-6 ">
                   <p className="text-2xl font-bold">
-                    {gitHubRepository.description}              
+                    {gitHubRepository.description}
                   </p>
                   <p className="text-base mt-2">Next.js starter template.</p>
                   <div className="flex mt-2 items-center">
@@ -115,8 +115,10 @@ export function GitHub() {
         </ul>
 
         <div className="mt-6 ">
-        <Link href="https://github.com/topaoad/" passHref>
-          <Button className="font-semibold button-style">View on GitHub</Button>
+          <Link href="https://github.com/topaoad/" passHref>
+            <Button className="font-semibold button-style">
+              View on GitHub
+            </Button>
           </Link>
         </div>
       </div>

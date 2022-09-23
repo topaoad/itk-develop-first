@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { Octokit } from "@octokit/core";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const octokit = new Octokit({
@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const repo = "itk-develop-first"; // リポジトリ
   const branch = "main"; // ブランチ
 
-  const QUERY = `query{
+  const QUERY = `{
     user(login: "topaoad") {
       name
       url
@@ -23,6 +23,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           createdAt
           updatedAt
           url
+          forkCount
+          stargazerCount
+          languages(orderBy: {field: SIZE, direction: DESC}, last: 10) {
+            totalCount
+            totalSize
+            edges {
+              node {
+                id
+                name
+                color
+              }
+              size
+            }
+          }
         }
       }
     }

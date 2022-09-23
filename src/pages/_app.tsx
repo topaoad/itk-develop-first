@@ -4,15 +4,16 @@ import "../styles/header.scss";
 import "../styles/mainview.scss";
 import "../styles/github.scss";
 import "../styles/pagination.scss";
+
+import {
+  ColorScheme,
+  ColorSchemeProvider,
+  MantineProvider,
+} from "@mantine/core";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import {
-  MantineProvider,
-  ColorSchemeProvider,
-  ColorScheme,
-} from "@mantine/core";
-import { useState, useEffect } from "react";
-import useSWR, { SWRConfig } from "swr";
+import { useState } from "react";
+import { SWRConfig } from "swr";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -30,7 +31,7 @@ export default function App(props: AppProps) {
       <SWRConfig
         value={{
           // refreshInterval: 100000,
-          fetcher:fetcher
+          fetcher: fetcher,
         }}
       >
         <Head>

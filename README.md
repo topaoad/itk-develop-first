@@ -31,10 +31,20 @@ TypeScriptの型定義を格納します。
 @typescript-eslint/naming-conventionで管理。
 ルールについては.eslintrc.json参照
 
+### コードのチェック及び整形、ソートについて
+- ESLintとprettierを使用（パッケージとプラグイン）
+- プラグイン「eslint-plugin-sort-keys-custom-order」によって、オブジェクトの順序を設定しています。
+※自動順序整形はsetting.json内の "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }により実施しています。
+
+### import・exportの管理について
+- import・exportのソートはプラグイン
+「eslint-plugin-simple-import-sort」で実施しています。
+- 不要なimportはプラグイン「eslint-plugin-unused-imports」で削除しています。（setting.jsonの設定不要）
+- importしていないコンポーネントはsetting.json内の "editor.codeActionsOnSave": {
+    "source.addMissingImports": true,
+  }により実施しています。
+
 
 ### その他
-ESLint　
-prettier　
-それぞれいれてはいるものの、デフォルトで使っているだけです。
-
-
