@@ -28,7 +28,7 @@
           "regex": "send|start|find",
           "match": false
         }
-      },
+      }
       // これはルール化した方がよいか検討中
       // {
       //   "selector": "typeAlias",
