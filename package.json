@@ -6,14 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@graphql-codegen/cli": "^2.12.1",
     "@mantine/core": "^5.1.1",
     "@mantine/form": "^5.1.4",
     "@mantine/hooks": "^5.1.4",
@@ -29,6 +32,7 @@
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-sort-keys-custom-order": "^1.0.3",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "graphql": "^16.6.0",
     "microcms-js-sdk": "^2.2.1",
     "next": "12.2.4",
     "nextjs-cors": "^2.1.1",
@@ -44,6 +48,12 @@
     "twitter-api-v2": "^1.12.5"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.12.1",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
+    "@graphql-codegen/typescript-react-apollo": "3.3.3",
+    "@graphql-codegen/typescript-resolvers": "^2.7.3",
     "@types/node": "18.7.1",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",

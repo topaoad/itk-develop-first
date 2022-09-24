@@ -43,7 +43,7 @@
     ],
     // タイプのキーによる順序調整。自動設定はsetting.jsonで行う。
     "sort-keys-custom-order/type-keys": [
-      "error",
+      "warn",
       { "orderedKeys": ["id", "name", "title"] }
     ],
     // importとexportの序列を自動整形してくれます。
