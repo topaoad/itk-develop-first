@@ -16,7 +16,6 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@gra/phql-codegencli": "^2.12.1",
     "@graphql-yoga/node": "^2.13.13",
     "@mantine/core": "^5.1.1",
     "@mantine/form": "^5.1.4",
@@ -55,7 +54,9 @@
   "devDependencies": {
     "@graphql-codegen/cli": "2.12.1",
     "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typed-document-node": "^2.3.3",
     "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
     "@graphql-codegen/typescript-react-apollo": "3.3.3",
     "@graphql-codegen/typescript-resolvers": "^2.7.3",
     "@types/node": "18.7.1",

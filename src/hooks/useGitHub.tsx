@@ -9,8 +9,10 @@ export const useGitHub = () => {
   };
 
   const { data, error } = useSWR("/api/github", fetcher);
-
   console.log(data);
+  const { data:datasv, error:errprsv } = useSWR("/api/github", fetcher);
+  console.log(datasv);
+
   return {
     data,
     error,

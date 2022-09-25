@@ -10,11 +10,8 @@ yarn(うっかりnpmをつかったら、lockファイルを都度消してま�
 
 # フロントエンド
 /itk-teamfirst直下になります。
-
 ## コマンド
 yarnを使っています
-### yarn dev
-
 ### srcフォルダ内の各フォルダの役割について
 - components
 ヘッダーやフッダーなど、各ファイル内に使用されるパーツを格納します。
@@ -45,6 +42,14 @@ TypeScriptの型定義を格納します。
 - importしていないコンポーネントはsetting.json内の "editor.codeActionsOnSave": {
     "source.addMissingImports": true,
   }により実施しています。
+
+### GraphQL対応について
+- src/api/githubgraphqlにてデータの取得はできていますが、　
+当該ルートのGraphQLサーバー化はできていません。
+
+### 型の自動生成について
+codegenによって型を自動生成することが出来るらしいが
+このあたりのお作法の理解が不十分です。
 
 
 ### その他
