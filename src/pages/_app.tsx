@@ -5,6 +5,7 @@ import "../styles/mainview.scss";
 import "../styles/github.scss";
 import "../styles/pagination.scss";
 
+import { ApolloProvider } from "@apollo/client";
 import {
   ColorScheme,
   ColorSchemeProvider,
@@ -13,6 +14,7 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useState } from "react";
+import { client } from "src/lib/apollo/apolloClient";
 import { SWRConfig } from "swr";
 
 export default function App(props: AppProps) {
@@ -34,27 +36,30 @@ export default function App(props: AppProps) {
           fetcher: fetcher,
         }}
       >
-        <Head>
-          <title>しまぶーポートフォリオサイト</title>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+        {" "}
+        <ApolloProvider client={client}>
+          <Head>
+            <title>しまぶーポートフォリオサイト</title>
+            <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width"
+            />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
 
-        <ColorSchemeProvider
-          colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
-        >
-          <MantineProvider
-            theme={{ colorScheme, components: {}, fontFamily: "Avenir Next" }}
-            withGlobalStyles
-            withNormalizeCSS
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
           >
-            <Component {...pageProps} />
-          </MantineProvider>
-        </ColorSchemeProvider>
+            <MantineProvider
+              theme={{ colorScheme, components: {}, fontFamily: "Avenir Next" }}
+              withGlobalStyles
+              withNormalizeCSS
+            >
+              <Component {...pageProps} />
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </ApolloProvider>
       </SWRConfig>
     </>
   );
