@@ -1,4 +1,4 @@
-{
+query UseGitHubInfo {
     user(login: "topaoad") {
       name
       url

@@ -10,8 +10,10 @@ export const useGitHub = () => {
 
   const { data, error } = useSWR("/api/github", fetcher);
   console.log(data);
-  const { data:datasv, error:errprsv } = useSWR("/api/github", fetcher);
-  console.log(datasv);
+
+// こちらはGraphQLで取得したデータ
+  const { data:dataql, error:errprql } = useSWR("/api/githubgraphql", fetcher);
+  console.log(dataql);
 
   return {
     data,

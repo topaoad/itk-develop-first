@@ -10,17 +10,20 @@
 #       - "typescript-react-apollo"
 
 
-# パターン2 エンドポイントを使用(認証必須）
+# # パターン2 エンドポイントを使用(認証必須）
 overwrite: true
 schema:
   "https://api.github.com/graphql":
     headers:
       # GitHubの個人アクセストークンを入れる 環境変数を読まないので、作業してその後設定を隠す
-      Authorization: "bearer XXXXXXXXXXXXXXXXXXXXXXX"
+      Authorization: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
       documents: "./query.graphql"
 generates:
   src/types/githubsample.ts:
     plugins:
       - typescript
-      - "typescript-operations"
-      - "typescript-react-apollo"
+      # - "typescript-operations"  
+      - typescript-graphql-request
+#       - "typescript-react-apollo"
+
+
