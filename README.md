@@ -47,7 +47,7 @@ TypeScriptの型定義を格納します。
 - src/api/githubgraphqlにてデータの取得はできていますが、当該ルートのGraphQLサーバー化はできていません。
 
 ### 型の自動生成について
-codegenによってgithubsample.tsという型を自動生成しましたが、
-これをどう生かすかよくわかりません。
+GitHubのパブリックスキーマから取得したデータを元に、
+codegenで型を自動生成しています。
 
 ### その他

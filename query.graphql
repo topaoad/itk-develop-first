@@ -1,3 +1,4 @@
+# apiルートで使用するクエリーをcodegen用に抜き出しています。
 query UseGitHubInfo {
     user(login: "topaoad") {
       name

@@ -1,3 +1,4 @@
+import { UseGitHubInfoQuery } from "src/types/githubGraphQL";
 import useSWR from "swr";
 
 // api/githubからリポジトリを取得するhook
@@ -11,9 +12,15 @@ export const useGitHub = () => {
   const { data, error } = useSWR("/api/github", fetcher);
   console.log(data);
 
-// こちらはGraphQLで取得したデータ
-  const { data:dataql, error:errprql } = useSWR("/api/githubgraphql", fetcher);
-  console.log(dataql);
+  // こちらはGraphQLで取得したデータ。こちらのdataは現時点でany
+  const { data: dataql, error: errprql } = useSWR(
+    "/api/githubgraphql",
+    fetcher
+  );
+
+  // codegenで生成した型で定義
+  const dataQL: UseGitHubInfoQuery = dataql;
+  console.log(dataQL);
 
   return {
     data,
@@ -55,4 +62,3 @@ export const useGitHubLanguageTotal = (gitLanguageObjectsData: object) => {
 
   return gitLanguageTotal;
 };
-
