@@ -44,7 +44,17 @@ TypeScriptの型定義を格納します。
   }により実施しています。
 
 ### GraphQL対応について
-- src/api/githubgraphqlにてデータの取得はできていますが、当該ルートのGraphQLサーバー化はできていません。
+- src/api/githubgraphqlにてデータの取得は完了
+- Apollo Clientを使ったデータ取得も完了
+　・必要なパッケージのインストール
+　・client情報を作成し、_appにApolloProviderの引数として渡す
+　・クエリー作成
+　・取得 
+　参考サイト：
+ https://maku.blog/p/qcp2cnx/#node-%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+- APIルートを使ったGraphQLサーバー化はできていません。
+〇 実装手順
+
 
 ### 型の自動生成について
 GitHubのパブリックスキーマから取得したデータを元に、

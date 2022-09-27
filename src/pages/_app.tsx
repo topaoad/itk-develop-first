@@ -14,7 +14,7 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useState } from "react";
-import { client } from "src/lib/apollo/apolloClient";
+import { apolloClient } from "src/lib/apollo/apolloClient";
 import { SWRConfig } from "swr";
 
 export default function App(props: AppProps) {
@@ -37,7 +37,7 @@ export default function App(props: AppProps) {
         }}
       >
         {" "}
-        <ApolloProvider client={client}>
+        <ApolloProvider client={apolloClient}>
           <Head>
             <title>しまぶーポートフォリオサイト</title>
             <meta
