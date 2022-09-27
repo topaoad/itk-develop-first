@@ -11,6 +11,18 @@ generates:
       # - "typescript-react-apollo"
 
 
+# パターン1.5 resolver作成用
+# overwrite: true
+# schema: "./schema.docs.graphql"
+# documents: "./query.graphql"
+# generates:
+#   src/types/githubGraphQL.ts:
+#     plugins:
+#       - "typescript"
+#       - "typescript-operations"
+#       - typescript-resolvers
+
+
 # # パターン2 エンドポイントを使用(認証必須）。こちらだとどうしてもQueryができないので断念。
 # overwrite: true
 # schema:

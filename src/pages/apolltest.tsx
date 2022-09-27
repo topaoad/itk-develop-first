@@ -1,3 +1,5 @@
+// このページはＧraphＱL検証用です
+
 import { gql, useQuery } from "@apollo/client";
 import type { NextPage } from "next";
 import Head from "next/head";

@@ -7,11 +7,12 @@ export const client = new ApolloClient({
   // uri: "http://localhost:3000/api/githubgraphql",
 });
 
+
+
 // apollpclientのインスタンス化gtihubgrapqlのエンドポイントバージョン
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   headers: { authorization: `Bearer ${process.env.GH_TOKEN}` },
-  // headers: { authorization: "Bearer XXXXXXXXXXXXXXXXXXXXXX" },
   uri: "https://api.github.com/graphql",
 });
 
