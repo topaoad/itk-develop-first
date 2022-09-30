@@ -4,11 +4,11 @@ overwrite: true
 schema: "./schema.docs.graphql"
 documents: "./query.graphql"
 generates:
-  src/types/githubGraphQL.ts:
+  src/types/githubGraphQLsemi.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
-      # - "typescript-react-apollo"
+      - "typescript-react-apollo"
 
 
 # パターン1.5 resolver作成用
@@ -21,22 +21,22 @@ generates:
 #       - "typescript"
 #       - "typescript-operations"
 #       - typescript-resolvers
+#       - "typescript-react-apollo"
 
 
-# # パターン2 エンドポイントを使用(認証必須）。こちらだとどうしてもQueryができないので断念。
+# パターン2 エンドポイントを使用(認証必須）。こちらだとどうしてもQueryができないので断念。
 # overwrite: true
 # schema:
 #   "https://api.github.com/graphql":
-#     headers:
-#       # GitHubの個人アクセストークンを入れる 環境変数を読まないので、作業してその後設定を隠す
-#       Authorization: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#     headers: 
+#       Authorization:headers: `Bearer ${process.env.GH_TOKEN}` 
 #       documents: "./query.graphql"
 # generates:
 #   src/types/githubsample.ts:
 #     plugins:
 #       - typescript
-#       # - "typescript-operations"  
+#       - "typescript-operations"  
 #       - typescript-graphql-request
-# #       - "typescript-react-apollo"
+#       - "typescript-react-apollo"
 
 

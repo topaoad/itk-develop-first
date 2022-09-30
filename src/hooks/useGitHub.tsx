@@ -13,14 +13,14 @@ export const useGitHub = () => {
   console.log(data);
 
   // こちらはGraphQLで取得したデータ。こちらのdataは現時点でany
-  const { data: dataql, error: errprql } = useSWR(
+  const { data: dataql, error: errprql } = useSWR<UseGitHubInfoQuery, boolean>(
     "/api/githubgraphql",
     fetcher
   );
 
   // codegenで生成した型で定義
-  const dataQL: UseGitHubInfoQuery = dataql;
-  console.log(dataQL);
+  // console.log(dataql?.user?.repositories);
+  console.log(dataql);
 
   return {
     data,

@@ -9,25 +9,9 @@ export const client = new ApolloClient({
 
 
 
-// apollpclientのインスタンス化gtihubgrapqlのエンドポイントバージョン
+// gtihubgrapqlのエンドポイントに対してApolloClientのインスタンスを作成する
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   headers: { authorization: `Bearer ${process.env.GH_TOKEN}` },
   uri: "https://api.github.com/graphql",
 });
-
-// たぶんここで書く必要はない
-// client
-//   .query({
-//     query: gql`
-//       query GetLocations {
-//         locations {
-//           id
-//           name
-//           description
-//           photo
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
