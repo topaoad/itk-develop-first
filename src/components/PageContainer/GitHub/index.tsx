@@ -1,3 +1,4 @@
+import { gql, useQuery } from "@apollo/client";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { Button, Image } from "@mantine/core";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import {
   useGitLanguage,
 } from "src/hooks/useGitHub";
 import { GitHubRepository } from "src/types/github";
+import { UseGitHubInfoQuery } from "src/types/githubGraphQL";
 
 import { GitColor } from "./GitColor";
 import { GitHubLanguagePercentage } from "./GitHubLanguagePercentage";
@@ -16,6 +18,39 @@ import { GitHubProgress } from "./GitHubProgress";
 type GitHubLanguageProps = {
   gitHubLanguagesUrl: string;
 };
+
+const GET_LOCATIONS = gql`
+  query UseGitHubInfo {
+    user(login: "topaoad") {
+      name
+      url
+      repositories(last: 5, orderBy: { field: UPDATED_AT, direction: ASC }) {
+        totalCount
+        nodes {
+          name
+          description
+          createdAt
+          updatedAt
+          url
+          forkCount
+          stargazerCount
+          languages(orderBy: { field: SIZE, direction: DESC }, last: 10) {
+            totalCount
+            totalSize
+            edges {
+              node {
+                id
+                name
+                color
+              }
+              size
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export type GitLanguageArray = [string, number];
 
@@ -62,10 +97,21 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
 
 // 以下デフォルトの関数領域
 export function GitHub() {
+// Rest APIで取得したVer
   const { data, error, isLoading } = useGitHub();
   const gitHubRepositories: Array<GitHubRepository> = data?.repository.data;
   console.log(gitHubRepositories);
 
+  // GraphQL APIで取得したVer
+  const {
+    data: dataApollo,
+    error: errorApollo,
+    loading: loadingApollo,
+  } = useQuery<UseGitHubInfoQuery>(GET_LOCATIONS);
+  console.log(dataApollo?.user?.repositories.nodes);
+
+  // 実装はRest APIの取得データで行っています。
+  // Language情報が沢山取れる分、GraphQLで取得したデータの方が汎用性が高いです。  
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">GitHub</h2>

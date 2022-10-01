@@ -1,4 +1,5 @@
 // このページはＧraphＱL検証用です
+// 完全に移行が終わったら削除します。
 
 import { gql, useQuery } from "@apollo/client";
 import type { NextPage } from "next";
