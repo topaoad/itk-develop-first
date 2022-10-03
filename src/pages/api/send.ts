@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import sgMail from "@sendgrid/mail";
 import { EmailData } from "@sendgrid/helpers/classes/email-address";
 import type { NextApiRequest, NextApiResponse } from "next";
