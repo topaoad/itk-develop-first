@@ -2,7 +2,6 @@ import { gql, useQuery } from "@apollo/client";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { Button, Image } from "@mantine/core";
 import Link from "next/link";
-import React from "react";
 import {
   useGitHub,
   useGitHubLanguageTotal,
@@ -60,10 +59,10 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
   const gitHubLanguagesUrl: string = props.gitHubLanguagesUrl;
   // 引き継いだgitHubLanguagesUrlでフェッチして、言語オブジェクトを取得
   const gitLanguageObjects = useGitLanguage(gitHubLanguagesUrl);
-  console.log(gitLanguageObjects.data);
+
 
   const gitHubLanguageTotal = useGitHubLanguageTotal(gitLanguageObjects.data);
-  console.log(gitHubLanguageTotal);
+
 
   // URLから取得した言語オブジェクトを配列化する
   let gitLanguageArray: Array<GitLanguageArray> = [];
@@ -71,7 +70,7 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
     // オブジェクトを配列に格納
     gitLanguageArray = Object.entries(gitLanguageObjects.data);
   }
-  console.log(gitLanguageArray);
+
 
   return (
     <>
@@ -100,7 +99,7 @@ export function GitHub() {
 // Rest APIで取得したVer
   const { data, error, isLoading } = useGitHub();
   const gitHubRepositories: Array<GitHubRepository> = data?.repository.data;
-  console.log(gitHubRepositories);
+ 
 
   // GraphQL APIで取得したVer
   const {
@@ -108,7 +107,7 @@ export function GitHub() {
     error: errorApollo,
     loading: loadingApollo,
   } = useQuery<UseGitHubInfoQuery>(GET_LOCATIONS);
-  console.log(dataApollo?.user?.repositories.nodes);
+
 
   // 実装はRest APIの取得データで行っています。
   // Language情報が沢山取れる分、GraphQLで取得したデータの方が汎用性が高いです。  

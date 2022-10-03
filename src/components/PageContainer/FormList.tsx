@@ -1,6 +1,5 @@
 import { Button, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import React from "react";
 
 interface FormValues {
   name: string;
@@ -56,7 +55,6 @@ export const FormList = () => {
       });
       form.reset();
     } catch (error) {
-      console.error("Fetch error: ", error);
       alert(JSON.stringify(error));
     }
 

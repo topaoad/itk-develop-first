@@ -1,4 +1,3 @@
-import React from "react";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { IoLogoRss } from "react-icons/io5";
 import { MdOutlineFacebook } from "react-icons/md";

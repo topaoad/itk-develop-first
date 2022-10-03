@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import Link from "next/link";
-import React from "react";
 // import { portfolioPortfolioProps,PortfolioArticle } from "src/types/microCmsData";
 import { SubProps } from "src/pages";
 
@@ -11,7 +10,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export const formatPublishedAt = (pa: string) => {
-  console.log(pa);
   return dayjs.utc(pa).tz("Asia/Tokyo").format("YYYY.MM.DD");
 };
 export function PortFolio({ portfolio }: SubProps) {

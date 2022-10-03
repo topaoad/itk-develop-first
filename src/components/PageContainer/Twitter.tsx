@@ -1,6 +1,5 @@
 import { Avatar, Button, Loader } from "@mantine/core";
 import Link from "next/link";
-import React from "react";
 import { useTwitterData } from "src/hooks/useTwitterUser";
 import { twitterTweets, twitterUser } from "src/types/twitter";
 
@@ -10,8 +9,7 @@ export function Twitter() {
   const { data, error, isLoading } = useTwitterData();
   const usersObject: twitterUser = data?.user;
   const tweetsArray: Array<twitterTweets> = data?.tweets;
-  console.log(usersObject);
-  console.log(tweetsArray);
+
 
   if (isLoading) {
     return (

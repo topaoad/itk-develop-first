@@ -1,6 +1,5 @@
 import { Burger, Drawer } from "@mantine/core";
 import Link from "next/link";
-import React from "react";
 import { useState } from "react";
 
 import { NAV_LINKS } from "../Header/headerLinks";

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { DarkButton } from "src/components/PageContainer/Darkbutton";
 
 import { DrawerMenu } from "../PageContainer/DrawerMenu";

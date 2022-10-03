@@ -3,7 +3,6 @@ import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import React from "react";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import styles from "src/styles/Home.module.css";

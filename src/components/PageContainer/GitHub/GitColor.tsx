@@ -1,5 +1,4 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import React from "react";
 
 type gitLanguageProps = {
   gitLanguage: string;

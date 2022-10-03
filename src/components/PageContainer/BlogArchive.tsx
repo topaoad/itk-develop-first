@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
 import Link from "next/link";
-import React from "react";
 import { Props } from "src/pages";
 
 dayjs.extend(utc);
@@ -10,7 +9,6 @@ dayjs.extend(timezone);
 
 export const BlogArchive = ({ blog }: Props) => {
   const formatPublishedAt = (pa: string) => {
-    console.log(pa);
     return dayjs.utc(pa).tz("Asia/Tokyo").format("YYYY.MM.DD");
   };
 
