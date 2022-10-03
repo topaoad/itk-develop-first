@@ -13,7 +13,7 @@ export const Pagination = ({ totalCount }: Numbers): ReactJSXElement => {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     return [...Array(end - start + 1)].map((_, i) => start + i);
   };
-  console.log(Math.ceil(totalCount / PER_PAGE));
+
 
   return (
     <ul className="flex items-center justify-center -space-x-px my-5 mx-auto pagination-list">

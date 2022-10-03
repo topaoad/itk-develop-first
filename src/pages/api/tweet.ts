@@ -28,8 +28,7 @@ import { Client } from "twitter-api-sdk";
 //     return;
 //   }
 //   res.status(200).json({ user, tweets });
-//   console.log(user);
-//   console.log(tweets);
+
 // };
 
 // こちらはNextCors対応版
@@ -59,8 +58,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
   res.status(200).json({ tweets, user });
-  console.log(user);
-  console.log(tweets);
+
 }
 
 export default handler;

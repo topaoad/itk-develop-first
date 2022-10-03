@@ -16,8 +16,6 @@ export const useTwitterUser = () => {
     fetchUsers();
   }, []);
 
-  console.log(`${users}`);
-  console.log({ tweets });
   return { tweets, users };
 };
 
@@ -31,7 +29,6 @@ export const useTwitterData = () => {
 
   const { data, error } = useSWR("/api/tweet");
 
-  console.log(data);
   return {
     data,
     error,

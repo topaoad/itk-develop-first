@@ -19,7 +19,7 @@ export type PropsDetail = {
 
 // export default function BlogId({ blog }: PropsDetail) {
 const BlogId: NextPage<PropsDetail> = ({ blog }: PropsDetail) => {
-  console.log(blog);
+
   const EyeCatch = useCallback((): JSX.Element | null => {
     if (blog.eye_catch) {
       return (
@@ -36,7 +36,7 @@ const BlogId: NextPage<PropsDetail> = ({ blog }: PropsDetail) => {
     }
     return null;
   }, []);
-  console.log(blog.publishedAt);
+
   const [opened, handlers] = useDisclosure(false);
   const formatPublishedAt = dayjs
     .utc(blog.publishedAt)
