@@ -4,12 +4,18 @@ overwrite: true
 schema: "./schema.docs.graphql"
 documents: "./query.graphql"
 generates:
-  src/types/githubGraphQLsemi.ts:
+  src/types/githubGraphQLTest.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
-
+    config:
+      # 型の個別定義...
+      scalars:
+        createdAt: DateTime
+        updatedAt: DateTime
+        url: URI
+        
 
 # パターン1.5 resolver作成用
 # overwrite: true

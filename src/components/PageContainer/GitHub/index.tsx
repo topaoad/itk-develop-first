@@ -60,9 +60,7 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
   // 引き継いだgitHubLanguagesUrlでフェッチして、言語オブジェクトを取得
   const gitLanguageObjects = useGitLanguage(gitHubLanguagesUrl);
 
-
   const gitHubLanguageTotal = useGitHubLanguageTotal(gitLanguageObjects.data);
-
 
   // URLから取得した言語オブジェクトを配列化する
   let gitLanguageArray: Array<GitLanguageArray> = [];
@@ -70,7 +68,6 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
     // オブジェクトを配列に格納
     gitLanguageArray = Object.entries(gitLanguageObjects.data);
   }
-
 
   return (
     <>
@@ -96,10 +93,9 @@ const GitHubLanguage = (props: GitHubLanguageProps): ReactJSXElement => {
 
 // 以下デフォルトの関数領域
 export function GitHub() {
-// Rest APIで取得したVer
+  // Rest APIで取得したVer
   const { data, error, isLoading } = useGitHub();
   const gitHubRepositories: Array<GitHubRepository> = data?.repository.data;
- 
 
   // GraphQL APIで取得したVer
   const {
@@ -108,9 +104,11 @@ export function GitHub() {
     loading: loadingApollo,
   } = useQuery<UseGitHubInfoQuery>(GET_LOCATIONS);
 
+  // eslint-disable-next-line no-console
+  console.log(dataApollo?.user?.repositories.nodes);
 
   // 実装はRest APIの取得データで行っています。
-  // Language情報が沢山取れる分、GraphQLで取得したデータの方が汎用性が高いです。  
+  // Language情報が沢山取れる分、GraphQLで取得したデータの方が汎用性が高いです。
   return (
     <div className="mmd:mt-10 mt-20">
       <h2 className="sub-title">GitHub</h2>
