@@ -1,7 +1,7 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
-import { GitLanguageArray } from "./index.hsx";
 import { GitHubProgressBar } from "./GitHubProgressBar";
+import { GitLanguageArray } from "./index";
 
 // 各言語の割合を表示する
 type GitHubLanguageProgressProps = {
