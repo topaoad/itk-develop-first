@@ -10,11 +10,15 @@ generates:
       - "typescript-operations"
       - "typescript-react-apollo"
     config:
+      skipTypename: true,
+      avoidOptionals: true,
       # 型の個別定義...
       scalars:
         createdAt: DateTime
         updatedAt: DateTime
+        DateTime: "string"
         url: URI
+        URI: "string"
         
 
 # パターン1.5 resolver作成用
