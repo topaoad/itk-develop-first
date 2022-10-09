@@ -1,0 +1,2 @@
+# eslintから除外したいファイルを列挙します
+githubGraphQLTest.ts

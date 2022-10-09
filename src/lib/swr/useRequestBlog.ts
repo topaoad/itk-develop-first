@@ -1,7 +1,6 @@
 import { client } from "src/lib/miscrocms/client";
-import useSWRInfinite from "swr/infinite";
-import { BlogArchive } from "src/components/PageContainer/BlogArchive";
 import type { Article } from "src/types/article";
+import useSWRInfinite from "swr/infinite";
 import { SWRInfiniteKeyLoader } from "swr/infinite";
 
 const fetcher = async (key: string) => {
@@ -11,9 +10,9 @@ const fetcher = async (key: string) => {
   const data = await client.get({
     endpoint,
     queries: {
-      orders: "-publishedAt",
       limit: countPage,
       offset: countPage * (page - 1),
+      orders: "-publishedAt",
     },
   });
   return data.contents;
@@ -24,7 +23,7 @@ const getKey: SWRInfiniteKeyLoader = (index, previousPageData) => {
 };
 
 export const useRequestBlog = (initialData: Article[]) => {
-  const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
+  const { data, error, isValidating, mutate, setSize, size } = useSWRInfinite(
     getKey,
     fetcher,
     { fallbackData: initialData }
@@ -38,13 +37,13 @@ export const useRequestBlog = (initialData: Article[]) => {
   const isReachingEnd = data?.slice(-1)[0]?.length === 0;
 
   return {
-    items,
     error,
-    mutate,
-    size,
-    setSize,
-    isValidating,
     isLoadingMore,
     isReachingEnd,
+    isValidating,
+    items,
+    mutate,
+    setSize,
+    size,
   };
 };

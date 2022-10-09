@@ -1,13 +1,11 @@
-import React from "react";
+import { Button, Textarea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Textarea } from "@mantine/core";
 
 interface FormValues {
-  email: string;
   name: string;
+  email: string;
   message: string;
 }
-
 
 export const FormList = () => {
   //mantineバージョン
@@ -24,7 +22,6 @@ export const FormList = () => {
     },
   });
 
- 
   const registerUser = async (event: any) => {
     // event.preventDefault();これがあるとフォームのリセットがされない
 
@@ -41,28 +38,23 @@ export const FormList = () => {
       },
       method: "POST",
     });
-
-    const result = await res.json();
   };
 
-  const test = () => {};
-
-// valuesで一括取得して、form.values型をつけてある
+  // valuesで一括取得して、form.values型をつけてある
   const doubleSubmit = async (values: typeof form.values) => {
     try {
       // microCMSへのフェッチ
       await fetch("https://top-blog.microcms.io/api/v1/contact", {
-        method: "POST",
+        body: JSON.stringify(values),
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
           "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY,
         } as HeadersInit | undefined,
-        body: JSON.stringify(values),
+        method: "POST",
       });
       form.reset();
     } catch (error) {
-      console.error("Fetch error: ", error);
       alert(JSON.stringify(error));
     }
 
@@ -76,7 +68,6 @@ export const FormList = () => {
       },
       method: "POST",
     });
-
   };
 
   return (

@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+module.exports = nextConfig = {
+  env: {
+    GH_TOKEN: process.env.GH_TOKEN,
+  },
   images: {
     domains: ["images.microcms-assets.io"],
   },
-}
-
-module.exports = nextConfig
+  reactStrictMode: true,
+  swcMinify: true,
+};

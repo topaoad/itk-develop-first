@@ -1,10 +1,11 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { PortFolio } from "../components/PageContainer/PortFolio";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import { BlogPortfolioProps } from "src/types/microCmsData";
+
+import { PortFolio } from "../components/PageContainer/PortFolio";
+import styles from "../styles/Home.module.css";
 
 const Portfolio: NextPage<BlogPortfolioProps> = (props) => {
   return (

@@ -1,3 +1,56 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"],
+  "rules": {
+    "semi": ["error", "always"],
+    "react/prop-types": ["off"],
+    "no-irregular-whitespace": 0,
+    "no-undef": ["warn"],
+    "no-console": ["error"],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "parameter",
+        "format": ["camelCase"],
+        "custom": {
+          "regex": "send|start|find",
+          "match": false
+        }
+      }
+      // これはルール化した方がよいか検討中
+      // {
+      //   "selector": "typeAlias",
+      //   "format": ["PascalCase"]
+      // }
+    ],
+    // オブジェクトにのキーによる順序調整。自動設定はsetting.jsonで行う。
+    "sort-keys-custom-order/object-keys": [
+      "error",
+      { "orderedKeys": ["id", "name", "title"] }
+    ],
+    // タイプのキーによる順序調整。自動設定はsetting.jsonで行う。
+    "sort-keys-custom-order/type-keys": [
+      "warn",
+      { "orderedKeys": ["id", "name", "title"] }
+    ],
+    // importとexportの序列を自動整形してくれます。
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    // 使用していないimportを削除します。
+    "unused-imports/no-unused-imports": "error"
+  }
 }

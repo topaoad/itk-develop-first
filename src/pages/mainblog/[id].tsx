@@ -1,16 +1,14 @@
-import React, { useCallback } from "react";
-import styles from "src/styles/Home.module.css";
-import dynamic from "next/dynamic";
 import { useDisclosure } from "@mantine/hooks";
-import { client } from "src/lib/miscrocms/client";
-import { Layout } from "src/components/Layout";
-import type { Article } from "src/types/article";
-import Image from "next/image";
-import { Props } from "src/pages";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage,GetStaticPaths  } from "next";
+import utc from "dayjs/plugin/utc";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Image from "next/image";
+import React, { useCallback } from "react";
+import { Layout } from "src/components/Layout";
+import { client } from "src/lib/miscrocms/client";
+import styles from "src/styles/Home.module.css";
+import type { Article } from "src/types/article";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -20,8 +18,8 @@ export type PropsDetail = {
 };
 
 // export default function BlogId({ blog }: PropsDetail) {
- const BlogId:NextPage<PropsDetail> = ( {blog}:PropsDetail) => {
-  console.log(blog);
+const BlogId: NextPage<PropsDetail> = ({ blog }: PropsDetail) => {
+
   const EyeCatch = useCallback((): JSX.Element | null => {
     if (blog.eye_catch) {
       return (
@@ -38,7 +36,7 @@ export type PropsDetail = {
     }
     return null;
   }, []);
-  console.log(blog.publishedAt);
+
   const [opened, handlers] = useDisclosure(false);
   const formatPublishedAt = dayjs
     .utc(blog.publishedAt)
@@ -81,22 +79,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.contents.map(
     (content: { id: string }) => `/mainblog/${content.id}`
   );
-  return { paths, fallback:  'blocking' };
+  return { fallback: "blocking", paths };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id;
   const data = await client.get({
-    endpoint: "mainblog",
     contentId: id as string,
+    endpoint: "mainblog",
   });
 
   return {
     props: {
       blog: data,
     },
-   
   };
 };
 

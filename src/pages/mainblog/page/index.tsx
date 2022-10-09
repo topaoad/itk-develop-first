@@ -1,16 +1,13 @@
+import { Center, Loader, Text } from "@mantine/core";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import styles from "src/styles/Home.module.css";
-import { BlogArchive } from "src/components/PageContainer/BlogArchive";
-import { Layout } from "src/components/Layout";
-import { client } from "src/lib/miscrocms/client";
-import type { Article } from "src/types/article";
-import { Loader, Center, Text } from "@mantine/core";
-import { Pagination } from "src/components/Pagenation";
-import { SWRConfiguration } from "swr";
-import useSWRInfinite from "swr/infinite";
-import { useRequestBlog } from "src/lib/swr/useRequestBlog";
 import InfiniteScroll from "react-infinite-scroller";
+import { Layout } from "src/components/Layout";
+import { BlogArchive } from "src/components/PageContainer/BlogArchive";
+import { client } from "src/lib/miscrocms/client";
+import { useRequestBlog } from "src/lib/swr/useRequestBlog";
+import styles from "src/styles/Home.module.css";
+import type { Article } from "src/types/article";
 
 export type BlogPaginationProps = {
   blog: Article[];
@@ -18,7 +15,7 @@ export type BlogPaginationProps = {
 };
 
 const Blog: NextPage<BlogPaginationProps> = ({ blog, totalCount }) => {
-  const { items, error, isLoadingMore, size, setSize, isReachingEnd } =
+  const { error, isLoadingMore, isReachingEnd, items, setSize, size } =
     useRequestBlog(blog);
   const loadMore = () => {
     if (!isLoadingMore && !isReachingEnd) {

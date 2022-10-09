@@ -1,21 +1,18 @@
-import Head from "next/head";
+import type { FC, ReactNode } from "react";
+
 import styles from "../styles/Home.module.css";
-import { Header } from "./Header";
 import { Footer } from "./Footer";
-import type { FC, ReactNode} from "react";
+import { Header } from "./Header";
 
 type Props = {
-  children: ReactNode
-}
-
+  children: ReactNode;
+};
 
 export const Layout: FC<Props> = ({ children }) => {
   return (
     <div className={styles.container}>
       <Header />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

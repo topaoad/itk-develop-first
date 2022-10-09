@@ -1,5 +1,3 @@
-import React from "react";
-
 export function About() {
   return (
     <div className="mmd:mt-10 mt-20">

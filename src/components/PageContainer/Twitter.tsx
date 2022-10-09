@@ -1,22 +1,20 @@
-import React from "react";
-import { Button, Avatar, Loader, Center } from "@mantine/core";
-import { useTwitterData } from "src/hooks/useTwitterUser";
-import { twitterUser, twitterTweets } from "src/types/twitter";
-import { formatPublishedAt } from "./PortFolio";
+import { Avatar, Button, Loader } from "@mantine/core";
 import Link from "next/link";
+import { useTwitterData } from "src/hooks/useTwitterUser";
+import { twitterTweets, twitterUser } from "src/types/twitter";
+
+import { formatPublishedAt } from "./PortFolio";
 
 export function Twitter() {
-
   const { data, error, isLoading } = useTwitterData();
   const usersObject: twitterUser = data?.user;
   const tweetsArray: Array<twitterTweets> = data?.tweets;
-  console.log(usersObject);
-  console.log(tweetsArray);
+
 
   if (isLoading) {
     return (
-      <div className="mmd:mt-20 mt-30 m-auto" >
-          <Loader />
+      <div className="mmd:mt-20 mt-30 m-auto">
+        <Loader />
       </div>
     );
   }
@@ -24,7 +22,6 @@ export function Twitter() {
   if (error) {
     return <div>データが正しく取得できていません</div>;
   }
-
 
   return (
     <div className="mmd:mt-10 mt-20">
@@ -54,7 +51,6 @@ export function Twitter() {
                           {`@${usersObject.username}　 `}
                           {formatPublishedAt(twitterData.created_at)}
                         </div>
-
                       </div>
                       <p className="">{twitterData.text}</p>
                     </div>

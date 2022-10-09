@@ -3,24 +3,64 @@
 // @media (max-width: 767px){
 // }
 
-.github-coloritem {
+.github-coloritem--typescript {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   position: relative;
   background: #3178c6;
 }
-.github-coloritem--yellow {
+.github-coloritem--javascript {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   position: relative;
   background: #f1e05a;
 }
-.github-coloritem--white {
+.github-coloritem--scss {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   position: relative;
-  background: #ededed;
+  background: #c6538c;
+}
+.github-coloritem--css {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+  background: #563d7c;
+}
+.github-coloritem--html {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+  background: #e34c26;
+}
+.github-coloritem--other{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+  background: white;
+}
+
+.github-progresscolor--typescript {
+  background: #3178c6;
+}
+.github-progresscolor--javascript {
+  background: #f1e05a;
+}
+.github-progresscolor--html {
+  background: #e34c26;
+}
+.github-progresscolor--scss {
+  background: #c6538c;
+}
+.github-progresscolor--css {
+  background: #563d7c;
+}
+.github-progresscolor--other {
+  background:  white;
 }

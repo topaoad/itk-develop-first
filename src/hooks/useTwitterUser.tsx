@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 
 // 各コンポーネントにtwitterデータを渡すための処理
@@ -16,16 +16,12 @@ export const useTwitterUser = () => {
     fetchUsers();
   }, []);
 
-  console.log(`${users}`);
-  console.log({tweets});
-  return { users, tweets };
+  return { tweets, users };
 };
-
 
 // こちらはuseSWRバージョン
 export const useTwitterData = () => {
-
-  const fetcher = async (url:string) => {
+  const fetcher = async (url: string) => {
     const res = await fetch(url);
     const swrData = await res.json();
     return swrData;
@@ -33,7 +29,6 @@ export const useTwitterData = () => {
 
   const { data, error } = useSWR("/api/tweet");
 
-  console.log(data);
   return {
     data,
     error,
