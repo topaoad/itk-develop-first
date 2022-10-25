@@ -3,8 +3,8 @@ import { ChangeEventHandler, MouseEventHandler, useState, VFC } from "react";
 
 type Todo = {
   id: number;
-  label: string;
   isDone: boolean;
+  label: string;
 };
 
 const Home: NextPage = () => {
@@ -21,8 +21,7 @@ const Home: NextPage = () => {
   // input, toggleと同じ要領で追加しています
   const add: MouseEventHandler<HTMLButtonElement> = () => {
     setTodos((prevTodos) => {
-      // eslint-disable-next-line sort-keys-custom-order/object-keys
-      return [...prevTodos, { id: Math.random(), label: text, isDone: false }];
+      return [...prevTodos, { id: Math.random(),  isDone: false,label: text }];
     });
     setText("");
   };
