@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { ChangeEventHandler, MouseEventHandler, useState, VFC } from "react";
+import { ChangeEventHandler, FC,MouseEventHandler, useState } from "react";
 
 type Todo = {
   id: number;
@@ -71,7 +71,7 @@ type ListItemProps = {
   toggle: ChangeEventHandler<HTMLInputElement>;
 };
 
-const ListItem: VFC<ListItemProps> = ({ todo, toggle }) => {
+const ListItem: FC<ListItemProps> = ({ todo, toggle }) => {
   return (
     <label className="flex items-center gap-x-2">
       <input

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@aws-amplify/cli": "^10.3.2",
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
