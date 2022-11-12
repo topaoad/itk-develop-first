@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import type { NextPage } from "next";
-import { ChangeEventHandler, FC,MouseEventHandler, useState } from "react";
+import { ChangeEventHandler, FC, MouseEventHandler, useState } from "react";
 
 type Todo = {
   id: number;
@@ -8,7 +9,7 @@ type Todo = {
 };
 
 const Home: NextPage = () => {
-  // 入力値を取得
+  // 入力値を取得⇐ここをReduxに置き換える
   const [text, setText] = useState("");
   // todoリストを配列で取得
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
   // input, toggleと同じ要領で追加しています
   const add: MouseEventHandler<HTMLButtonElement> = () => {
     setTodos((prevTodos) => {
-      return [...prevTodos, { id: Math.random(),  isDone: false,label: text }];
+      return [...prevTodos, { id: Math.random(), isDone: false, label: text }];
     });
     setText("");
   };
