@@ -8,11 +8,11 @@ Mantine
 Tailwind.css
 yarn(うっかりnpmをつかったら、lockファイルを都度消してます)
 
-# フロントエンド
+## フロントエンド
 /itk-teamfirst直下になります。
 ## コマンド
 yarnを使っています
-### srcフォルダ内の各フォルダの役割について
+## srcフォルダ内の各フォルダの役割について
 - components
 ヘッダーやフッダーなど、各ファイル内に使用されるパーツを格納します。
 - hooks
@@ -24,18 +24,18 @@ TypeScriptの型定義を格納します。
 - utils
 ページやコンポーネント間で使い回す変数情報などを格納します。
 
-### 命名規則
+## 命名規則
 @typescript-eslint/naming-conventionで管理。
 ルールについては.eslintrc.json参照
 
-### コードのチェック及び整形、ソートについて
+## コードのチェック及び整形、ソートについて
 - ESLintとprettierを使用（パッケージとプラグイン）
 - プラグイン「eslint-plugin-sort-keys-custom-order」によって、オブジェクトの順序を設定しています。
 ※自動順序整形はsetting.json内の "editor.codeActionsOnSave": {
     "source.fixAll": true
   }により実施しています。
 
-### import・exportの管理について
+## import・exportの管理について
 - import・exportのソートはプラグイン
 「eslint-plugin-simple-import-sort」で実施しています。
 - 不要なimportはプラグイン「eslint-plugin-unused-imports」で削除しています。（setting.jsonの設定不要）
@@ -43,7 +43,7 @@ TypeScriptの型定義を格納します。
     "source.addMissingImports": true,
   }により実施しています。
 
-### GraphQL対応について
+## GraphQL対応について
 - src/api/githubgraphqlにてデータの取得は完了
 - Apollo Clientを使ったデータ取得も完了
 　・必要なパッケージのインストール
@@ -56,8 +56,27 @@ TypeScriptの型定義を格納します。
 〇 実装手順
 
 
-### 型の自動生成について
+## 型の自動生成について
 GitHubのパブリックスキーマから取得したデータを元に、
 codegenで型を自動生成しています。
+
+## 学習用ページ追加について
+以下のページにて学習用ページを
+### todo-sample
+簡単にtodoリストを作成するサンプルコード
+削除ボタンをも作ってやること
+参考
+https://qiita.com/itachi/items/4184b2afc35b55b45568
+https://zenn.dev/sprout2000/books/76a279bb90c3f3/viewer/chapter13
+
+### usereducertest
+useReducerの練習用ページです
+複数の状態をスイッチ分岐で使い分けているイメージ
+複数のstateを一元管理するためにあります。
+しまぶーさん動画の21をみるとよくわかります。
+#### 仕組みを一言で言うと
+stateとactionをペアで管理し、actionから新しいstateを作成する。
+(state, action) => newState 
+### GraphQL対応について
 
 ### その他

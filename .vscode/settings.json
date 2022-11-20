@@ -6,5 +6,10 @@
     "mainblog",
     "mantine",
     "miscrocms"
-  ]
+  ],
+  // 1行目のimportエラーを防ぐコード　https://zenn.dev/taichifukumoto/scraps/45be5ffdfa8457
+  "eslint.workingDirectories": [
+    "./app/next-js"
+  ],
+  "prettier.semi": true
 }
