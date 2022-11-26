@@ -60,11 +60,11 @@ TypeScriptの型定義を格納します。
 GitHubのパブリックスキーマから取得したデータを元に、
 codegenで型を自動生成しています。
 
-## 学習用ページ追加について
+## 【仕組みの整理用】学習用ページ追加について
 以下のページにて学習用ページを
 ### todo-sample
 簡単にtodoリストを作成するサンプルコード
-削除ボタンをも作ってやること
+削除ボタンも追加
 参考
 https://qiita.com/itachi/items/4184b2afc35b55b45568
 https://zenn.dev/sprout2000/books/76a279bb90c3f3/viewer/chapter13
@@ -78,5 +78,11 @@ useReducerの練習用ページです
 stateとactionをペアで管理し、actionから新しいstateを作成する。
 (state, action) => newState 
 ### GraphQL対応について
+
+
+
+## 【重要】ファイルの整理について
+- src/atoms・・・Atomic Designに分類されるボタンやモーダルなどの汎用的なＵＩコンポーネントを格納
+
 
 ### その他

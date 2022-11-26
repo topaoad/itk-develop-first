@@ -25,9 +25,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     (async () => {
       try {
         await sgMail.send(msg);
+        res.status(200).send("送信成功です！");
       } catch (error: any | unknown) {
         console.error(error);
-
+        res.status(400).send("送信失敗しちゃった・・・");
         if (error.response) {
           console.error(error.response.body);
         }

@@ -67,10 +67,10 @@ const Home: NextPage = () => {
     // こっちでは削除対象のremovedを入れ替えてはいるものの・・・
     console.log(newTodos);
     setTodos(newTodos);
-     // こっちでは元に戻っている・・・
+    // こっちでは元に戻っている・・・⇐そりゃそうだ。コピー先の配列を消しているだけだから。
     console.log(todos);
     // 選んだIDのリストを配列から削除している。
-    // setTodos(todos.filter((todo) => todo.id !== id));
+    // todo.id !== idは左右が＝以外のものを抽出するの意味
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
