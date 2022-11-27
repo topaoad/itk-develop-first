@@ -16,9 +16,13 @@ import Head from "next/head";
 import { useState } from "react";
 import { apolloClient } from "src/lib/apollo/apolloClient";
 import { SWRConfig } from "swr";
+import { SessionProvider } from "next-auth/react";
 
 export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+  const {
+    Component,
+    pageProps: { session, ...pageProps },
+  } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -37,29 +41,35 @@ export default function App(props: AppProps) {
         }}
       >
         {" "}
-        <ApolloProvider client={apolloClient}>
-          <Head>
-            <title>しまぶーポートフォリオサイト</title>
-            <meta
-              name="viewport"
-              content="minimum-scale=1, initial-scale=1, width=device-width"
-            />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
+        <SessionProvider session={session}>
+          <ApolloProvider client={apolloClient}>
+            <Head>
+              <title>しまぶーポートフォリオサイト</title>
+              <meta
+                name="viewport"
+                content="minimum-scale=1, initial-scale=1, width=device-width"
+              />
+              <link rel="icon" href="/favicon.ico" />
+            </Head>
 
-          <ColorSchemeProvider
-            colorScheme={colorScheme}
-            toggleColorScheme={toggleColorScheme}
-          >
-            <MantineProvider
-              theme={{ colorScheme, components: {}, fontFamily: "Avenir Next" }}
-              withGlobalStyles
-              withNormalizeCSS
+            <ColorSchemeProvider
+              colorScheme={colorScheme}
+              toggleColorScheme={toggleColorScheme}
             >
-              <Component {...pageProps} />
-            </MantineProvider>
-          </ColorSchemeProvider>
-        </ApolloProvider>
+              <MantineProvider
+                theme={{
+                  colorScheme,
+                  components: {},
+                  fontFamily: "Avenir Next",
+                }}
+                withGlobalStyles
+                withNormalizeCSS
+              >
+                <Component {...pageProps} />
+              </MantineProvider>
+            </ColorSchemeProvider>
+          </ApolloProvider>
+        </SessionProvider>
       </SWRConfig>
     </>
   );

@@ -58,11 +58,11 @@ export const FormList = () => {
           return response.json();
         })
         .then((post) => {
-          console.log("送信成功です！"); //undefined
+          // console.log("送信成功です！"); //undefined
         })
         //エラーの場合の処理（404エラーなどの場合はエラーとして捕捉されない）
         .catch((error) => {
-          console.log("Error 発生: " + error);
+          // console.log("Error 発生: " + error);
         });
 
       form.reset();
