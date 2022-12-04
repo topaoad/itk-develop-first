@@ -2,8 +2,6 @@ import sum from "./sum";
 
 console.log("test by jest");
 
-
-
 // const expected = (result) => {
 
 //   return {
@@ -18,8 +16,6 @@ console.log("test by jest");
 // こう書くとリターン分の関数までアクセスできる。
 // 一瞬わかりにくいが、要はsum(1, 2)を引数でもった状態でreturn内のtoBeにアクセスする、というだけの意味。
 // expected(sum(1, 2)).toBe(4);
-
-
 
 // 自分なら多分こう書いちゃう
 const expected = (first, second, third) => {
@@ -42,10 +38,10 @@ async function test(title, callback) {
   }
 }
 
- test('adds 1 + 2 to equal 3', () => {
+test("adds 1 + 2 to equal 3", () => {
   expected(1, 2, 4);
 });
-test('adds 1 + 2 to equal 3', () => {
+test("adds 1 + 2 to equal 3", () => {
   expected(1, 2, 8);
 });
 
