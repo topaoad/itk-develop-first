@@ -40,7 +40,6 @@ export default function App(props: AppProps) {
           fetcher: fetcher,
         }}
       >
-        {" "}
         <SessionProvider session={session}>
           <ApolloProvider client={apolloClient}>
             <Head>

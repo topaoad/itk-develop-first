@@ -1,4 +1,115 @@
 {
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 16,
+  "editor.mouseWheelZoom": true,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "Ricty Diminished",
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+
+  "css.styleSheets": [],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.accessibilityPageSize": 15,
+
+  "emmet.syntaxProfiles": {
+    "html": {
+      "filters": "html,c"
+    }
+  },
+  "emmet.preferences": {
+    "filter.commentAfter": "<!-- /[#ID][.CLASS] -->"
+  },
+
+  "liveSassCompile.settings.formats": [
+    //Sassの出力内容の設定
+    {
+      "format": "expanded", //nested、compact、compressedのどれかを選ぶ
+      "extensionName": ".css", //style.cssとして出力
+      "savePath": "/" //cssフォルダの中にstyle.cssを出力 初期設定は"/css"
+      //マイスノモンを使うときは要注意
+    }
+  ],
+  "liveSassCompile.settings.excludeList": [
+    //対象外とするフォルダを指定
+    "**/node_modules/**",
+    ".vscode/**",
+    ".history/**"
+  ],
+  "liveSassCompile.settings.autoprefix": [
+    //ベンダープレフィックスの指定
+    "last 2 versions",
+    "ie >= 11",
+    "Android >= 4",
+    "ios_saf >= 8"
+  ],
+
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "php.validate.run": "onType",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.confirmSync": false,
+  "files.exclude": {
+    "**/.git": false
+  },
+  "bracketPairColorizer.depreciation-notice": false,
+  "editor.formatOnSave": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Visual Studio Dark",
+  "editor.linkedEditing": true,
+  "remote.SSH.remotePlatform": {
+    "XSERVER": "linux",
+    "dev.geareach(EC2インスタンス)": "linux",
+    "EC2デモインスタンス(top個人)": "linux"
+  },
+  "git.ignoreLegacyWarning": true,
+  "sync.gist": "a43b51319b4a0d711ff9f0530bc999bd",
+  "sync.autoUpload": true,
+  "sync.forceDownload": false,
+  "terminal.integrated.fontFamily": "monospace",
+  "editor.mouseWheelZoom": true,
+  "git.autofetch": true,
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // sort-keys-custom-orderを自動で効かせるための設定
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": true,
+    "source.fixAll": true
+  },
+  "cSpell.userWords": ["codegencli"],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "files.associations": {
+    "*.tsx": "typescript"
+  },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "vscode.typescript-language-features"
+  // },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "security.workspace.trust.untrustedFiles": "open",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "remote.SSH.useLocalServer": false,
+  "remote.SSH.configFile": "C:\\Users\\tattu\\.ssh\\config",
+
+  // 以下はユーザー設定にするかワークスペース設定にする要検討
+  // eslint設定
   "cSpell.words": [
     "codegencli",
     "githubgraphqlsv",
@@ -7,9 +118,25 @@
     "mantine",
     "miscrocms"
   ],
-  // 1行目のimportエラーを防ぐコード　https://zenn.dev/taichifukumoto/scraps/45be5ffdfa8457
-  "eslint.workingDirectories": [
-    "./app/next-js"
-  ],
-  "prettier.semi": true
+  // // 1行目のimportエラーを防ぐコード　https://zenn.dev/taichifukumoto/scraps/45be5ffdfa8457
+  // "eslint.workingDirectories": ["./app/next-js"],
+  // "[python]": {
+  //   "editor.defaultFormatter": "ms-python.python"
+  // },
+  // デフォルトのターミナルをbashにします。
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "editor.formatOnType": true,
+  "autoprefixer.formatOnSave": true,
+
+  "python.formatting.provider": "autopep8", // 自動整形に autopep8 を使う
+  // デフォルトのprettier設定設定
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+
+    // }
+    // "eslint.workingDirectories": [""],  //tsconfigがある階層
+  }
 }

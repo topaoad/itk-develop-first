@@ -1,4 +1,6 @@
-import sum from "./sum";
+// import sum from "./sum";
+// common js 形式
+import { sum } from "./inner_file/sum";
 
 console.log("test by jest");
 
@@ -25,6 +27,7 @@ const expected = (first, second, third) => {
   }
   return;
 };
+// 以下はreturn文の関数を呼び出したい場合
 // var resulted = expected(1, 2, 4);
 // resulted();
 // expected(1, 2, 4);
@@ -32,17 +35,15 @@ const expected = (first, second, third) => {
 async function test(title, callback) {
   try {
     await callback();
+    console.log(`✅ ${title}`);
   } catch (error) {
     console.log(error);
     console.log(`✖ ${title}`);
   }
 }
 
-test("adds 1 + 2 to equal 3", () => {
-  expected(1, 2, 4);
-});
-test("adds 1 + 2 to equal 3", () => {
-  expected(1, 2, 8);
-});
-
-module.exports = sum;
+// グローバル化によりエクスポート不要に。
+// module.exports = { expected, test };
+//グローバルにしてインポートしなくても済むようにする。
+global.test = test;
+global.expected = expected;

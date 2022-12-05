@@ -18,7 +18,7 @@
     "react/prop-types": ["off"],
     "no-irregular-whitespace": 0,
     "no-undef": ["warn"],
-    "no-console": ["error"],
+    "no-console": ["warn"],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/naming-convention": [
@@ -48,7 +48,7 @@
       { "orderedKeys": ["id", "name", "title"] }
     ],
     // importとexportの序列を自動整形してくれます。
-    "simple-import-sort/imports": "error",
+    "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "error",
     // 使用していないimportを削除します。
     "unused-imports/no-unused-imports": "error"

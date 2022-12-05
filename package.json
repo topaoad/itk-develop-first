@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "testcode": "node --require ./test/setup.js  ./test/inner_file/sum_test.js"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
