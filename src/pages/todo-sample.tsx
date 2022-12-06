@@ -54,9 +54,10 @@ const Home: NextPage = () => {
 
   // 削除するコンポーネント
   // 念のためremoveプロパティを取得しているが、実際は使っていない。
-  const deleteList = (id: number, removed: boolean) => {
+  const deleteList = (id: number, removed: boolean, e: any) => {
     const deepCopy = todos.map((todo) => ({ ...todo }));
-
+    console.log(e.target);
+    console.log("hogehoge");
     const newTodos = deepCopy.map((todo) => {
       if (todo.id === id) {
         todo.removed = !todo.removed;
@@ -81,12 +82,14 @@ const Home: NextPage = () => {
           type="checkbox"
           value={todo.id}
           checked={todo.isDone}
-          onChange={toggle}
+          onChange={(e) => {
+            toggle(e);
+          }}
         />
         <span>{todo.label}</span>
         <button
           value={todo.id}
-          onClick={() => deleteList(todo.id, todo.removed)}
+          onClick={(e) => deleteList(todo.id, todo.removed, e)}
           className="border border-black flex-shrink-0 px-2"
         >
           削除

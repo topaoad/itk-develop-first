@@ -129,10 +129,10 @@
   "autoprefixer.formatOnSave": true,
 
   "python.formatting.provider": "autopep8", // 自動整形に autopep8 を使う
-  // デフォルトのprettier設定設定
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
+  // デフォルトのprettier設定設定!!!注意この設定があると成形がおかしくなる
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "vscode.typescript-language-features"
+  // },
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
 
