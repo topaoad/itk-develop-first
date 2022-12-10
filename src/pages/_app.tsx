@@ -13,10 +13,10 @@ import {
 } from "@mantine/core";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 import { useState } from "react";
 import { apolloClient } from "src/lib/apollo/apolloClient";
 import { SWRConfig } from "swr";
-import { SessionProvider } from "next-auth/react";
 
 export default function App(props: AppProps) {
   const {

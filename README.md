@@ -35,6 +35,8 @@ yarn を使っています
 @typescript-eslint/naming-convention で管理。
 ルールについては.eslintrc.json 参照
 
+## eslint prettierについて
+2022/12/7 再度やり直し中
 ## コードのチェック及び整形、ソートについて
 
 - ESLint と prettier を使用（パッケージとプラグイン）
@@ -113,6 +115,10 @@ reacthookform を使用したフォーム
 const { onChange, onBlur, name, ref } = register('firstName');
 // include type check against field path with the name you have supplied.
 
+### routerdemo/[slug].tsx
+userouterのお作法再確認
+[slug]とuserouterを合わせる。
+
 <input
 onChange={onChange} // assign onChange event
 onBlur={onBlur} // assign onBlur event
@@ -121,6 +127,17 @@ ref={ref} // assign ref prop
 />
 // same as above
 <input {...register('firstName')} />
+
+
+
+### テンポラリメモ
+- テクニック1
+いかのように書くと、いくつかある入力フィールドのonchangeを統合できる
+  const changeLoginInfo = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLoginInfo({ ...loginInfo, [name]: value });
+    handleLoginInfoValidator(name, value);
+  };
 
 ### GraphQL 対応について
 
