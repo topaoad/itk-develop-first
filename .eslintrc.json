@@ -5,7 +5,7 @@
   "extends": [//設定全体の拡張≠plugin pluginsより広義
     "next/core-web-vitals",
     "eslint:recommended", 
-    "plugin:react/recommended", //おススメのルールをデフォルトで適用
+    "plugin:react/recommended", //おすすめのルールをデフォルトで適用
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
