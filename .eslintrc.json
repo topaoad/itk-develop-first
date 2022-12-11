@@ -2,9 +2,10 @@
   "env": {
     "browser": true //グローバル定義
   },
-  "extends": [
+  "extends": [//設定全体の拡張≠plugin
     "next/core-web-vitals",
-    "eslint:recommended",
+    "eslint:recommended", 
+    "plugin:react/recommended", //おススメのルールをデフォルトで適用
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -15,7 +16,7 @@
       "jsx": true
     }
   },
-  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"],
+  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"],//ルールの拡張≠extends package.jsonでインストールされているものを入れる。
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "double"], //ダブルクォート必須
