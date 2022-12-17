@@ -85,8 +85,12 @@ codegen で型を自動生成しています。
 https://qiita.com/itachi/items/4184b2afc35b55b45568
 https://zenn.dev/sprout2000/books/76a279bb90c3f3/viewer/chapter13
 
+## 状態管理全般
+useStateはさておき、Context,Redux,Recoil,useReducer等の概要を理解するTips
+### useContext
+propsを渡しやすくするもの。
+これとuseStateなど、他の状態管理ツールを組み合わせるとよいかも。その場合は、Providerで値や関数を渡す
 ### usereducertest
-
 useReducer の練習用ページです
 複数の状態をスイッチ分岐で使い分けているイメージ
 複数の state を一元管理するためにあります。

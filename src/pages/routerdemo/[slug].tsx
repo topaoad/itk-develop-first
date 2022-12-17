@@ -14,7 +14,7 @@ export default function ReadMore({ slug }:any) {
         });
       }}
     >
-      Click here to read more
+      useRouterの挙動確認ページです
     </button>
   );
 }

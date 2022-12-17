@@ -1,6 +1,17 @@
 /* eslint-disable no-console */
 import type { NextPage } from "next";
-import { ChangeEventHandler, FC, MouseEventHandler, useState } from "react";
+import {
+  ChangeEventHandler,
+  Dispatch,
+  FC,
+  MouseEventHandler,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
+import { createContext } from "react";
+
+import { LangContext, ThemeContext } from "./_app";
 
 type Todo = {
   id: number;
@@ -15,10 +26,28 @@ type ListItemProps = {
 };
 
 const Home: NextPage = () => {
-  // 入力値を取得⇐ここをReduxに置き換える
+  // 入力値を取得
+  // useStateVer
   const [text, setText] = useState("");
   // todoリストを配列で取得
   const [todos, setTodos] = useState<Todo[]>([]);
+  // contextを使ったtodoデータ渡し練習用
+  // パフォーマンス向上のため、場合によっては参照家（todos）と更新系（setTodos)を分けた方がいいかも。
+  const SampleContext = createContext<{
+    setTodos: Dispatch<SetStateAction<Todo[]>>;
+    todos: Todo[];
+  }>({
+    todos: todos,
+    setTodos: () => {
+      throw Error("no default function!");
+    },
+  });
+
+  // _appのcreateContextから値取得。これと_app内のuseStateを組み合わせることにより。どこからでも呼び出せるようになる。
+  const theme = useContext(ThemeContext);
+  console.log(theme);
+  const language = useContext(LangContext);
+  console.log(language);
 
   const input: ChangeEventHandler<HTMLInputElement> = (e) => {
     setText(e.target.value);
