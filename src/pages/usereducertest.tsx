@@ -3,15 +3,15 @@ import { Button } from "@mantine/core";
 import React, { useReducer } from "react";
 
 type recucerprops = {
-  countState: number;
   action: string;
+  countState: number;
 };
 
 //counterの初期値を0に設定
 const initialState = 0;
 //reducer関数を作成
 //countStateとactionを渡して、新しいcountStateを返すように実装する
-const reducerFunc = (countState:number, action: string) => {
+const reducerFunc = (countState: number, action: string) => {
   //reducer関数にincrement、increment、reset処理を書く
   //どの処理を渡すかはactionを渡すことによって判断する
   // 以前のstateは...countStateで取得可能
@@ -51,5 +51,3 @@ const Counter = () => {
 };
 
 export default Counter;
-
-

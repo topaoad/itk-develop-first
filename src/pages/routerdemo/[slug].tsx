@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 
-export default function ReadMore({ slug }) {
+export default function ReadMore({ slug }:any) {
   const router = useRouter();
   // router.queryにはslugがオブジェクトで入る
   console.log(router.query);
-
   return (
     <button
       type="button"

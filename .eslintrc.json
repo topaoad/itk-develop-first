@@ -2,12 +2,13 @@
   "env": {
     "browser": true //グローバル定義
   },
-  "extends": [//設定全体の拡張≠plugin pluginsより広義
+  "extends": [
+    //設定全体の拡張≠plugin pluginsより広義
     "next/core-web-vitals",
-    "eslint:recommended", 
+    "eslint:recommended",
     "plugin:react/recommended", //おすすめのルールをデフォルトで適用
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier" //eslintとかぶる設定をprettier優先とする。注）下のrulesに書いてしまったらオーバーライドされてしまいます。
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -16,10 +17,10 @@
       "jsx": true
     }
   },
-  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"],//ルールの拡張≠extends package.jsonでインストールされているものを入れる。
+  "plugins": ["sort-keys-custom-order", "simple-import-sort", "unused-imports"], //ルールの拡張≠extends package.jsonでインストールされているものを入れる。
   "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"], //ダブルクォート必須
+    //"semi": ["error", "always"],   //セミコロン必須。この設定はprettier優先とする。
+    //"quotes": ["error", "double"], //ダブルクォート必須。この設定はprettier優先とする。
     "react/prop-types": ["off"],
     "no-irregular-whitespace": 0,
     "no-undef": ["warn"], //未定義の変数をエラーとする
@@ -43,10 +44,10 @@
       // }
     ],
     // オブジェクトにのキーによる順序調整。自動設定はsetting.jsonで行う。
-    "sort-keys-custom-order/object-keys": [
-      "error",
-      { "orderedKeys": ["id", "name", "title"] }
-    ],
+    // "sort-keys-custom-order/object-keys": [
+    //   "error",
+    //   { "orderedKeys": ["id", "name", "title"] }
+    // ],
     // タイプのキーによる順序調整。自動設定はsetting.jsonで行う。
     "sort-keys-custom-order/type-keys": [
       "warn",

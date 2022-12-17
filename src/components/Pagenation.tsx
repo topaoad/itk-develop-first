@@ -14,7 +14,6 @@ export const Pagination = ({ totalCount }: Numbers): ReactJSXElement => {
     return [...Array(end - start + 1)].map((_, i) => start + i);
   };
 
-
   return (
     <ul className="flex items-center justify-center -space-x-px my-5 mx-auto pagination-list">
       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (

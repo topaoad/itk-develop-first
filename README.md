@@ -35,8 +35,9 @@ yarn を使っています
 @typescript-eslint/naming-convention で管理。
 ルールについては.eslintrc.json 参照
 
-## eslint prettierについて
-2022/12/7 再度やり直し中
+## eslint prettier について
+- npm-run-allをインストールして、 package.jsonのスクリプトに作成したfixを呼び出すことで、eslintとpretteirをパラレルチェックしています
+- 整形はprettierに任せるようにしています
 ## コードのチェック及び整形、ソートについて
 
 - ESLint と prettier を使用（パッケージとプラグイン）
@@ -116,8 +117,9 @@ const { onChange, onBlur, name, ref } = register('firstName');
 // include type check against field path with the name you have supplied.
 
 ### routerdemo/[slug].tsx
-userouterのお作法再確認
-[slug]とuserouterを合わせる。
+
+userouter のお作法再確認
+[slug]と userouter を合わせる。
 
 <input
 onChange={onChange} // assign onChange event
@@ -128,15 +130,14 @@ ref={ref} // assign ref prop
 // same as above
 <input {...register('firstName')} />
 
-
-
 ### テンポラリメモ
-- テクニック1
-いかのように書くと、いくつかある入力フィールドのonchangeを統合できる
+
+- テクニック 1
+  いかのように書くと、いくつかある入力フィールドの onchange を統合できる
   const changeLoginInfo = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setLoginInfo({ ...loginInfo, [name]: value });
-    handleLoginInfoValidator(name, value);
+  const { name, value } = e.target;
+  setLoginInfo({ ...loginInfo, [name]: value });
+  handleLoginInfoValidator(name, value);
   };
 
 ### GraphQL 対応について
@@ -152,5 +153,6 @@ ref={ref} // assign ref prop
 ### 【未実装項目】
 
 以下はやれたらやってみる
+
 - useContext でデータ共有(state の LiftUp+useState もしくは useReducer)
-https://reffect.co.jp/react/react-usecontext-understanding#i
+  https://reffect.co.jp/react/react-usecontext-understanding#i
