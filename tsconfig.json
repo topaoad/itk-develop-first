@@ -35,6 +35,6 @@
     "src/pages/todo-sample.jsx",
     "src/pages/usereducertest.tsx",
     "src/pages/_app.tsx"
-  ],
+, "src/pages/valtio.jsx"  ],
   "exclude": ["node_modules"]
 }

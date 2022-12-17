@@ -29,15 +29,15 @@ module.exports = {
     prefix: "tw-",
 
     screens: {
-      // => @media (min-width: 768px) { ... }
-      lg: "1000px",
+      sm: "640px",
       // => @media (min-width: 640px) { ... }
       md: "768px",
+      // => @media (min-width: 768px) { ... }
+      lg: "1000px",
       // => @media (min-width: 1000px) { ... }
       // xl: "1000px",
       // => @media (min-width: 1000px) { ... }
       mmd: { max: "767px" },
-      sm: "640px",
       // => @media (max-width: 767px) { ... }
     },
   },
