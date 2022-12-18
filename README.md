@@ -96,6 +96,24 @@ useReducer の練習用ページです
 複数の state を一元管理するためにあります。
 しまぶーさん動画の 21 をみるとよくわかります。
 
+### valtio
+valtioの練習用ページです。
+軽くしかやっていませんが、ライトにコードを書くとき向け
+### redux
+reduxの練習用ページです。
+『現在の状態に対し、アクションを用いて新しい状態に仕上げて返す』
+概要をサクッとまとめ
+- legacy_createStoreでストア管理
+- _appのProviderでストアを各コンポーネントと共有
+- useSelectorで現在のストアを呼び出し
+- useDispatchでいくつかのアクションタイプの中から、ストアに変化を加える関数を呼び出し
+- 呼び出した関数のアクションタイプにより、ストア内の状態を更新（reducer)
+
+⇒reduxtoolkitページにて、reduxtoolkitに置き換える
+ポイント
+ addTodo: (state, action: PayloadAction<Pick<Todo, "text">>)のように、前回の状態（state)を呼び出し、指定されたアクションをもとに新しい状態（state）を作成する。
+  const newState = [...prevState, newTodo];のように、新たな状態を明示する必要せずpush等を用いて直接変更することも可能
+
 #### 仕組みを一言で言うと
 
 state と action をペアで管理し、action から新しい state を作成する。

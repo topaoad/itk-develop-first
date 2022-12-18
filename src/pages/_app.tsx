@@ -16,11 +16,14 @@ import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { useState } from "react";
 import { createContext } from "react";
+import { Provider } from "react-redux";
 import { apolloClient } from "src/lib/apollo/apolloClient";
+import { store } from "src/state/todosReduxindex-tk";
 import { SWRConfig } from "swr";
+
 // useContextVer
-export const ThemeContext = createContext<"light"|"dark">("light");
-export const LangContext = createContext<"japanese"|"english">("japanese");
+export const ThemeContext = createContext<"light" | "dark">("light");
+export const LangContext = createContext<"japanese" | "english">("japanese");
 
 export default function App(props: AppProps) {
   const {
@@ -35,49 +38,51 @@ export default function App(props: AppProps) {
     const swrData = await res.json();
     return swrData;
   };
-// Contextは重ねることが可能。なお、同じものを重ねた場合は近い方が優先される。
+  // Contextは重ねることが可能。なお、同じものを重ねた場合は近い方が優先される。
   return (
     <>
-      <ThemeContext.Provider value="dark">
-        <LangContext.Provider value="english"> 
-          <SWRConfig
-            value={{
-              // refreshInterval: 100000,
-              fetcher: fetcher,
-            }}
-          >
-            <SessionProvider session={session}>
-              <ApolloProvider client={apolloClient}>
-                <Head>
-                  <title>しまぶーポートフォリオサイト</title>
-                  <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width"
-                  />
-                  <link rel="icon" href="/favicon.ico" />
-                </Head>
+      <Provider store={store}>
+        <ThemeContext.Provider value="dark">
+          <LangContext.Provider value="english">
+            <SWRConfig
+              value={{
+                // refreshInterval: 100000,
+                fetcher: fetcher,
+              }}
+            >
+              <SessionProvider session={session}>
+                <ApolloProvider client={apolloClient}>
+                  <Head>
+                    <title>しまぶーポートフォリオサイト</title>
+                    <meta
+                      name="viewport"
+                      content="minimum-scale=1, initial-scale=1, width=device-width"
+                    />
+                    <link rel="icon" href="/favicon.ico" />
+                  </Head>
 
-                <ColorSchemeProvider
-                  colorScheme={colorScheme}
-                  toggleColorScheme={toggleColorScheme}
-                >
-                  <MantineProvider
-                    theme={{
-                      colorScheme,
-                      components: {},
-                      fontFamily: "Avenir Next",
-                    }}
-                    withGlobalStyles
-                    withNormalizeCSS
+                  <ColorSchemeProvider
+                    colorScheme={colorScheme}
+                    toggleColorScheme={toggleColorScheme}
                   >
-                    <Component {...pageProps} />
-                  </MantineProvider>
-                </ColorSchemeProvider>
-              </ApolloProvider>
-            </SessionProvider>
-          </SWRConfig>
-        </LangContext.Provider>
-      </ThemeContext.Provider>
+                    <MantineProvider
+                      theme={{
+                        colorScheme,
+                        components: {},
+                        fontFamily: "Avenir Next",
+                      }}
+                      withGlobalStyles
+                      withNormalizeCSS
+                    >
+                      <Component {...pageProps} />
+                    </MantineProvider>
+                  </ColorSchemeProvider>
+                </ApolloProvider>
+              </SessionProvider>
+            </SWRConfig>
+          </LangContext.Provider>
+        </ThemeContext.Provider>
+      </Provider>
     </>
   );
 }
