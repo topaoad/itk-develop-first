@@ -102,22 +102,26 @@ valtioの練習用ページです。
 ### redux
 reduxの練習用ページです。
 『現在の状態に対し、アクションを用いて新しい状態に仕上げて返す』
-概要をサクッとまとめ
+【概念】
 - legacy_createStoreでストア管理
 - _appのProviderでストアを各コンポーネントと共有
 - useSelectorで現在のストアを呼び出し
 - useDispatchでいくつかのアクションタイプの中から、ストアに変化を加える関数を呼び出し
 - 呼び出した関数のアクションタイプにより、ストア内の状態を更新（reducer)
 
-⇒reduxtoolkitページにて、reduxtoolkitに置き換える
-ポイント
- addTodo: (state, action: PayloadAction<Pick<Todo, "text">>)のように、前回の状態（state)を呼び出し、指定されたアクションをもとに新しい状態（state）を作成する。
-  const newState = [...prevState, newTodo];のように、新たな状態を明示する必要せずpush等を用いて直接変更することも可能
+#### reduxtoolkit
+reduxはtoolkitを使って実装することが推奨されています
+【ポイント】
+- addTodo: (state, action: PayloadAction<Pick<Todo, "text">>)のように、前回の状態（state)を呼び出し、指定されたアクションをもとに新しい状態（state）を作成する。
+-  const newState = [...prevState, newTodo];のように、新たな状態を明示する必要せずpush等を用いて直接変更することも可能
+- configureStore内の reducerがルートステートになるが、これをuseSelectorで呼び出すことで初期値であるcreateSlice内のinitialStateを引っ張り出すことが出来る。
 
-#### 仕組みを一言で言うと
-
-state と action をペアで管理し、action から新しい state を作成する。
-(state, action) => newState
+### recoil
+reduxのフッ軽版、といったイメージ
+【概念】
+- Atomが状態管理
+- Atomの操作はuseRecoilStateでuseStateのように書き換える
+- SelectorはuseRecoilValueでAtomの状態を用いた（用いない場合もあり？）値の操作を実施する。(文字の長さを図るなど）
 
 ## フォーム作成用ページ
 
