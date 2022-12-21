@@ -35,6 +35,6 @@
     "src/pages/todo-sample.jsx",
     "src/pages/usereducertest.tsx",
     "src/pages/_app.tsx"
-, "src/pages/valtio.jsx", "src/components/TodoReduxCounte.rtsx", "src/pages/redux-toolkit.tsx", "src/pages/recoil.jsx"  ],
+, "src/pages/valtio.jsx", "src/components/reacthookform.tsx", "src/pages/redux-toolkit.tsx", "src/pages/recoil.jsx", "src/pages/add-recoil.jsx", "src/pages/syntaxtest.tsx", "src/pages/api/signup.tx"  ],
   "exclude": ["node_modules"]
 }
