@@ -6,7 +6,7 @@ import { Todo } from "src/types/todo";
 
 const Home: NextPage = () => {
   // Atomの状態読み取り
-  const [todos, setTodos] = useRecoilState(todosState);
+  const [todos, setTodos] = useRecoilState<Todo[]>(todosState);
 
   const toggleIsDone = (id: Todo["id"]) => {
     setTodos((prevTodos) => {

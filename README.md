@@ -175,9 +175,8 @@ ref={ref} // assign ref prop
 
 - src/atoms・・・Atomic Design に分類されるボタンやモーダルなどの汎用的なＵＩコンポーネントを格納
 
-### 【未実装項目】
-
-以下はやれたらやってみる
-
-- useContext でデータ共有(state の LiftUp+useState もしくは useReducer)
-  https://reffect.co.jp/react/react-usecontext-understanding#i
+##  ログインについて
+2022/12/22 youtubeをみながらfirebaseを使ったユーザー情報作成画面の実装まで完了
+【残りタスク】
+・ログイン
+・ログアウト

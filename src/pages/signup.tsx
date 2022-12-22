@@ -55,9 +55,10 @@ export default function Signup() {
     }
   };
 
+  console.log(currentUser);
   useEffect(() => {
     if (currentUser) router.push("/");
-  }, [currentUser, router]);
+  }, [currentUser]);
 
   return (
     <Flex>
