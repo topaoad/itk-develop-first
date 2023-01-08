@@ -95,7 +95,7 @@
   "cSpell.userWords": ["codegencli"],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "files.associations": {
-    "*.tsx": "typescript"
+    "*.tsx": "typescriptreact"
   },
   // "[typescript]": {
   //   "editor.defaultFormatter": "vscode.typescript-language-features"
