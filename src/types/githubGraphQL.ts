@@ -34,9 +34,9 @@ export type Scalars = {
   /** An ISO-8601 encoded date string. Unlike the DateTime type, GitTimestamp is not converted in UTC. */
   Int: number;
   /** A string containing HTML code. */
-  String: string;
-  /** An ISO-8601 encoded UTC date string with millisecond precision. */
   PreciseDateTime: any;
+  /** An ISO-8601 encoded UTC date string with millisecond precision. */
+  String: string;
   /** An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string. */
   URI: any;
   /** A valid x509 certificate string */
@@ -1519,22 +1519,22 @@ export type CheckRun = Node &
     /** The check run's annotations */
     name: Scalars["String"];
     /** The check suite that this run is a part of. */
-    __typename?: "CheckRun";
-    /** Identifies the date and time when the check run was completed. */
-    annotations?: Maybe<CheckAnnotationConnection>;
-    /** The conclusion of the check run. */
-    checkSuite: CheckSuite;
-    /** Identifies the primary key from the database. */
-    completedAt?: Maybe<Scalars["DateTime"]>;
-    /** The corresponding deployment for this job, if any */
-    conclusion?: Maybe<CheckConclusionState>;
-    /** The URL from which to find full details of the check run on the integrator's site. */
-    databaseId?: Maybe<Scalars["Int"]>;
-    /** A reference for the check run on the integrator's system. */
-    deployment?: Maybe<Deployment>;
-    detailsUrl?: Maybe<Scalars["URI"]>;
-    /** Whether this is required to pass before merging for a specific pull request. */
     title?: Maybe<Scalars["String"]>;
+    /** Identifies the date and time when the check run was completed. */
+    __typename?: "CheckRun";
+    /** The conclusion of the check run. */
+    annotations?: Maybe<CheckAnnotationConnection>;
+    /** Identifies the primary key from the database. */
+    checkSuite: CheckSuite;
+    /** The corresponding deployment for this job, if any */
+    completedAt?: Maybe<Scalars["DateTime"]>;
+    /** The URL from which to find full details of the check run on the integrator's site. */
+    conclusion?: Maybe<CheckConclusionState>;
+    /** A reference for the check run on the integrator's system. */
+    databaseId?: Maybe<Scalars["Int"]>;
+    deployment?: Maybe<Deployment>;
+    /** Whether this is required to pass before merging for a specific pull request. */
+    detailsUrl?: Maybe<Scalars["URI"]>;
     /** The name of the check for this check run. */
     externalId?: Maybe<Scalars["String"]>;
     /** Information about a pending deployment, if any, in this check run */
@@ -2153,43 +2153,43 @@ export type Commit = GitObject &
   UniformResourceLocatable & {
     __typename?: "Commit";
     /** An abbreviated version of the Git object ID */
-    abbreviatedOid: Scalars["String"];
+    id: Scalars["ID"];
     /** The number of additions in this commit. */
-    additions: Scalars["Int"];
+    abbreviatedOid: Scalars["String"];
     /**
      * The merged Pull Request that introduced the commit to the repository. If the
      * commit is not present in the default branch, additionally returns open Pull
      * Requests associated with the commit
      */
-    associatedPullRequests?: Maybe<PullRequestConnection>;
+    additions: Scalars["Int"];
     /** Authorship details of the commit. */
-    author?: Maybe<GitActor>;
+    associatedPullRequests?: Maybe<PullRequestConnection>;
     /** Check if the committer and the author match. */
-    authoredByCommitter: Scalars["Boolean"];
+    author?: Maybe<GitActor>;
     /** The datetime when this commit was authored. */
-    authoredDate: Scalars["DateTime"];
+    authoredByCommitter: Scalars["Boolean"];
     /**
      * The list of authors for this commit based on the git author and the Co-authored-by
      * message trailer. The git author will always be first.
      */
-    authors: GitActorConnection;
+    authoredDate: Scalars["DateTime"];
     /** Fetches `git blame` information. */
-    blame: Blame;
+    authors: GitActorConnection;
     /**
      * We recommend using the `changedFielsIfAvailable` field instead of
      * `changedFiles`, as `changedFiles` will cause your request to return an error
      * if GitHub is unable to calculate the number of changed files.
      * @deprecated `changedFiles` will be removed. Use `changedFilesIfAvailable` instead. Removal on 2023-01-01 UTC.
      */
-    changedFiles: Scalars["Int"];
+    blame: Blame;
     /**
      * The number of changed files in this commit. If GitHub is unable to calculate
      * the number of changed files (for example due to a timeout), this will return
      * `null`. We recommend using this field instead of `changedFiles`.
      */
-    changedFilesIfAvailable?: Maybe<Scalars["Int"]>;
+    changedFiles: Scalars["Int"];
     /** The check suites associated with a commit. */
-    id: Scalars["ID"];
+    changedFilesIfAvailable?: Maybe<Scalars["Int"]>;
     /** Comments made on the commit. */
     checkSuites?: Maybe<CheckSuiteConnection>;
     /** The HTTP path for this Git object */
@@ -4999,40 +4999,40 @@ export type Discussion = Comment &
   Subscribable &
   Updatable &
   Votable & {
-    __typename?: "Discussion";
-    /** Reason that the conversation was locked. */
-    activeLockReason?: Maybe<LockReason>;
-    /** The comment chosen as this discussion's answer, if any. */
-    answer?: Maybe<DiscussionComment>;
-    /** The time when a user chose this discussion's answer, if answered. */
-    answerChosenAt?: Maybe<Scalars["DateTime"]>;
-    /** The user who chose this discussion's answer, if answered. */
-    answerChosenBy?: Maybe<Actor>;
-    /** The actor who authored the comment. */
     id: Scalars["ID"];
+    /** Reason that the conversation was locked. */
+    __typename?: "Discussion";
+    /** The comment chosen as this discussion's answer, if any. */
+    activeLockReason?: Maybe<LockReason>;
+    /** The time when a user chose this discussion's answer, if answered. */
+    answer?: Maybe<DiscussionComment>;
+    /** The user who chose this discussion's answer, if answered. */
+    answerChosenAt?: Maybe<Scalars["DateTime"]>;
+    /** The actor who authored the comment. */
+    answerChosenBy?: Maybe<Actor>;
     /** Author's association with the subject of the comment. */
     author?: Maybe<Actor>;
     /** The main text of the discussion post. */
-    authorAssociation: CommentAuthorAssociation;
-    /** The body rendered to HTML. */
-    body: Scalars["String"];
-    /** The body rendered to text. */
-    bodyHTML: Scalars["HTML"];
-    /** The category for this discussion. */
-    bodyText: Scalars["String"];
-    /** The replies to the discussion. */
-    category: DiscussionCategory;
-    /** Identifies the date and time when the object was created. */
-    comments: DiscussionCommentConnection;
-    /** Check if this comment was created via an email reply. */
-    createdAt: Scalars["DateTime"];
-    /** Identifies the primary key from the database. */
-    createdViaEmail: Scalars["Boolean"];
-    /** The actor who edited the comment. */
-    databaseId?: Maybe<Scalars["Int"]>;
-    editor?: Maybe<Actor>;
-    /** Check if this comment was edited and includes an edit with the creation data */
     title: Scalars["String"];
+    /** The body rendered to HTML. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body rendered to text. */
+    body: Scalars["String"];
+    /** The category for this discussion. */
+    bodyHTML: Scalars["HTML"];
+    /** The replies to the discussion. */
+    bodyText: Scalars["String"];
+    /** Identifies the date and time when the object was created. */
+    category: DiscussionCategory;
+    /** Check if this comment was created via an email reply. */
+    comments: DiscussionCommentConnection;
+    /** Identifies the primary key from the database. */
+    createdAt: Scalars["DateTime"];
+    /** The actor who edited the comment. */
+    createdViaEmail: Scalars["Boolean"];
+    databaseId?: Maybe<Scalars["Int"]>;
+    /** Check if this comment was edited and includes an edit with the creation data */
+    editor?: Maybe<Actor>;
     /** A list of labels associated with the object. */
     includesCreatedEdit: Scalars["Boolean"];
     /** The moment the editor made the last edit */
@@ -5172,9 +5172,9 @@ export type DiscussionComment = Comment &
   Updatable &
   UpdatableComment &
   Votable & {
-    __typename?: "DiscussionComment";
-    /** The actor who authored the comment. */
     id: Scalars["ID"];
+    /** The actor who authored the comment. */
+    __typename?: "DiscussionComment";
     /** Author's association with the subject of the comment. */
     author?: Maybe<Actor>;
     /** The body as Markdown. */
@@ -5473,9 +5473,9 @@ export type DismissRepositoryVulnerabilityAlertPayload = {
 export type DraftIssue = Node & {
   id: Scalars["ID"];
   /** A list of users to assigned to this draft issue. */
-  __typename?: "DraftIssue";
-  /** The body of the draft issue. */
   title: Scalars["String"];
+  /** The body of the draft issue. */
+  __typename?: "DraftIssue";
   /** The body of the draft issue rendered to HTML. */
   assignees: UserConnection;
   /** The body of the draft issue rendered to text. */
@@ -7749,21 +7749,21 @@ export type Issue = Assignable &
   UniformResourceLocatable &
   Updatable &
   UpdatableComment & {
-    __typename?: "Issue";
-    /** Reason that the conversation was locked. */
-    activeLockReason?: Maybe<LockReason>;
-    /** A list of Users assigned to this object. */
-    assignees: UserConnection;
-    /** The actor who authored the comment. */
-    author?: Maybe<Actor>;
-    /** Author's association with the subject of the comment. */
-    authorAssociation: CommentAuthorAssociation;
-    /** Identifies the body of the issue. */
-    body: Scalars["String"];
-    /** The body rendered to HTML. */
-    bodyHTML: Scalars["HTML"];
-    /** The http path for this issue body */
     id: Scalars["ID"];
+    /** Reason that the conversation was locked. */
+    __typename?: "Issue";
+    /** A list of Users assigned to this object. */
+    activeLockReason?: Maybe<LockReason>;
+    /** The actor who authored the comment. */
+    assignees: UserConnection;
+    /** Author's association with the subject of the comment. */
+    author?: Maybe<Actor>;
+    /** Identifies the body of the issue. */
+    authorAssociation: CommentAuthorAssociation;
+    /** The body rendered to HTML. */
+    body: Scalars["String"];
+    /** The http path for this issue body */
+    bodyHTML: Scalars["HTML"];
     /** Identifies the body of the issue rendered to text. */
     bodyResourcePath: Scalars["URI"];
     /** The http URL for this issue body */
@@ -7794,33 +7794,33 @@ export type Issue = Assignable &
     /** A list of labels associated with the object. */
     labels?: Maybe<LabelConnection>;
     /** The moment the editor made the last edit */
-    lastEditedAt?: Maybe<Scalars["DateTime"]>;
+    title: Scalars["String"];
     /** `true` if the object is locked */
-    locked: Scalars["Boolean"];
+    lastEditedAt?: Maybe<Scalars["DateTime"]>;
     /** Identifies the milestone associated with the issue. */
-    milestone?: Maybe<Milestone>;
+    locked: Scalars["Boolean"];
     /** Identifies the issue number. */
-    number: Scalars["Int"];
+    milestone?: Maybe<Milestone>;
     /** A list of Users that are participating in the Issue conversation. */
-    participants: UserConnection;
+    number: Scalars["Int"];
     /** List of project cards associated with this issue. */
-    projectCards: ProjectCardConnection;
+    participants: UserConnection;
     /** List of project items associated with this issue. */
-    projectItems: ProjectV2ItemConnection;
+    projectCards: ProjectCardConnection;
     /**
      * Find a project by project (beta) number.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    projectNext?: Maybe<ProjectNext>;
+    projectItems: ProjectV2ItemConnection;
     /** List of project (beta) items associated with this issue. */
-    projectNextItems: ProjectNextItemConnection;
+    projectNext?: Maybe<ProjectNext>;
     /** Find a project by number. */
-    projectsNext: ProjectNextConnection;
+    projectNextItems: ProjectNextItemConnection;
     /**
      * A list of projects (beta) under the owner.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    title: Scalars["String"];
+    projectsNext: ProjectNextConnection;
     /** A list of projects under the owner. */
     projectsV2: ProjectV2Connection;
     /** Identifies when the comment was published at. */
@@ -8898,15 +8898,15 @@ export type MarketplaceCategory = Node & {
 
 /** A listing in the GitHub integration marketplace. */
 export type MarketplaceListing = Node & {
-  __typename?: "MarketplaceListing";
-  /** The GitHub App this listing represents. */
-  app?: Maybe<App>;
-  /** URL to the listing owner's company site. */
-  companyUrl?: Maybe<Scalars["URI"]>;
-  /** The HTTP path for configuring access to the listing's integration or OAuth app */
-  configurationResourcePath: Scalars["URI"];
-  /** The HTTP URL for configuring access to the listing's integration or OAuth app */
   id: Scalars["ID"];
+  /** The GitHub App this listing represents. */
+  __typename?: "MarketplaceListing";
+  /** URL to the listing owner's company site. */
+  app?: Maybe<App>;
+  /** The HTTP path for configuring access to the listing's integration or OAuth app */
+  companyUrl?: Maybe<Scalars["URI"]>;
+  /** The HTTP URL for configuring access to the listing's integration or OAuth app */
+  configurationResourcePath: Scalars["URI"];
   /** URL to the listing's documentation. */
   configurationUrl: Scalars["URI"];
   /** The listing's detailed description. */
@@ -8916,29 +8916,29 @@ export type MarketplaceListing = Node & {
   /** The listing's introductory description. */
   extendedDescriptionHTML: Scalars["HTML"];
   /** The listing's introductory description rendered to HTML. */
-  fullDescription: Scalars["String"];
+  name: Scalars["String"];
   /** Does this listing have any plans with a free trial? */
-  fullDescriptionHTML: Scalars["HTML"];
+  fullDescription: Scalars["String"];
   /** Does this listing have a terms of service link? */
-  hasPublishedFreeTrialPlans: Scalars["Boolean"];
+  fullDescriptionHTML: Scalars["HTML"];
   /** Whether the creator of the app is a verified org */
-  hasTermsOfService: Scalars["Boolean"];
+  hasPublishedFreeTrialPlans: Scalars["Boolean"];
   /** A technical description of how this app works with GitHub. */
-  hasVerifiedOwner: Scalars["Boolean"];
+  hasTermsOfService: Scalars["Boolean"];
   /** The listing's technical description rendered to HTML. */
+  hasVerifiedOwner: Scalars["Boolean"];
   howItWorks?: Maybe<Scalars["String"]>;
-  howItWorksHTML: Scalars["HTML"];
   /** URL to install the product to the viewer's account or organization. */
-  installationUrl?: Maybe<Scalars["URI"]>;
+  howItWorksHTML: Scalars["HTML"];
   /** Whether this listing's app has been installed for the current viewer */
-  installedForViewer: Scalars["Boolean"];
+  installationUrl?: Maybe<Scalars["URI"]>;
   /** Whether this listing has been removed from the Marketplace. */
-  isArchived: Scalars["Boolean"];
+  installedForViewer: Scalars["Boolean"];
   /**
    * Whether this listing is still an editable draft that has not been submitted
    * for review and is not publicly visible in the Marketplace.
    */
-  name: Scalars["String"];
+  isArchived: Scalars["Boolean"];
   /** Whether the product this listing represents is available as part of a paid plan. */
   isDraft: Scalars["Boolean"];
   /** Whether this listing has been approved for display in the Marketplace. */
@@ -9080,9 +9080,9 @@ export type MembersCanDeleteReposClearAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "MembersCanDeleteReposClearAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "MembersCanDeleteReposClearAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -9129,9 +9129,9 @@ export type MembersCanDeleteReposDisableAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "MembersCanDeleteReposDisableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "MembersCanDeleteReposDisableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -9178,9 +9178,9 @@ export type MembersCanDeleteReposEnableAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "MembersCanDeleteReposEnableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "MembersCanDeleteReposEnableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -9431,13 +9431,13 @@ export type Milestone = Closable &
   UniformResourceLocatable & {
     id: Scalars["ID"];
     /** `true` if the object is closed (definition of closed may depend on type) */
-    __typename?: "Milestone";
-    /** Identifies the date and time when the object was closed. */
-    closed: Scalars["Boolean"];
-    /** Identifies the date and time when the object was created. */
-    closedAt?: Maybe<Scalars["DateTime"]>;
-    /** Identifies the actor who created the milestone. */
     title: Scalars["String"];
+    /** Identifies the date and time when the object was closed. */
+    __typename?: "Milestone";
+    /** Identifies the date and time when the object was created. */
+    closed: Scalars["Boolean"];
+    /** Identifies the actor who created the milestone. */
+    closedAt?: Maybe<Scalars["DateTime"]>;
     /** Identifies the description of the milestone. */
     createdAt: Scalars["DateTime"];
     /** Identifies the due date of the milestone. */
@@ -11374,11 +11374,11 @@ export enum OrgAddMemberAuditEntryPermission {
 export type OrgBlockUserAuditEntry = AuditEntry &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "OrgBlockUserAuditEntry";
-    /** The action name */
-    action: Scalars["String"];
-    /** The user who initiated the action */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "OrgBlockUserAuditEntry";
+    /** The user who initiated the action */
+    action: Scalars["String"];
     /** The IP address of the actor */
     actor?: Maybe<AuditEntryActor>;
     /** A readable representation of the actor's location */
@@ -11895,9 +11895,9 @@ export type OrgInviteToBusinessAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "OrgInviteToBusinessAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "OrgInviteToBusinessAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -12409,11 +12409,11 @@ export type OrgRestoreMemberMembershipTeamAuditEntryData =
 export type OrgUnblockUserAuditEntry = AuditEntry &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "OrgUnblockUserAuditEntry";
-    /** The action name */
-    action: Scalars["String"];
-    /** The user who initiated the action */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "OrgUnblockUserAuditEntry";
+    /** The user who initiated the action */
+    action: Scalars["String"];
     /** The IP address of the actor */
     actor?: Maybe<AuditEntryActor>;
     /** A readable representation of the actor's location */
@@ -12693,11 +12693,11 @@ export type Organization = Actor &
   RepositoryOwner &
   Sponsorable &
   UniformResourceLocatable & {
-    __typename?: "Organization";
-    /** Determine if this repository owner has any items that can be pinned to their profile. */
-    anyPinnableItems: Scalars["Boolean"];
-    /** Audit log entries of the organization */
     id: Scalars["ID"];
+    /** Determine if this repository owner has any items that can be pinned to their profile. */
+    __typename?: "Organization";
+    /** Audit log entries of the organization */
+    anyPinnableItems: Scalars["Boolean"];
     /** A URL pointing to the organization's public avatar. */
     auditLog: OrganizationAuditEntryConnection;
     /** Identifies the date and time when the object was created. */
@@ -12707,26 +12707,26 @@ export type Organization = Actor &
     /** The organization's public profile description. */
     databaseId?: Maybe<Scalars["Int"]>;
     /** The organization's public profile description rendered to HTML. */
-    description?: Maybe<Scalars["String"]>;
-    /** A list of domains owned by the organization. */
-    descriptionHTML?: Maybe<Scalars["String"]>;
-    /** The organization's public email. */
-    domains?: Maybe<VerifiableDomainConnection>;
-    /** A list of owners of the organization's enterprise account. */
-    email?: Maybe<Scalars["String"]>;
-    /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
-    enterpriseOwners: OrganizationEnterpriseOwnerConnection;
-    /** True if this user/organization has a GitHub Sponsors listing. */
-    estimatedNextSponsorsPayoutInCents: Scalars["Int"];
-    hasSponsorsListing: Scalars["Boolean"];
-    /** The interaction ability settings for this organization. */
-    interactionAbility?: Maybe<RepositoryInteractionAbility>;
-    /** The setting value for whether the organization has an IP allow list enabled. */
-    ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
-    /** The IP addresses that are allowed to access resources owned by the organization. */
-    ipAllowListEntries: IpAllowListEntryConnection;
-    /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
     name?: Maybe<Scalars["String"]>;
+    /** A list of domains owned by the organization. */
+    description?: Maybe<Scalars["String"]>;
+    /** The organization's public email. */
+    descriptionHTML?: Maybe<Scalars["String"]>;
+    /** A list of owners of the organization's enterprise account. */
+    domains?: Maybe<VerifiableDomainConnection>;
+    /** The estimated next GitHub Sponsors payout for this user/organization in cents (USD). */
+    email?: Maybe<Scalars["String"]>;
+    /** True if this user/organization has a GitHub Sponsors listing. */
+    enterpriseOwners: OrganizationEnterpriseOwnerConnection;
+    estimatedNextSponsorsPayoutInCents: Scalars["Int"];
+    /** The interaction ability settings for this organization. */
+    hasSponsorsListing: Scalars["Boolean"];
+    /** The setting value for whether the organization has an IP allow list enabled. */
+    interactionAbility?: Maybe<RepositoryInteractionAbility>;
+    /** The IP addresses that are allowed to access resources owned by the organization. */
+    ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
+    /** The setting value for whether the organization has IP allow list configuration for installed GitHub Apps enabled. */
+    ipAllowListEntries: IpAllowListEntryConnection;
     /** Check if the given account is sponsoring this user/organization. */
     ipAllowListForInstalledAppsEnabledSetting: IpAllowListForInstalledAppsEnabledSettingValue;
     /** True if the viewer is sponsored by this user/organization. */
@@ -14012,9 +14012,9 @@ export type PrivateRepositoryForkingDisableAuditEntry = AuditEntry &
   Node &
   OrganizationAuditEntryData &
   RepositoryAuditEntryData & {
-    __typename?: "PrivateRepositoryForkingDisableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "PrivateRepositoryForkingDisableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -14070,9 +14070,9 @@ export type PrivateRepositoryForkingEnableAuditEntry = AuditEntry &
   Node &
   OrganizationAuditEntryData &
   RepositoryAuditEntryData & {
-    __typename?: "PrivateRepositoryForkingEnableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "PrivateRepositoryForkingEnableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -14467,24 +14467,24 @@ export type ProjectNext = Closable &
      * Returns true if the project is closed.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    __typename?: "ProjectNext";
+    title?: Maybe<Scalars["String"]>;
     /** Identifies the date and time when the object was closed. */
-    closed: Scalars["Boolean"];
+    __typename?: "ProjectNext";
     /**
      * Identifies the date and time when the object was created.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    closedAt?: Maybe<Scalars["DateTime"]>;
+    closed: Scalars["Boolean"];
     /**
      * The actor who originally created the project.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    createdAt: Scalars["DateTime"];
+    closedAt?: Maybe<Scalars["DateTime"]>;
     /**
      * Identifies the primary key from the database.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    title?: Maybe<Scalars["String"]>;
+    createdAt: Scalars["DateTime"];
     /**
      * The project's description.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
@@ -15083,17 +15083,17 @@ export type ProjectV2 = Closable &
   Updatable & {
     id: Scalars["ID"];
     /** Returns true if the project is closed. */
-    __typename?: "ProjectV2";
-    /** Identifies the date and time when the object was closed. */
-    closed: Scalars["Boolean"];
-    /** Identifies the date and time when the object was created. */
-    closedAt?: Maybe<Scalars["DateTime"]>;
-    /** The actor who originally created the project. */
-    createdAt: Scalars["DateTime"];
-    /** Identifies the primary key from the database. */
-    creator?: Maybe<Actor>;
-    /** A field of the project */
     title: Scalars["String"];
+    /** Identifies the date and time when the object was closed. */
+    __typename?: "ProjectV2";
+    /** Identifies the date and time when the object was created. */
+    closed: Scalars["Boolean"];
+    /** The actor who originally created the project. */
+    closedAt?: Maybe<Scalars["DateTime"]>;
+    /** Identifies the primary key from the database. */
+    createdAt: Scalars["DateTime"];
+    /** A field of the project */
+    creator?: Maybe<Actor>;
     /** List of fields and their constraints in the project */
     databaseId?: Maybe<Scalars["Int"]>;
     field?: Maybe<ProjectV2FieldConfiguration>;
@@ -16181,27 +16181,27 @@ export type PullRequest = Assignable &
     /** The body rendered to text. */
     bodyText: Scalars["String"];
     /** Whether or not the pull request is rebaseable. */
-    canBeRebased: Scalars["Boolean"];
-    /** The number of changed files in this pull request. */
-    changedFiles: Scalars["Int"];
-    /** The HTTP path for the checks of this pull request. */
-    checksResourcePath: Scalars["URI"];
-    /** The HTTP URL for the checks of this pull request. */
-    checksUrl: Scalars["URI"];
-    /** `true` if the pull request is closed */
-    closed: Scalars["Boolean"];
-    /** Identifies the date and time when the object was closed. */
-    closedAt?: Maybe<Scalars["DateTime"]>;
-    /** List of issues that were may be closed by this pull request */
-    closingIssuesReferences?: Maybe<IssueConnection>;
-    /** A list of comments associated with the pull request. */
-    comments: IssueCommentConnection;
-    /** A list of commits present in this pull request's head branch not present in the base branch. */
-    commits: PullRequestCommitConnection;
-    /** Identifies the date and time when the object was created. */
-    createdAt: Scalars["DateTime"];
-    /** Check if this comment was created via an email reply. */
     id: Scalars["ID"];
+    /** The number of changed files in this pull request. */
+    canBeRebased: Scalars["Boolean"];
+    /** The HTTP path for the checks of this pull request. */
+    changedFiles: Scalars["Int"];
+    /** The HTTP URL for the checks of this pull request. */
+    checksResourcePath: Scalars["URI"];
+    /** `true` if the pull request is closed */
+    checksUrl: Scalars["URI"];
+    /** Identifies the date and time when the object was closed. */
+    closed: Scalars["Boolean"];
+    /** List of issues that were may be closed by this pull request */
+    closedAt?: Maybe<Scalars["DateTime"]>;
+    /** A list of comments associated with the pull request. */
+    closingIssuesReferences?: Maybe<IssueConnection>;
+    /** A list of commits present in this pull request's head branch not present in the base branch. */
+    comments: IssueCommentConnection;
+    /** Identifies the date and time when the object was created. */
+    commits: PullRequestCommitConnection;
+    /** Check if this comment was created via an email reply. */
+    createdAt: Scalars["DateTime"];
     /** Identifies the primary key from the database. */
     createdViaEmail: Scalars["Boolean"];
     /** The number of deletions in this pull request. */
@@ -16273,36 +16273,36 @@ export type PullRequest = Assignable &
     /** List of project cards associated with this pull request. */
     projectCards: ProjectCardConnection;
     /** List of project items associated with this pull request. */
-    projectItems: ProjectV2ItemConnection;
+    title: Scalars["String"];
     /**
      * Find a project by project (beta) number.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    projectNext?: Maybe<ProjectNext>;
+    projectItems: ProjectV2ItemConnection;
     /**
      * List of project (beta) items associated with this pull request.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    projectNextItems: ProjectNextItemConnection;
+    projectNext?: Maybe<ProjectNext>;
     /** Find a project by number. */
-    projectsNext: ProjectNextConnection;
+    projectNextItems: ProjectNextItemConnection;
     /**
      * A list of projects (beta) under the owner.
      * @deprecated The `ProjectNext` API is deprecated in favour of the more capable `ProjectV2` API. Follow the ProjectV2 guide at https://github.blog/changelog/2022-06-23-the-new-github-issues-june-23rd-update/, to find a suitable replacement. Removal on 2022-10-01 UTC.
      */
-    projectsV2: ProjectV2Connection;
+    projectsNext: ProjectNextConnection;
     /** A list of projects under the owner. */
-    projectV2?: Maybe<ProjectV2>;
+    projectsV2: ProjectV2Connection;
     /** Identifies when the comment was published at. */
-    publishedAt?: Maybe<Scalars["DateTime"]>;
+    projectV2?: Maybe<ProjectV2>;
     /** A list of reactions grouped by content left on the subject. */
-    reactionGroups?: Maybe<Array<ReactionGroup>>;
+    publishedAt?: Maybe<Scalars["DateTime"]>;
     /** A list of Reactions left on the Issue. */
-    reactions: ReactionConnection;
+    reactionGroups?: Maybe<Array<ReactionGroup>>;
     /** The repository associated with this node. */
-    repository: Repository;
+    reactions: ReactionConnection;
     /** The HTTP path for this pull request. */
-    title: Scalars["String"];
+    repository: Repository;
     /** The HTTP path for reverting this pull request. */
     resourcePath: Scalars["URI"];
     /** The HTTP URL for reverting this pull request. */
@@ -16758,11 +16758,11 @@ export type PullRequestReview = Comment &
   RepositoryNode &
   Updatable &
   UpdatableComment & {
-    __typename?: "PullRequestReview";
-    /** The actor who authored the comment. */
-    author?: Maybe<Actor>;
-    /** Author's association with the subject of the comment. */
     id: Scalars["ID"];
+    /** The actor who authored the comment. */
+    __typename?: "PullRequestReview";
+    /** Author's association with the subject of the comment. */
+    author?: Maybe<Actor>;
     /** Indicates whether the author of this review has push access to the repository. */
     authorAssociation: CommentAuthorAssociation;
     /** Identifies the pull request review body. */
@@ -16867,11 +16867,11 @@ export type PullRequestReviewComment = Comment &
   RepositoryNode &
   Updatable &
   UpdatableComment & {
-    __typename?: "PullRequestReviewComment";
-    /** The actor who authored the comment. */
-    author?: Maybe<Actor>;
-    /** Author's association with the subject of the comment. */
     id: Scalars["ID"];
+    /** The actor who authored the comment. */
+    __typename?: "PullRequestReviewComment";
+    /** Author's association with the subject of the comment. */
+    author?: Maybe<Actor>;
     /** The comment body of this review comment. */
     authorAssociation: CommentAuthorAssociation;
     /** The body rendered to HTML. */
@@ -19753,27 +19753,27 @@ export type Repository = Node &
     /** The Ref associated with the repository's default branch. */
     defaultBranchRef?: Maybe<Ref>;
     /** Whether or not branches are automatically deleted when merged in this repository. */
-    deleteBranchOnMerge: Scalars["Boolean"];
-    /** A list of dependency manifests contained in the repository */
-    dependencyGraphManifests?: Maybe<DependencyGraphManifestConnection>;
-    /** A list of deploy keys that are on this repository. */
-    deployKeys: DeployKeyConnection;
-    /** Deployments associated with the repository */
-    deployments: DeploymentConnection;
-    /** The description of the repository. */
-    description?: Maybe<Scalars["String"]>;
-    /** The description of the repository rendered to HTML. */
-    descriptionHTML: Scalars["HTML"];
-    /** Returns a single discussion from the current repository by number. */
-    discussion?: Maybe<Discussion>;
-    /** A list of discussion categories that are available in the repository. */
-    discussionCategories: DiscussionCategoryConnection;
-    /** A discussion category by slug. */
-    discussionCategory?: Maybe<DiscussionCategory>;
-    /** A list of discussions that have been opened in the repository. */
-    discussions: DiscussionConnection;
-    /** The number of kilobytes this repository occupies on disk. */
     id: Scalars["ID"];
+    /** A list of dependency manifests contained in the repository */
+    deleteBranchOnMerge: Scalars["Boolean"];
+    /** A list of deploy keys that are on this repository. */
+    dependencyGraphManifests?: Maybe<DependencyGraphManifestConnection>;
+    /** Deployments associated with the repository */
+    deployKeys: DeployKeyConnection;
+    /** The description of the repository. */
+    deployments: DeploymentConnection;
+    /** The description of the repository rendered to HTML. */
+    description?: Maybe<Scalars["String"]>;
+    /** Returns a single discussion from the current repository by number. */
+    descriptionHTML: Scalars["HTML"];
+    /** A list of discussion categories that are available in the repository. */
+    discussion?: Maybe<Discussion>;
+    /** A discussion category by slug. */
+    discussionCategories: DiscussionCategoryConnection;
+    /** A list of discussions that have been opened in the repository. */
+    discussionCategory?: Maybe<DiscussionCategory>;
+    /** The number of kilobytes this repository occupies on disk. */
+    discussions: DiscussionConnection;
     /** Returns a single active environment from the current repository by name. */
     diskUsage?: Maybe<Scalars["Int"]>;
     /** A list of environments that are in this repository. */
@@ -19814,27 +19814,27 @@ export type Repository = Node &
     /** Identifies if the repository is a mirror. */
     isMirror: Scalars["Boolean"];
     /** Identifies if the repository is private or internal. */
-    isPrivate: Scalars["Boolean"];
-    /** Returns true if this repository has a security policy */
-    isSecurityPolicyEnabled?: Maybe<Scalars["Boolean"]>;
-    /** Identifies if the repository is a template that can be used to generate new repositories. */
-    issue?: Maybe<Issue>;
-    /** Is this repository a user configuration repository? */
-    issueOrPullRequest?: Maybe<IssueOrPullRequest>;
-    /** Returns a single issue from the current repository by number. */
-    issues: IssueConnection;
-    /** Returns a single issue-like object from the current repository by number. */
-    issueTemplates?: Maybe<Array<IssueTemplate>>;
-    /** Returns a list of issue templates associated to the repository */
-    isTemplate: Scalars["Boolean"];
-    /** A list of issues that have been opened in the repository. */
-    isUserConfigurationRepository: Scalars["Boolean"];
-    /** Returns a single label by name */
-    label?: Maybe<Label>;
-    /** A list of labels associated with the repository. */
-    labels?: Maybe<LabelConnection>;
-    /** A list containing a breakdown of the language composition of the repository. */
     name: Scalars["String"];
+    /** Returns true if this repository has a security policy */
+    isPrivate: Scalars["Boolean"];
+    /** Identifies if the repository is a template that can be used to generate new repositories. */
+    isSecurityPolicyEnabled?: Maybe<Scalars["Boolean"]>;
+    /** Is this repository a user configuration repository? */
+    issue?: Maybe<Issue>;
+    /** Returns a single issue from the current repository by number. */
+    issueOrPullRequest?: Maybe<IssueOrPullRequest>;
+    /** Returns a single issue-like object from the current repository by number. */
+    issues: IssueConnection;
+    /** Returns a list of issue templates associated to the repository */
+    issueTemplates?: Maybe<Array<IssueTemplate>>;
+    /** A list of issues that have been opened in the repository. */
+    isTemplate: Scalars["Boolean"];
+    /** Returns a single label by name */
+    isUserConfigurationRepository: Scalars["Boolean"];
+    /** A list of labels associated with the repository. */
+    label?: Maybe<Label>;
+    /** A list containing a breakdown of the language composition of the repository. */
+    labels?: Maybe<LabelConnection>;
     /** Get the latest release for the repository if one exists. */
     languages?: Maybe<LanguageConnection>;
     /** The license associated with the repository */
@@ -20528,21 +20528,21 @@ export type RepositoryEdge = {
 /** A subset of repository info. */
 export type RepositoryInfo = {
   /** Identifies the date and time when the object was created. */
-  createdAt: Scalars["DateTime"];
-  /** The description of the repository. */
-  description?: Maybe<Scalars["String"]>;
-  /** The description of the repository rendered to HTML. */
-  descriptionHTML: Scalars["HTML"];
-  /** Returns how many forks there are of this repository in the whole network. */
-  forkCount: Scalars["Int"];
-  /** Indicates if the repository has issues feature enabled. */
-  hasIssuesEnabled: Scalars["Boolean"];
-  /** Indicates if the repository has the Projects feature enabled. */
-  hasProjectsEnabled: Scalars["Boolean"];
-  /** Indicates if the repository has wiki feature enabled. */
-  hasWikiEnabled: Scalars["Boolean"];
-  /** The repository's URL. */
   name: Scalars["String"];
+  /** The description of the repository. */
+  createdAt: Scalars["DateTime"];
+  /** The description of the repository rendered to HTML. */
+  description?: Maybe<Scalars["String"]>;
+  /** Returns how many forks there are of this repository in the whole network. */
+  descriptionHTML: Scalars["HTML"];
+  /** Indicates if the repository has issues feature enabled. */
+  forkCount: Scalars["Int"];
+  /** Indicates if the repository has the Projects feature enabled. */
+  hasIssuesEnabled: Scalars["Boolean"];
+  /** Indicates if the repository has wiki feature enabled. */
+  hasProjectsEnabled: Scalars["Boolean"];
+  /** The repository's URL. */
+  hasWikiEnabled: Scalars["Boolean"];
   /** Indicates if the repository is unmaintained. */
   homepageUrl?: Maybe<Scalars["URI"]>;
   /** Identifies if the repository is a fork. */
@@ -20919,9 +20919,9 @@ export type RepositoryVisibilityChangeDisableAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "RepositoryVisibilityChangeDisableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "RepositoryVisibilityChangeDisableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -20968,9 +20968,9 @@ export type RepositoryVisibilityChangeEnableAuditEntry = AuditEntry &
   EnterpriseAuditEntryData &
   Node &
   OrganizationAuditEntryData & {
-    __typename?: "RepositoryVisibilityChangeEnableAuditEntry";
-    /** The action name */
     id: Scalars["ID"];
+    /** The action name */
+    __typename?: "RepositoryVisibilityChangeEnableAuditEntry";
     /** The user who initiated the action */
     action: Scalars["String"];
     /** The IP address of the actor */
@@ -22983,27 +22983,27 @@ export type Tag = GitObject &
 export type Team = MemberStatusable &
   Node &
   Subscribable & {
-    __typename?: "Team";
-    /** A list of teams that are ancestors of this team. */
-    ancestors: TeamConnection;
-    /** A URL pointing to the team's avatar. */
-    avatarUrl?: Maybe<Scalars["URI"]>;
-    /** List of child teams belonging to this team */
     id: Scalars["ID"];
-    /** The slug corresponding to the organization and team. */
-    childTeams: TeamConnection;
-    /** Identifies the date and time when the object was created. */
-    combinedSlug: Scalars["String"];
-    /** Identifies the primary key from the database. */
-    createdAt: Scalars["DateTime"];
-    /** The description of the team. */
-    databaseId?: Maybe<Scalars["Int"]>;
-    /** Find a team discussion by its number. */
-    description?: Maybe<Scalars["String"]>;
-    /** A list of team discussions. */
-    discussion?: Maybe<TeamDiscussion>;
-    /** The HTTP path for team discussions */
+    /** A list of teams that are ancestors of this team. */
     name: Scalars["String"];
+    /** A URL pointing to the team's avatar. */
+    __typename?: "Team";
+    /** List of child teams belonging to this team */
+    ancestors: TeamConnection;
+    /** The slug corresponding to the organization and team. */
+    avatarUrl?: Maybe<Scalars["URI"]>;
+    /** Identifies the date and time when the object was created. */
+    childTeams: TeamConnection;
+    /** Identifies the primary key from the database. */
+    combinedSlug: Scalars["String"];
+    /** The description of the team. */
+    createdAt: Scalars["DateTime"];
+    /** Find a team discussion by its number. */
+    databaseId?: Maybe<Scalars["Int"]>;
+    /** A list of team discussions. */
+    description?: Maybe<Scalars["String"]>;
+    /** The HTTP path for team discussions */
+    discussion?: Maybe<TeamDiscussion>;
     /** The HTTP URL for team discussions */
     discussions: TeamDiscussionConnection;
     /** The HTTP path for editing this team */
@@ -23363,34 +23363,34 @@ export type TeamDiscussion = Comment &
   UniformResourceLocatable &
   Updatable &
   UpdatableComment & {
-    __typename?: "TeamDiscussion";
-    /** The actor who authored the comment. */
-    author?: Maybe<Actor>;
-    /** Author's association with the discussion's team. */
-    authorAssociation: CommentAuthorAssociation;
-    /** The body as Markdown. */
     id: Scalars["ID"];
+    /** The actor who authored the comment. */
+    __typename?: "TeamDiscussion";
+    /** Author's association with the discussion's team. */
+    author?: Maybe<Actor>;
+    /** The body as Markdown. */
+    authorAssociation: CommentAuthorAssociation;
     /** The body rendered to HTML. */
-    body: Scalars["String"];
-    /** The body rendered to text. */
-    bodyHTML: Scalars["HTML"];
-    /** Identifies the discussion body hash. */
-    bodyText: Scalars["String"];
-    /** A list of comments on this discussion. */
-    bodyVersion: Scalars["String"];
-    /** The HTTP path for discussion comments */
-    comments: TeamDiscussionCommentConnection;
-    /** The HTTP URL for discussion comments */
-    commentsResourcePath: Scalars["URI"];
-    /** Identifies the date and time when the object was created. */
-    commentsUrl: Scalars["URI"];
-    /** Check if this comment was created via an email reply. */
-    createdAt: Scalars["DateTime"];
-    /** Identifies the primary key from the database. */
-    createdViaEmail: Scalars["Boolean"];
-    /** The actor who edited the comment. */
-    databaseId?: Maybe<Scalars["Int"]>;
     title: Scalars["String"];
+    /** The body rendered to text. */
+    body: Scalars["String"];
+    /** Identifies the discussion body hash. */
+    bodyHTML: Scalars["HTML"];
+    /** A list of comments on this discussion. */
+    bodyText: Scalars["String"];
+    /** The HTTP path for discussion comments */
+    bodyVersion: Scalars["String"];
+    /** The HTTP URL for discussion comments */
+    comments: TeamDiscussionCommentConnection;
+    /** Identifies the date and time when the object was created. */
+    commentsResourcePath: Scalars["URI"];
+    /** Check if this comment was created via an email reply. */
+    commentsUrl: Scalars["URI"];
+    /** Identifies the primary key from the database. */
+    createdAt: Scalars["DateTime"];
+    /** The actor who edited the comment. */
+    createdViaEmail: Scalars["Boolean"];
+    databaseId?: Maybe<Scalars["Int"]>;
     /** Check if this comment was edited and includes an edit with the creation data */
     editor?: Maybe<Actor>;
     /** Whether or not the discussion is pinned. */
@@ -23473,9 +23473,9 @@ export type TeamDiscussionComment = Comment &
   UniformResourceLocatable &
   Updatable &
   UpdatableComment & {
-    __typename?: "TeamDiscussionComment";
-    /** The actor who authored the comment. */
     id: Scalars["ID"];
+    /** The actor who authored the comment. */
+    __typename?: "TeamDiscussionComment";
     /** Author's association with the comment's team. */
     author?: Maybe<Actor>;
     /** The body as Markdown. */
@@ -25836,27 +25836,27 @@ export type User = Actor &
   RepositoryOwner &
   Sponsorable &
   UniformResourceLocatable & {
-    __typename?: "User";
-    /** Determine if this repository owner has any items that can be pinned to their profile. */
-    anyPinnableItems: Scalars["Boolean"];
-    /** A URL pointing to the user's public avatar. */
-    avatarUrl: Scalars["URI"];
-    /** The user's public profile bio. */
-    bio?: Maybe<Scalars["String"]>;
-    /** The user's public profile bio as HTML. */
-    bioHTML: Scalars["HTML"];
-    /** Could this user receive email notifications, if the organization had notification restrictions enabled? */
-    canReceiveOrganizationEmailsWhenNotificationsRestricted: Scalars["Boolean"];
-    /** A list of commit comments made by this user. */
-    commitComments: CommitCommentConnection;
-    /** The user's public profile company. */
-    company?: Maybe<Scalars["String"]>;
-    /** The user's public profile company as HTML. */
-    companyHTML: Scalars["HTML"];
-    /** The collection of contributions this user has made to different repositories. */
-    contributionsCollection: ContributionsCollection;
-    /** Identifies the date and time when the object was created. */
     id: Scalars["ID"];
+    /** Determine if this repository owner has any items that can be pinned to their profile. */
+    __typename?: "User";
+    /** A URL pointing to the user's public avatar. */
+    anyPinnableItems: Scalars["Boolean"];
+    /** The user's public profile bio. */
+    avatarUrl: Scalars["URI"];
+    /** The user's public profile bio as HTML. */
+    bio?: Maybe<Scalars["String"]>;
+    /** Could this user receive email notifications, if the organization had notification restrictions enabled? */
+    bioHTML: Scalars["HTML"];
+    /** A list of commit comments made by this user. */
+    canReceiveOrganizationEmailsWhenNotificationsRestricted: Scalars["Boolean"];
+    /** The user's public profile company. */
+    commitComments: CommitCommentConnection;
+    /** The user's public profile company as HTML. */
+    company?: Maybe<Scalars["String"]>;
+    /** The collection of contributions this user has made to different repositories. */
+    companyHTML: Scalars["HTML"];
+    /** Identifies the date and time when the object was created. */
+    contributionsCollection: ContributionsCollection;
     /** Identifies the primary key from the database. */
     createdAt: Scalars["DateTime"];
     /** The user's publicly visible profile email. */
@@ -25874,26 +25874,26 @@ export type User = Actor &
     /** A list of the Gists the user has created. */
     gistComments: GistCommentConnection;
     /** True if this user/organization has a GitHub Sponsors listing. */
-    gists: GistConnection;
-    /** The hovercard information for this user in a given context */
-    hasSponsorsListing: Scalars["Boolean"];
-    hovercard: Hovercard;
-    /** The interaction ability settings for this user. */
-    interactionAbility?: Maybe<RepositoryInteractionAbility>;
-    /** Whether or not this user is a participant in the GitHub Security Bug Bounty. */
-    isBountyHunter: Scalars["Boolean"];
-    /** Whether or not this user is a participant in the GitHub Campus Experts Program. */
-    isCampusExpert: Scalars["Boolean"];
-    /** Whether or not this user is a GitHub Developer Program member. */
-    isDeveloperProgramMember: Scalars["Boolean"];
-    /** Whether or not this user is a GitHub employee. */
-    isEmployee: Scalars["Boolean"];
-    /** Whether or not this user is following the viewer. Inverse of viewer_is_following */
-    isFollowingViewer: Scalars["Boolean"];
-    /** Whether or not this user is a member of the GitHub Stars Program. */
-    isGitHubStar: Scalars["Boolean"];
-    /** Whether or not the user has marked themselves as for hire. */
     name?: Maybe<Scalars["String"]>;
+    /** The hovercard information for this user in a given context */
+    gists: GistConnection;
+    hasSponsorsListing: Scalars["Boolean"];
+    /** The interaction ability settings for this user. */
+    hovercard: Hovercard;
+    /** Whether or not this user is a participant in the GitHub Security Bug Bounty. */
+    interactionAbility?: Maybe<RepositoryInteractionAbility>;
+    /** Whether or not this user is a participant in the GitHub Campus Experts Program. */
+    isBountyHunter: Scalars["Boolean"];
+    /** Whether or not this user is a GitHub Developer Program member. */
+    isCampusExpert: Scalars["Boolean"];
+    /** Whether or not this user is a GitHub employee. */
+    isDeveloperProgramMember: Scalars["Boolean"];
+    /** Whether or not this user is following the viewer. Inverse of viewer_is_following */
+    isEmployee: Scalars["Boolean"];
+    /** Whether or not this user is a member of the GitHub Stars Program. */
+    isFollowingViewer: Scalars["Boolean"];
+    /** Whether or not the user has marked themselves as for hire. */
+    isGitHubStar: Scalars["Boolean"];
     /** Whether or not this user is a site administrator. */
     isHireable: Scalars["Boolean"];
     /** Check if the given account is sponsoring this user/organization. */

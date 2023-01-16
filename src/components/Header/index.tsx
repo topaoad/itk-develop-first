@@ -4,6 +4,8 @@ import { DarkButton } from "src/components/PageContainer/Darkbutton";
 import { DrawerMenu } from "../PageContainer/DrawerMenu";
 import { NAV_LINKS } from "./headerLinks";
 
+
+
 export function Header() {
   return (
     <header className="py-5 text-lg leading-6 font-bold">
@@ -17,8 +19,8 @@ export function Header() {
         {/* スマホ時はハンバーガーに */}
         <div className="flex ml-auto pc-menu">
           {/* navigationをmapで表示 */}
-          {NAV_LINKS.map((link) => (
-            <Link key={link.label} href={`${link.href}`}>
+          {NAV_LINKS.map((link,i) => (
+            <Link key={i} href={`${link.href}`}>
               <a className="mr-4">{link.label}</a>
             </Link>
           ))}

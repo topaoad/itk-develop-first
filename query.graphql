@@ -1,31 +1,31 @@
 # apiルートで使用するクエリーをcodegen用に抜き出しています。
 query UseGitHubInfo {
-    user(login: "topaoad") {
-      name
-      url
-      repositories(last: 5, orderBy: {field: UPDATED_AT, direction: ASC}) {
-        totalCount
-        nodes {
-          name
-          description
-          createdAt
-          updatedAt
-          url
-          forkCount
-          stargazerCount
-          languages(orderBy: {field: SIZE, direction: DESC}, last: 10) {
-            totalCount
-            totalSize
-            edges {
-              node {
-                id
-                name
-                color
-              }
-              size
+  user(login: "topaoad") {
+    name
+    url
+    repositories(last: 5, orderBy: { field: UPDATED_AT, direction: ASC }) {
+      totalCount
+      nodes {
+        name
+        description
+        createdAt
+        updatedAt
+        url
+        forkCount
+        stargazerCount
+        languages(orderBy: { field: SIZE, direction: DESC }, last: 10) {
+          totalCount
+          totalSize
+          edges {
+            node {
+              id
+              name
+              color
             }
+            size
           }
         }
       }
     }
   }
+}

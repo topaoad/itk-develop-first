@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // idをstringからnumberに変換するための式。undefined対策こみ。
   // offsetの開始位置設定用
   if (id) {
-    castId = +id;
+    castId = Number(id);
   }
   const data = await client.get({
     endpoint: "mainblog",

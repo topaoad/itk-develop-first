@@ -20,4 +20,3 @@ const Contact: NextPage = () => {
 };
 
 export default Contact;
-

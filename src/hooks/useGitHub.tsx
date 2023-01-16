@@ -11,7 +11,6 @@ export const useGitHub = () => {
 
   const { data, error } = useSWR("/api/github", fetcher);
 
-
   // こちらはGraphQLで取得したデータ。こちらのdataは現時点でany
   const { data: dataql, error: errprql } = useSWR<UseGitHubInfoQuery, boolean>(
     "/api/githubgraphql",

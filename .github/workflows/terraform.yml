@@ -42,13 +42,16 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform'
+name: 'CD/CIテスト'
 
 on:
   push:
+    # push イベントを利用してもプルリクエストのマージ時にワークフローの実行が可能です
     branches: [ "main" ]
+    # branches: [ "develop" ]
   pull_request:
 
+# このWorkflowにおける secrets.GITHUB_TOKEN リポジトリに対する権限設定（読み取りのみとする）
 permissions:
   contents: read
 

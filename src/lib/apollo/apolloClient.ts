@@ -7,8 +7,6 @@ export const client = new ApolloClient({
   // uri: "http://localhost:3000/api/githubgraphql",
 });
 
-
-
 // gtihubgrapqlのエンドポイントに対してApolloClientのインスタンスを作成する
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),

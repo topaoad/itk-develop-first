@@ -14,8 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./",  
+    "baseUrl": "./",
+    "jsx": "react-jsx"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/*.tsx","src/components/PageContainer/PortFolio.tsx", "src/components/PageContainer/FormList.tsx", "src/lib/miscrocms/client.ts", "src/pages/mainblog/[id].tsx", "src/components/PageContainer/BlogArchive.tsx", "src/pages/index.tsx", "src/components/Pagenation.tsx", "src/components/PageContainer/GitHub/index.ts", "src/components/PageContainer/GitHub/index.tsx","src/components/Header/index.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

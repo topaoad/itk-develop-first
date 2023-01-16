@@ -26,6 +26,7 @@ export const FormList = () => {
     // event.preventDefault();これがあるとフォームのリセットがされない
 
     const res = await fetch("/api/send", {
+      // JSON.stringify() メソッドは、ある JavaScript のオブジェクトや値を JSON 文字列に変換します。
       body: JSON.stringify({
         name: event.target.name.value,
         email: event.target.email.value,
@@ -52,7 +53,18 @@ export const FormList = () => {
           "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY,
         } as HeadersInit | undefined,
         method: "POST",
-      });
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((post) => {
+          // console.log("送信成功です！"); //undefined
+        })
+        //エラーの場合の処理（404エラーなどの場合はエラーとして捕捉されない）
+        .catch((error) => {
+          // console.log("Error 発生: " + error);
+        });
+
       form.reset();
     } catch (error) {
       alert(JSON.stringify(error));

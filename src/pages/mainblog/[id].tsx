@@ -19,7 +19,6 @@ export type PropsDetail = {
 
 // export default function BlogId({ blog }: PropsDetail) {
 const BlogId: NextPage<PropsDetail> = ({ blog }: PropsDetail) => {
-
   const EyeCatch = useCallback((): JSX.Element | null => {
     if (blog.eye_catch) {
       return (

@@ -28,8 +28,8 @@ export const GitColor = (props: gitLanguageProps): ReactJSXElement => {
       break;
 
     default:
-     githubColorItem = "github-coloritem--other";
+      githubColorItem = "github-coloritem--other";
   }
 
-    return <div className={`github-coloritem mr-2 ${githubColorItem}`}></div>;
+  return <div className={`github-coloritem mr-2 ${githubColorItem}`}></div>;
 };

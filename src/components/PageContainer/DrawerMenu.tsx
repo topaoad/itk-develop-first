@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NAV_LINKS } from "../Header/headerLinks";
 
 export const DrawerMenu = () => {
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState<boolean>(false);
 
   const title = opened ? "Close navigation" : "Open navigation";
 
@@ -34,7 +34,7 @@ export const DrawerMenu = () => {
         </div>
       </Drawer>
       {/* スマホ用ドロワー */}
-      <Burger opened={opened} onClick={() => setOpened(true)} title={title} />
+      <Burger opened={opened} onClick={() => setOpened((prevValue) => !prevValue)} title={title} />
       {/* <Group position="center">
         <Button onClick={() => setOpened(true)}>Open Drawer</Button>
       </Group> */}

@@ -10,7 +10,6 @@ export function Twitter() {
   const usersObject: twitterUser = data?.user;
   const tweetsArray: Array<twitterTweets> = data?.tweets;
 
-
   if (isLoading) {
     return (
       <div className="mmd:mt-20 mt-30 m-auto">
