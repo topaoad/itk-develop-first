@@ -2,7 +2,7 @@ name: EC2 連携テスト
 on:
   workflow_dispatch:
   push:
-     branches: [main]
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,6 +27,9 @@ jobs:
         # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
         aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
         # デプロイのための作業を記述
+        echo "${{ secrets.GIT_PRIVATE_KEY }}" > private_key
+        
+
     # 追加したIPをセキュリティグループから除外する（セキュリティグループにあけた穴をふさぐ）
     - name: Revoke security group
       if: always()
