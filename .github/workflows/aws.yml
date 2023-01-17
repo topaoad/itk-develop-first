@@ -10,41 +10,39 @@ jobs:
       id-token: write # AWSとのやり取りでIDの取得等に必要
       contents: read # リポジトリの取得に必要
     steps:
-    # IPの取得
-    - name: Public IP
-      id: ip
-      uses: haythem/public-ip@v1.2
-    # AWS認証
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-region: ap-northeast-1
-        role-to-assume: ${{ secrets.EC2_ROLE_ARN }}
-        role-session-name: github-actions-deploy-${{ github.event.repository.name }}-${{ github.run_number }}
-    # EC2にDeploy
-    - name: Deploy to EC2
-    # ssh接続のための接続
-      env:
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      # run: |
-      #   mkdir -p ~/.ssh
-      #   echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-      #   chmod 700 ~/.ssh/id_rsa
-      #   eval $(ssh-agent -s)
-      #   ssh-add ~/.ssh/id_rsa
-      #   ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-      #   yarn install
-    # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
-      run: |
-        aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
-    # cd /home && git fetch --prune && git checkout main && git pull origin main
-        cd /home && ls
-   
-    # 追加したIPをセキュリティグループから除外する（セキュリティグループにあけた穴をふさぐ）
-    - name: Revoke security group
-      if: always()
-      run: |
-        aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+      # IPの取得
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+      # AWS認証
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: ${{ secrets.EC2_ROLE_ARN }}
+          role-session-name: github-actions-deploy-${{ github.event.repository.name }}-${{ github.run_number }}
+      # EC2にDeploy
+      - name: Deploy to EC2
+        # ssh接続のための接続
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        # run: |
+        #   mkdir -p ~/.ssh
+        #   echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+        #   chmod 700 ~/.ssh/id_rsa
+        #   eval $(ssh-agent -s)
+        #   ssh-add ~/.ssh/id_rsa
+        #   ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+        #   yarn install
+        # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
+        run: |
+          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+          echo "${{ secrets.GIT_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+          ssh -oStrictHostKeyChecking=no ${{ secrets.EC2_USER_NAME }}@${{ secrets.EC2_HOST_NAME }} -i private_key "cd /home && git fetch --prune && git checkout main && git pull origin main"
 
-      #  # echo "${{ secrets.GIT_PRIVATE_KEY }}" > private_key
-      # ssh -oStrictHostKeyChecking=no ${{ secrets.EC2_USER_NAME }}@${{ secrets.EC2_HOST_NAME }} -i private_key "cd /home && git fetch --prune && git checkout main && git pull origin main"
+      # 追加したIPをセキュリティグループから除外する（セキュリティグループにあけた穴をふさぐ）
+      - name: Revoke security group
+        if: always()
+        run: |
+          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
