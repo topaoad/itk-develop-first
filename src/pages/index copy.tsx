@@ -32,7 +32,7 @@ const Home: NextPage<BlogPortfolioProps> = ({
   // sessionの中身
   console.log(session);
   // if文ではなく三項演算子のほうがよいかも。
-  // if (session) {
+  if (session) {
     return (
       <div className={styles.container}>
         <Head>
@@ -40,7 +40,7 @@ const Home: NextPage<BlogPortfolioProps> = ({
         </Head>
 
         <Layout>
-          {/* <button onClick={() => signOut()}>Sign out</button> */}
+          <button onClick={() => signOut()}>Sign out</button>
           <MainView />
           <BlogArchive blog={blog} />
           <div className="mt-6 ">
@@ -57,13 +57,13 @@ const Home: NextPage<BlogPortfolioProps> = ({
         </Layout>
       </div>
     );
-  // }
-  // return (
-  //   <div className={styles.container}>
-  //     ログイン前だよ
-  //     <button onClick={() => signIn()}>Sign in</button>
-  //   </div>
-  // );
+  }
+  return (
+    <div className={styles.container}>
+      ログイン前だよ
+      <button onClick={() => signIn()}>Sign in</button>
+    </div>
+  );
 };
 
 export default Home;
