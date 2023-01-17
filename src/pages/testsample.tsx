@@ -11,7 +11,8 @@ import {
   Heading,
   Image,
   Input,
-  Text,yarn dev
+  Text,
+
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -32,7 +33,7 @@ export default function Signup() {
   const currentUser = useUser();
   const [isProcessingSignup, setIsProcessingSignup] = useState(false);
   const router = useRouter();
-  
+
   const signup = async (email: string, password: string) => {
     try {
       setIsProcessingSignup(true);

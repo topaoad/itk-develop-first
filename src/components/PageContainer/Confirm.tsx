@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
-
 //react-hook-form
-import { useFormContext, SubmitHandler } from "react-hook-form"; // SubmitHandlerは、submitイベントに関する関数の型宣言に使う
+import { SubmitHandler, useFormContext } from "react-hook-form"; // SubmitHandlerは、submitイベントに関する関数の型宣言に使う
 
+
+type ContactType = {
+  name: string
+}
 
 const Confirm = () => {
   const router = useRouter();
@@ -29,7 +31,7 @@ const Confirm = () => {
 
   return (
     <div>
-    eee
+      eee
     </div>
 
   );
