@@ -1,4 +1,4 @@
-name: CI/CD on Push
+name: EC2 連携テスト
 on:
   workflow_dispatch:
   push:
