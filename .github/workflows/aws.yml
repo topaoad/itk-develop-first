@@ -27,13 +27,11 @@ jobs:
     runs-on: ubuntu-latest
 
 # ジョブのステップ
-  steps:
-# IP取得ライブラリをインストール
-    - name: Public IP Install
-      id: ip
+steps:
+    # IP取得ライブラリをインストール
+- name: Public IP
+id: ip
       uses: haythem/public-ip@v1.2
 
-  # BranchをCheckout
-    - name: Checkout
-      uses: actions/checkout@v2
+
 
