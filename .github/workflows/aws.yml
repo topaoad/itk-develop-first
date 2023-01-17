@@ -26,14 +26,14 @@ jobs:
     # ssh接続のための接続
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 700 ~/.ssh/id_rsa
-        eval $(ssh-agent -s)
-        ssh-add ~/.ssh/id_rsa
-        ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-        yarn install
+      # run: |
+      #   mkdir -p ~/.ssh
+      #   echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+      #   chmod 700 ~/.ssh/id_rsa
+      #   eval $(ssh-agent -s)
+      #   ssh-add ~/.ssh/id_rsa
+      #   ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+      #   yarn install
     # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
       run: |
         aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
