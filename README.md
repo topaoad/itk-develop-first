@@ -180,3 +180,6 @@ ref={ref} // assign ref prop
 【残りタスク】
 ・ログイン
 ・ログアウト
+
+##  GitHubActionsについて
+アクセスキーを使うことなく、AWS EC2にアクセスすることができます
