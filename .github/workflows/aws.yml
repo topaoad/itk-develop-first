@@ -1,37 +1,34 @@
-name: AWS EC2へのCI/CDテスト
-
+name: CI/CD on Push
 on:
+  workflow_dispatch:
   push:
-  # ブランチにプッシュまたはプルリクしたら発動
-    branches: [ "main" ]
-
-env:
-  # AWS_REGION: ap-northeast-1                   # set this to your preferred AWS region, e.g. us-west-1
-  # ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
-  # ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
-  # ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
-  # ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
-  #                                              # file, e.g. .aws/task-definition.json
-  # CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
-                                              
-
-#このWorkflowにおける secrets.GITHUB_TOKEN は リポジトリの読み取りを許可するという意味になります。
-permissions:
-  contents: read
-  id-token: write 
-
-# ワークフローの実行処理
+     branches: [master]
 jobs:
   build:
-# ジョブが実行されるランナー(仮想デバイス)の種類（Linuxはこれ）
     runs-on: ubuntu-latest
-
-# ジョブのステップ
-steps:
-    # IP取得ライブラリをインストール
-  - name: Public IP
-    id: ip
-    uses: haythem/public-ip@v1.2
-
-
-
+    permissions:
+      id-token: write # AWSとのやり取りでIDの取得等に必要
+      contents: read # リポジトリの取得に必要
+    steps:
+    # IPの取得
+    - name: Public IP
+      id: ip
+      uses: haythem/public-ip@v1.2
+    # AWS認証
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: ap-northeast-1
+        role-to-assume: ${{ secrets.EC2_ROLE_ARN }}
+        role-session-name: github-actions-deploy-${{ github.event.repository.name }}-${{ github.run_number }}
+    # EC2にDeploy
+    - name: Deploy to EC2
+      run: |
+        # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
+        aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+        # デプロイのための作業を記述
+    # 追加したIPをセキュリティグループから除外する（セキュリティグループにあけた穴をふさぐ）
+    - name: Revoke security group
+      if: always()
+      run: |
+        aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
