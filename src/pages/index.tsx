@@ -2,7 +2,7 @@ import { Button } from "@mantine/core";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { Layout } from "src/components/Layout";
 import { client } from "src/lib/miscrocms/client";
 import type { Article, PortfolioArticle } from "src/types/article";
