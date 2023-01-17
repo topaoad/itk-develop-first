@@ -35,7 +35,7 @@ jobs:
         ssh-keyscan -H github.com >> ~/.ssh/known_hosts
         yarn install
     # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
-      # run: |
+      run: |
         aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
         echo "${{ secrets.GIT_PRIVATE_KEY }}" > private_key
