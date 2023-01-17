@@ -29,9 +29,9 @@ jobs:
 # ジョブのステップ
 steps:
     # IP取得ライブラリをインストール
-- name: Public IP
-id: ip
-      uses: haythem/public-ip@v1.2
+  - name: Public IP
+    id: ip
+    uses: haythem/public-ip@v1.2
 
 
 
