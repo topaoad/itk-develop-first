@@ -23,11 +23,10 @@ jobs:
         role-session-name: github-actions-deploy-${{ github.event.repository.name }}-${{ github.run_number }}
     # EC2にDeploy
     - name: Deploy to EC2
+    # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
       run: |
-        # セキュリティグループにIPを追加する（セキュリティグループに穴をあける）
         aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
-        
-        # デプロイのための作業を記述
+
         echo "${{ secrets.GIT_PRIVATE_KEY }}" > private_key
         ssh -oStrictHostKeyChecking=no ${{ secrets.EC2_USER_NAME }}@${{ secrets.EC2_HOST_NAME }} -i private_key "cd /home && git fetch --prune && git checkout main && git pull origin main"
         cd /home && git fetch --prune && git checkout main && git pull origin main
