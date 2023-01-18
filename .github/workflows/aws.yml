@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to EC2
         # ssh接続のための接続
         env:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_KEY }}
         # セキュリティグループにIPを追加する（セキュリティグループに穴をあけて、あいているうちにGitHubからのpullを実行する）
         run: |
           aws ec2 authorize-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
