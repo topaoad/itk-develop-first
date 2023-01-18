@@ -7,7 +7,7 @@
 // 以下、共通コンポーネント
 html,
 body.body {
-  font-family: "YuGothic", Proxima Nova, system-ui, sans-serif;
+  font-family: 'YuGothic', Proxima Nova, system-ui, sans-serif;
   // color: #25262b;
 }
 
@@ -51,4 +51,20 @@ body.body {
 
 .mantine-Input-input {
   margin-top: 6px;
+}
+
+.css-1vchwj9 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @media (max-width: 768px) {
+  }
+}
+
+@media (max-width: 768px) {
+  .css-1vchwj9 {
+    margin-left: 0!important;
+  }
+  .css-2fu7f0 {
+    text-align: left!important;
+  }
 }

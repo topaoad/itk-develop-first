@@ -57,7 +57,7 @@ export default function App(props: AppProps) {
                   <SessionProvider session={session}>
                     <ApolloProvider client={apolloClient}>
                       <Head>
-                        <title>しまぶーポートフォリオサイト</title>
+                        <title>TK Portfolio</title>
                         <meta
                           name="viewport"
                           content="minimum-scale=1, initial-scale=1, width=device-width"

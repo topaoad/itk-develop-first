@@ -1,9 +1,9 @@
 //navigationのlinkを定義
 export const NAV_LINKS = [
-  {
-    href: "/login",
-    label: "Login",
-  },
+  // {
+  //   href: "/login",
+  //   label: "Login",
+  // },
   {
     href: "/signup",
     label: "Sign up",

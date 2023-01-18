@@ -13,7 +13,7 @@ export function Header() {
         <DrawerMenu />
         <div className="tw-text-center  font-avenirtitle font-semibold">
           <Link href="/">
-            <a className=" "> Shimabu IT University</a>
+            <a className=" "> TK Portfolio</a>
           </Link>
         </div>
         {/* スマホ時はハンバーガーに */}

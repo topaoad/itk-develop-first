@@ -9,11 +9,11 @@ export function MainView() {
         <div className="md:flex md:justify-between">
           <div>
             <h1 className="mmd:text-2xl text-4xl text-white  font-bold">
-              Shimabu IT University
+              Welcome To My Site
             </h1>
             <p className="text-white text-base font-bold">
-              {" "}
-              しまぶーのポートフォリオのためのページです
+             
+              フロントエンドエンジニア関連のポートフォリオ兼技術検証用ページです
             </p>
           </div>
           <div className="mmd:mt-8 flex  items-center">
