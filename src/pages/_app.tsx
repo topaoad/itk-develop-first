@@ -8,7 +8,7 @@ import "../styles/pagination.scss";
 import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from "@mantine/core";
-// import type { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { useState } from "react";
@@ -23,7 +23,7 @@ import { SWRConfig } from "swr";
 export const ThemeContext = createContext<"light" | "dark">("light");
 export const LangContext = createContext<"japanese" | "english">("japanese");
 
-export default function App(props) {
+export default function App(props: AppProps) {
   const {
     Component,
     pageProps: { session, ...pageProps },
