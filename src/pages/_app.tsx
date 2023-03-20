@@ -7,12 +7,8 @@ import "../styles/pagination.scss";
 
 import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import {
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-} from "@mantine/core";
-import type { AppProps } from "next/app";
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from "@mantine/core";
+// import type { AppProps } from "next/app";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
 import { useState } from "react";
@@ -27,14 +23,13 @@ import { SWRConfig } from "swr";
 export const ThemeContext = createContext<"light" | "dark">("light");
 export const LangContext = createContext<"japanese" | "english">("japanese");
 
-export default function App(props: AppProps) {
+export default function App(props) {
   const {
     Component,
     pageProps: { session, ...pageProps },
   } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+  const toggleColorScheme = (value?: ColorScheme) => setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   const fetcher = async (url: string) => {
     const res = await fetch(url);
     const swrData = await res.json();
@@ -58,17 +53,11 @@ export default function App(props: AppProps) {
                     <ApolloProvider client={apolloClient}>
                       <Head>
                         <title>TK Portfolio</title>
-                        <meta
-                          name="viewport"
-                          content="minimum-scale=1, initial-scale=1, width=device-width"
-                        />
+                        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
                         <link rel="icon" href="/favicon.ico" />
                       </Head>
 
-                      <ColorSchemeProvider
-                        colorScheme={colorScheme}
-                        toggleColorScheme={toggleColorScheme}
-                      >
+                      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
                         <MantineProvider
                           theme={{
                             colorScheme,
