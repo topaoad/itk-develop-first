@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: "node",
   roots: ["<rootDir>/__tests__"],
   // setupFilesAfterEnv: ["<rootDir>/__tests__/setupTests.ts"],
-  testPathIgnorePatterns: ["<rootDir>/__tests__/setupTests.ts", "<rootDir>/__tests__/tsconfig.jest.json", "<rootDir>/__tests__/mocks/"],
+  testPathIgnorePatterns: ["<rootDir>/__tests__/setup", "<rootDir>/__tests__/tsconfig.jest.json", "<rootDir>/__tests__/mocks/"],
 //   snapshotSerializers: ["enzyme-to-json/serializer"],
   // transform: {
   //   "^.+\\.(ts|tsx)$": "ts-jest",
@@ -21,8 +21,8 @@ module.exports = {
 //   collectCoverage: false,
 //   collectCoverageFrom: ["src/**/*"],
 //   coverageDirectory: "./coverage/",
-//   moduleNameMapper: {
-//     "\\.(css|less|sass|scss)$": "<rootDir>/__tests__/mocks/styleMock.js",
-//     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__tests__/mocks/fileMock.js",
-//   },
+  moduleNameMapper: {
+    "\\.(css|less|sass|scss)$": "<rootDir>/__tests__/mocks/styleMock.js",
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/__tests__/mocks/fileMock.js",
+  },
 };

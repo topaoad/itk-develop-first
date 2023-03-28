@@ -1,6 +1,6 @@
 // import sum from "./sum";
 // common js 形式
-import { sum } from "./inner_file/sum";
+import { sum } from "../inner_file/sum";
 
 console.log("test by jest");
 
