@@ -1,5 +1,4 @@
 # 使用技術
-
 Next.js 　
 React 　
 TypeScript 　
@@ -183,3 +182,10 @@ ref={ref} // assign ref prop
 
 ##  GitHubActionsについて
 アクセスキーを使うことなく、AWS EC2にアクセスすることができます
+
+##  husky と lint-staged について（2023/4/10）
+こちらのサイトを参考に準備
+https://www.gaji.jp/blog/2021/09/22/8132/
+これだけの組み合わせでprettierとlintが効くようになる
+ lint-stagedに"git add",を追加すると、ステージングする際に自動でフォーマットされるようになる
+ 
