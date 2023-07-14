@@ -1,4 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
+// @media (min-width: 768px){
+// }
+// @media (max-width: 767px){
+// }
+
+// フォントサービスに登録しないと反映しない
+// https://fontplus.jp/usage/services/apply
+.font-avenirtitle {
+  font-family: "Avenir Next";
+}
+
+
+// ドロワーとハンバーガー
+@media (min-width: 768px) {
+  .mantine-UnstyledButton-root.mantine-Burger-root {
+    display: none;
+  }
+}
+.mantine-Paper-root.mantine-Drawer-drawer.mantine-ec5v6a {
+  background-color: #e64980;
+  color: white;
+  padding-top: 44px;
+}
+.mantine-w29q45.mantine-Drawer-header {
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+  height: 65px;
+}
+.mantine-w29q45.mantine-Drawer-header svg {
+  color: white;
+  width: 28px;
+  height: 28px;
+}
+
+@media (max-width: 767px) {
+  .pc-menu {
+    display: none;
+  }
+  .sm-position {
+    justify-content: space-between;
+  }
+}

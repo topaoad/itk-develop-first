@@ -1,4 +1,54 @@
+// 何度も呼び出しされては困るので、適用はここだけとする。
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// 以下、共通コンポーネント
+html,
+body.body {
+  font-family: "YuGothic", Proxima Nova, system-ui, sans-serif;
+  // color: #25262b;
+}
+
+.sub-title {
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 2.5rem;
+}
+
+.button-style {
+  background-color: #25262b;
+  color: white;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 22px;
+  margin: auto;
+}
+
+.font-color-dark2 {
+  color: #909296;
+}
+
+.tw-text-center {
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 10px;
+  line-height: 15px;
+  padding: 25px 0;
+}
+
+.height-vh {
+  height: 50vh;
+}
+.height-70vh {
+  height: 60vh;
+}
+
+.mantine-Input-input {
+  margin-top: 6px;
+}

@@ -1,30 +1,30 @@
-import styles from "../../styles/Home.module.css";
-// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { DarkButton } from "src/components/Darkbutton";
-import { Box } from '@mantine/core';
+import { DarkButton } from "src/components/PageContainer/Darkbutton";
+import { DrawerMenu } from "../PageContainer/DrawerMenu";
+import { NAV_LINKS } from "./headerLinks";
 
 export function Header() {
   return (
-    <header className="">
-
-
-      {/* スマホ時はハンバーガーに */}
-      <Link href="/">
-        <a className="rrrr">
-          Index
-        </a>
-      </Link>
-      <Link href="/contact">
-        <a>About page</a>
-      </Link>
-      <Link href="/contact">
-        <a >お問い合わせ</a>
-      </Link>
-
-      <DarkButton />
-       
+    <header className="py-5 text-lg leading-6 font-bold">
+      <div className="flex items-center sm-position">
+        <DrawerMenu />
+        <div className="tw-text-center  font-avenirtitle font-semibold">
+          <Link href="/">
+            <a className=" "> Shimabu IT University</a>
+          </Link>
+        </div>
+        {/* スマホ時はハンバーガーに */}
+        <div className="flex ml-auto pc-menu">
+          {/* navigationをmapで表示 */}
+          {NAV_LINKS.map((link) => (
+            <Link key={link.label} href={`${link.href}`}>
+              <a className="mr-4">{link.label}</a>
+            </Link>
+          ))}
+        </div>
+        <DarkButton />
+      </div>
     </header>
   );
 }
